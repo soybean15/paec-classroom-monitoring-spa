@@ -20,6 +20,11 @@ const routes = [
   component: RegisterView
   },
   {
+    path: '/user-profile',
+    name: 'userProfile',
+    component: import('../views/user/CreateProfileVIew.vue')
+    },
+  {
     path: '/about',
     name: 'about',
     // route level code-splitting

@@ -116,8 +116,14 @@
 </template>
 
 <script>
+import {useUserStore} from '@/store/user'
+
 export default {
 
+    setup(){
+        const userStore = useUserStore()
+        userStore.getUser()
+    }
 }
 </script>
 
