@@ -1,12 +1,20 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link> |
-    <router-link to="/login">Login</router-link> |
-    <router-link to="/register">Register</router-link>
-  </nav>
+<div class="flex">
+  <NavigationView/>
   <router-view/>
+</div>
+
 </template>
+
+<script>
+import NavigationView from './views/components/NavigationView.vue'
+export default{
+  components:{
+    NavigationView
+  }
+}
+
+</script>
 
 <style>
 @tailwind base;
