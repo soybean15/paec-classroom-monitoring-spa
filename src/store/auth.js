@@ -29,9 +29,9 @@ export const useAuthStore = defineStore('auth',{
                 const data = await axios.get('/api/user')
             }catch(error){
                 
-                if(error.response.status === 401){
-                    router.push('/login')
-                }
+                // if(error.response.status === 401){
+                //     router.push('/login')
+                // }
 
             }
             
