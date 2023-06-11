@@ -24,25 +24,25 @@
 
                 <!-- Details section -->
 
-                <form>
+                <form @submit.prevent="userStore.handleCreateUser">
                     <div class="flex flex-col">
 
 
                         <div class="flex w-full p-2">
                             <span class="w-40 flex font-semibold">First Name</span>
-                            <input type="text" placeholder="" required
+                            <input v-model="userStore.form.firstname" type="text" placeholder="" 
                                 class=" rounded-sm w-full border-2  ">
                         </div>
 
                         <div class="flex w-full p-2">
                             <span class="w-40 flex font-semibold">MIddle Name </span>
-                            <input type="text" placeholder="" required
+                            <input v-model="userStore.form.middlename" type="text" placeholder="" 
                                 class=" rounded-sm w-full border-2  ">
                         </div>
 
                         <div class="flex w-full p-2">
                             <span class="w-40 flex font-semibold ">Last Name</span>
-                            <input type="text" placeholder="" required
+                            <input v-model="userStore.form.lastname" type="text" placeholder="" 
                                 class=" rounded-sm w-full border-2  ">
                         </div>
 
@@ -53,13 +53,13 @@
                             <span class="flex font-semibold w-40 ">Gender</span>
                             <div class=" flex  w-full gap-6">
                                 <div>
-                                    <input type="radio">
-                                    <span class="gender ">Male</span>
+                                    <input type="radio"  value="Female" v-model="userStore.form.gender" name="gender">
+                                    <span class="gender" value="Male">Male</span>
                                 </div>
 
                                 <div>
-                                    <input type="radio">
-                                    <span class="gender">Female</span>
+                                    <input type="radio"  value="Female" v-model="userStore.form.gender" name="gender">
+                                    <span class="gender">Female</span> 
 
                                 </div>
                             </div>
@@ -71,20 +71,20 @@
                         <!-- Details section -->
                         <div class="flex w-full p-2">
                             <span class="w-40 flex font-semibold">Birthday</span>
-                            <input type="date" placeholder="" required
+                            <input type="date" placeholder="" v-model="userStore.form.birthdate"
                                 class=" rounded-sm w-full border-2  ">
                         </div>
 
 
                         <div class="flex w-full p-2">
                             <span class="w-40 flex font-semibold">Contact</span>
-                            <input type="text" placeholder="" required
+                            <input type="text" placeholder="" v-model="userStore.form.contact_number"
                                 class=" rounded-sm w-full border-2  ">
                         </div>
 
                         <div class="flex w-full p-2">
                             <span class="w-40 flex font-semibold">Address</span>
-                            <textarea type="text" placeholder="" required
+                            <textarea type="text" placeholder="" v-model="userStore.form.address"
                                 class=" rounded-sm w-full border-2  "></textarea>
                         </div>
 
@@ -123,6 +123,8 @@ export default {
     setup(){
         const userStore = useUserStore()
         userStore.getUser()
+
+        return {userStore}
     }
 }
 </script>
