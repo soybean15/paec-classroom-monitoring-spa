@@ -131,7 +131,8 @@ export default {
 
         const onFileChange = (event) => {
             userStore.form.image = event.target.files[0];
-            userStore.user.profile.image = event.target.files[0]
+            userStore.user.profile.image = URL.createObjectURL(event.target.files[0])
+            
             console.log(userStore.user.profile.image)
         }
         return {userStore,onFileChange}
