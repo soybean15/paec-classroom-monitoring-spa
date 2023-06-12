@@ -16,7 +16,7 @@
       </div>
 
       <!-- User Name -->
-      <div class="flex items-center  mr-6 text-white">
+      <div class="flex items-center  mr-6 text-white" v-if="userStore.user.profile">
         {{ userStore.user.profile.firstname  }}   {{ userStore.user.profile.lastname  }}
       </div>
      

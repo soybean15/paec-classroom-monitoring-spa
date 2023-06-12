@@ -40,7 +40,7 @@ export const useUserStore = defineStore('user',{
         async getProfile(){
             const data = await axios.get('api/user/profile/'+this.stateUser.user.id)
             this.stateUser.profile = data.data.user.user_profile
-            console.log(this.stateUser.profile.image)
+            console.log(data.data.user)
             
         },
         async handleCreateUser(){
