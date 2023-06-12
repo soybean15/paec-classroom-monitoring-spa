@@ -55,6 +55,13 @@ export const useAuthStore = defineStore('auth',{
                 password:this.authForm.password,
                 password_confirmation:this.authForm.confirmPassword
             })
+        },
+        async handleLogout() {
+            
+            await axios.post('/logout')
+            this.authUser = null
+ 
+            this.router.push('/')
         }
     }
 })

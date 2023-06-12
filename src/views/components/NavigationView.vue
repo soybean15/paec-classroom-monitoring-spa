@@ -3,7 +3,7 @@
     <div class="flex-none"></div>
     <div class="flex-1">
       <a class="btn btn-ghost normal-case text-white text-xl"
-        >PCM</a
+        >PCM </a
       >
     </div>
     <div class="flex-none">
@@ -15,8 +15,8 @@
           <ul
             class="p-2 shadow menu dropdown-content _bg-secondary rounded-box w-52 text-white font-semibold"
           >
-            <li><a>Item 1</a></li>
-            <li><a>Item 2</a></li>
+            <li><a>Profile</a></li>
+            <li><a @click="authStore.handleLogout">Logout</a></li>
           </ul>
         </div>
         <div v-else>
@@ -34,11 +34,13 @@
 
 <script>
 import { useUserStore } from "@/store/user";
+import { useAuthStore } from "@/store/auth";
 export default {
   setup() {
     const userStore = useUserStore();
-
-    return { userStore };
+    const authStore = useAuthStore()
+    
+    return { userStore,authStore };
   },
 };
 </script>
