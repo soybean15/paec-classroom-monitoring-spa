@@ -1,5 +1,5 @@
 <template>
-    <div class=" flex container  rounded-md shadow-xl border-solid border-2 ">
+    <div class="flex container  rounded-md shadow-xl border-solid border-2 ">
         <div class="flex-grow ">
             <!-- Photo here -->
 
@@ -96,7 +96,7 @@
                         <!-- Button -->
                         <div class="  flex w-full mt-5">
                             <div
-                                class="bg-gradient-to-bl from-blue-600 via-sky-300 to-cyan-400 h-10  rounded-full w-full mx-5 flex items-center justify-center text-white text-lg">
+                                class="cursor-pointer bg-gradient-to-bl from-blue-600 via-sky-300 to-cyan-400 h-10  rounded-full w-full mx-5 flex items-center justify-center text-white text-lg">
                                 <input type="submit" value="Register" >
                             </div>
                         </div>

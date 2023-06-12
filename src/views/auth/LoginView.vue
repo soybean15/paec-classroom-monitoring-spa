@@ -1,8 +1,9 @@
 <template> 
   <img>
-  <section class=" dark:bg-gray-900">
+  <div>
+  <section class="">
     <div class="flex justify-center mt-32">
-      <div class="bg-green-600 w-96 shadow dark:border bg-cover rounded px-8 pt-8 pb-8 ">
+      <div class="bg-primary w-96 shadow dark:border bg-cover rounded px-8 pt-8 pb-8 ">
         <h1 class="text-xl font-bold leading-tight tracking-tight text-white md:text-2xl mb-">
                   Login
         </h1>
@@ -14,7 +15,7 @@
                 Email
               </span>
               <input type="email" name="email" v-model="authStore.form.email" class=" mb-3 w-full max-w-xs mt-1 px-3 py-2 
-              text-green-100 bg-green-700 border shadow-sm border-green-300 placeholder-green-100 focus:outline-none focus:border-green-500 focus:ring-green-500 rounded-full sm:text-sm focus:ring-1" placeholder="you@example.com" />
+              text-green-100 bg-secondary border shadow-sm border-green-300 placeholder-green-100 focus:outline-none focus:border-green-500 focus:ring-green-500 rounded-full sm:text-sm focus:ring-1" placeholder="you@example.com" />
             </label>
           </div>
           <div>
@@ -25,8 +26,8 @@
               <input type="password" name="password" v-model="authStore.form.password" class="text-green-100 w-full max-w-xs mt-1 px-3 py-2 bg-green-700 border shadow-sm border-green-300 placeholder-green-100 focus:outline-none focus:border-green-500 focus:ring-green-500 rounded-full sm:text-sm focus:ring-1" placeholder="password" />
             </label>
             <div class="mt-2 space-x-10">
-              <button class="text-blue-500 btn btn-ghost text-sm font-medium text-white h-1">Forgot password?</button>
-              <button class="bg-green-700 hover:bg-green-500 text-white font-bold py-1 px-4 rounded-full">Login</button>
+              <button class="btn btn-ghost text-sm font-medium text-white h-1">Forgot password?</button>
+              <button class="bg-secondary hover:bg-green-500 text-white font-bold py-1 px-4 rounded-full">Login</button>
             </div>
             <div>
             </div>
@@ -35,11 +36,8 @@
       </div>
     </div>
   </section>
-   <div>
-      <p class="pt-2 text-center text-gray-500 text-xs">
-      &copy;2023 PAEC All rights reserved.
-    </p>
-    </div>
+
+  </div>
   </template>
   
 

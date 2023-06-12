@@ -5,7 +5,7 @@
   <div class="drawer-content flex ">
     <!-- Page content here -->
     <label for="my-drawer" class="w-9">
-      <img src="../../assets/menu.svg"/>
+      <img src="../../assets/menu.svg" class="cursor-pointer"/>
     </label>
     <div class="flex-grow"></div>
     <div class="flex">

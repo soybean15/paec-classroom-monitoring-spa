@@ -1,7 +1,12 @@
 <template>
-<div class="">
+<div class="body">
   <NavigationView/>
   <router-view/>
+  <footer>
+      <p class="pt-2 text-center text-gray-500 text-xs">
+      &copy;2023 PAEC All rights reserved.
+    </p>
+    </footer>
 </div>
 
 </template>
@@ -26,6 +31,7 @@ export default{
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  background-color: rgb(0, 119, 238); 
 }
 
 nav {
@@ -45,5 +51,8 @@ nav a.router-link-exact-active {
 }
 .bg-secondary{
   @apply bg-green-700;
+}
+body{
+  @apply bg-slate-500;
 }
 </style>
