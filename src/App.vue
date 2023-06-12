@@ -2,17 +2,22 @@
 <div class="body">
   
   <router-view/>
+
+  <!-- uncomment this
+  <AdminView/> -->
   
 </div>
 
 </template>
 
 <script>
+import AdminView from './views/admin/AdminView.vue';
 import { useAuthStore } from './store/auth';
 import HomeViewVue from './views/HomeView.vue';
 export default{
   components:{
-    HomeViewVue
+    HomeViewVue,
+    AdminView
   },
   setup(){
 
