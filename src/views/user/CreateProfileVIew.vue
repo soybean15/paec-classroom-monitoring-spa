@@ -143,7 +143,7 @@ export default {
 <style>
 .container{
     width: 90%;
-margin: auto;   
- border: 1px solid black;
+    margin: auto;   
+    border: 1px solid black;
 }
 </style>
