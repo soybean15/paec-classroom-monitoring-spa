@@ -1,84 +1,47 @@
 <template>
-
-<div class="drawer bg-green-600">
-  <input id="my-drawer" type="checkbox" class="drawer-toggle" />
-  <div class="drawer-content flex ">
-    <!-- Page content here -->
-    <label for="my-drawer" class="w-9">
-      <img src="../../assets/menu.svg" class="cursor-pointer"/>
-    </label>
-    <div class="flex-grow"></div>
-    <div class="flex">
-
-      <!-- User Image -->
-      <div v-if="userStore.user.profile">
-         <img class="w-10, h-10 rounded-full m-2" :src="userStore.user.profile.image"/>
-      </div>
-
-      <!-- User Name -->
-      <div class="flex items-center  mr-6 text-white" v-if="userStore.user.profile">
-        {{ userStore.user.profile.firstname  }}   {{ userStore.user.profile.lastname  }}
-      </div>
-     
+  <div class="navbar  bg-primary">
+    <div class="flex-none"></div>
+    <div class="flex-1">
+      <a class="btn btn-ghost normal-case text-white text-xl"
+        >PCM</a
+      >
+    </div>
+    <div class="flex-none">
+      <details class="dropdown dropdown-end  ">
+        <summary class="m-1 btn  bg-primary hover:bg-green-700">
+       <button class="flex items-center text-2xl">...</button>
+        </summary>
+        <div v-if="userStore.user.user">
+          <ul
+            class="p-2 shadow menu dropdown-content _bg-secondary rounded-box w-52 text-white font-semibold"
+          >
+            <li><a>Item 1</a></li>
+            <li><a>Item 2</a></li>
+          </ul>
+        </div>
+        <div v-else>
+            <ul
+            class="p-2 shadow menu dropdown-content  _bg-secondary rounded-box w-52 text-white font-semibold"
+          >
+            <li><a>Register</a></li>
+            <li><a>Login</a></li>
+          </ul>
+        </div>
+      </details>
     </div>
   </div>
-  <div class="drawer-side">
-    
-    <label for="my-drawer" class="drawer-overlay"></label>
-    <ul class="menu p-4 w-80 h-full bg-base-200 text-base-content bg-green-600">
-      <!-- Sidebar content here -->
-      <h5 class="text-left mb-3 font-semibold text-white uppercase dark:text-gray-400">Menu</h5>
-
-    <li id="hover">
-      <router-link to="/" class="text-white font-semibold">
-        <img src="../../assets/home.svg" class="w-6"/>
-        Dashboard
-      </router-link>
-    </li>
-    <li>
-      <router-link to="/about" class="text-white font-semibold">
-        <img src="../../assets/about.svg" class="w-6"/>
-        Faculty
-      </router-link> 
-    </li>
-    <li>
-      <router-link to="/login" class="text-white font-semibold">
-        <img src="../../assets/login.svg" class="w-6"/>
-        Report
-      </router-link> 
-    </li>
-    <li>
-      <router-link to="/register" class="text-white font-semibold">
-        <img src="../../assets/register.svg" class="w-6"/>
-        Users
-      </router-link>
-    </li>
-      
-    </ul>
-  </div>
-</div>
-
 </template>
 
 <script>
-import { useUserStore } from '@/store/user';
+import { useUserStore } from "@/store/user";
 export default {
+  setup() {
+    const userStore = useUserStore();
 
-  setup(){
-    const userStore = useUserStore()
-    userStore.getUser()
-
-    return {userStore}
-
-  }
-
-}
+    return { userStore };
+  },
+};
 </script>
 
 <style>
-li:hover{
-  background-color: rgb(21 128 61);
-  border-radius: px;
-}
-
 </style>

@@ -1,21 +1,24 @@
 <template>
 <div class="body">
-  <NavigationView/>
+  
   <router-view/>
-  <footer>
-      <p class="pt-2 text-center text-gray-500 text-xs">
-      &copy;2023 PAEC All rights reserved.
-    </p>
-    </footer>
+  
 </div>
 
 </template>
 
 <script>
-import NavigationView from './views/components/NavigationView.vue'
+import { useAuthStore } from './store/auth';
+import HomeViewVue from './views/HomeView.vue';
 export default{
   components:{
-    NavigationView
+    HomeViewVue
+  },
+  setup(){
+
+    const authStore = useAuthStore()
+    authStore.getUser()
+
   }
 }
 
@@ -30,8 +33,8 @@ export default{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  background-color: rgb(0, 119, 238); 
+  color: #0472e0;
+ 
 }
 
 nav {
@@ -49,10 +52,8 @@ nav a.router-link-exact-active {
 .bg-primary{
   @apply bg-green-600;
 }
-.bg-secondary{
+._bg-secondary{
   @apply bg-green-700;
 }
-body{
-  @apply bg-slate-500;
-}
+
 </style>
