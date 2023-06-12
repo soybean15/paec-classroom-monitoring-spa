@@ -38,6 +38,12 @@ nav a {
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: hsl(153, 47%, 49%);
+}
+.bg-primary{
+  @apply bg-green-600;
+}
+.bg-secondary{
+  @apply bg-green-700;
 }
 </style>

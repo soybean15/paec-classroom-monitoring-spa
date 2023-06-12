@@ -1,6 +1,6 @@
 <template>
 
-<div class="drawer">
+<div class="drawer bg-green-600">
   <input id="my-drawer" type="checkbox" class="drawer-toggle" />
   <div class="drawer-content flex ">
     <!-- Page content here -->
@@ -29,31 +29,28 @@
       <!-- Sidebar content here -->
       <h5 class="text-left mb-3 font-semibold text-white uppercase dark:text-gray-400">Menu</h5>
 
-      <button type="button" data-drawer-hide="drawer-navigation" aria-controls="drawer-navigation" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" >
-        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-        <span class="sr-only">Close menu</span>
-        
-    </button>
-    <li>
-      <router-link to="/" class="">
+    <li id="hover">
+      <router-link to="/" class="text-white font-semibold">
         <img src="../../assets/home.svg" class="w-6"/>
-        <label>Home</label>
+        Dashboard
       </router-link>
     </li>
     <li>
-      <router-link to="/about">
+      <router-link to="/about" class="text-white font-semibold">
         <img src="../../assets/about.svg" class="w-6"/>
-        About
-      </router-link> </li>
+        Faculty
+      </router-link> 
+    </li>
     <li>
-      <router-link to="/login">
+      <router-link to="/login" class="text-white font-semibold">
         <img src="../../assets/login.svg" class="w-6"/>
-        Login
-      </router-link> </li>
+        Report
+      </router-link> 
+    </li>
     <li>
-      <router-link to="/register">
+      <router-link to="/register" class="text-white font-semibold">
         <img src="../../assets/register.svg" class="w-6"/>
-        Register
+        Users
       </router-link>
     </li>
       
@@ -79,5 +76,9 @@ export default {
 </script>
 
 <style>
+li:hover{
+  background-color: rgb(21 128 61);
+  border-radius: px;
+}
 
 </style>
