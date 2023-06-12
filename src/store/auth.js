@@ -46,7 +46,7 @@ export const useAuthStore = defineStore('auth',{
                 
             })
 
-            router.push('/')
+            router.push('/admin/')
         },
         async handleRegister(){
             await axios.post('/register',{

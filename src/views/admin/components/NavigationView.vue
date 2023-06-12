@@ -4,7 +4,7 @@
     <div class="drawer-content flex">
       <!-- Page content here -->
       <label for="my-drawer" class="w-9">
-        <img src="../../assets/menu.svg" class="cursor-pointer" />
+        <img src="../../../assets/menu.svg" class="cursor-pointer" />
       </label>
       <div class="flex-grow"></div>
       <div class="flex">
@@ -40,25 +40,25 @@
 
         <li id="hover">
           <router-link to="/" class="text-white font-semibold">
-            <img src="../../assets/home.svg" class="w-6" />
+            <img src="../../../assets/home.svg" class="w-6" />
             Dashboard
           </router-link>
         </li>
         <li>
           <router-link to="/about" class="text-white font-semibold">
-            <img src="../../assets/about.svg" class="w-6" />
+            <img src="../../../assets/about.svg" class="w-6" />
             Faculty
           </router-link>
         </li>
         <li>
           <router-link to="/login" class="text-white font-semibold">
-            <img src="../../assets/login.svg" class="w-6" />
+            <img src="../../../assets/login.svg" class="w-6" />
             Report
           </router-link>
         </li>
         <li>
           <router-link to="/register" class="text-white font-semibold">
-            <img src="../../assets/register.svg" class="w-6" />
+            <img src="../../../assets/register.svg" class="w-6" />
             Users
           </router-link>
         </li>
