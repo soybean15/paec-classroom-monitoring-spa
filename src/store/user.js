@@ -5,7 +5,10 @@ import { useAuthStore } from './auth'
 
 export const useUserStore = defineStore('user',{
     state:()=>({
-        stateUser:null,
+        stateUser:{
+            user:null,
+            profile:null
+        },
         stateUserForm:{
             firstname:null,
             lastname:null,
@@ -20,7 +23,8 @@ export const useUserStore = defineStore('user',{
 
     }),
     getters:{
-        form:(state)=> state.stateUserForm
+        form:(state)=> state.stateUserForm,
+        user:(state)=>state.stateUser
 
     },
     actions:{
@@ -28,11 +32,19 @@ export const useUserStore = defineStore('user',{
         async getUser(){
             const authStore = useAuthStore();
             await authStore.getUser();
-            this.stateUser = authStore.user
-            console.log(this.stateUser)
+            this.stateUser.user = authStore.user
+            await this.getProfile()
+           
+           
+        },
+        async getProfile(){
+            const data = await axios.get('api/user/profile/'+this.stateUser.user.id)
+            this.stateUser.profile = data.data.user.user_profile
+            console.log(this.stateUser.profile.image)
+            
         },
         async handleCreateUser(){
-            const data = await axios.put('api/user/create-profile',{
+            const data = await axios.post('api/user/create-profile',{
                 user:this.stateUser,
                 firstname: this.stateUserForm.firstname,
                 lastname: this.stateUserForm.lastname,
@@ -42,6 +54,10 @@ export const useUserStore = defineStore('user',{
                 image: this.stateUserForm.image,
                 contact_number:this.stateUserForm.contact_number,
                 address: this.stateUserForm.address
+            },{
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
             })
 
         }
