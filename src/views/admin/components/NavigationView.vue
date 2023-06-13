@@ -1,5 +1,5 @@
 <template>
-  <div class="drawer bg-green-600">
+  <div class="drawer bg-blue-900">
     <input id="my-drawer" type="checkbox" class="drawer-toggle" />
     <div class="drawer-content flex">
       <!-- Page content here -->
@@ -29,7 +29,7 @@
     <div class="drawer-side">
       <label for="my-drawer" class="drawer-overlay"></label>
       <ul
-        class="menu p-4 w-80 h-full bg-base-200 text-base-content bg-green-600"
+        class="menu p-4 w-60 h-full bg-base-200 text-base-content bg-blue-500"
       >
         <!-- Sidebar content here -->
         <h5
@@ -39,25 +39,25 @@
         </h5>
 
         <li id="hover">
-          <router-link to="/" class="text-white font-semibold">
+          <router-link to="/" class="text-white text-2xl">
             <img src="../../../assets/home.svg" class="w-6" />
             Dashboard
           </router-link>
         </li>
         <li>
-          <router-link to="/about" class="text-white font-semibold">
+          <router-link to="/about" class="text-white text-2xl">
             <img src="../../../assets/about.svg" class="w-6" />
             Faculty
           </router-link>
         </li>
         <li>
-          <router-link to="/login" class="text-white font-semibold">
+          <router-link to="/login" class="text-white text-2xl">
             <img src="../../../assets/login.svg" class="w-6" />
             Report
           </router-link>
         </li>
         <li>
-          <router-link to="/register" class="text-white font-semibold">
+          <router-link to="/register" class="text-white text-2xl">
             <img src="../../../assets/register.svg" class="w-6" />
             Users
           </router-link>
@@ -81,7 +81,7 @@ export default {
 
 <style>
 li:hover {
-  background-color: rgb(21 128 61);
-  border-radius: px;
+  background-color: rgb(30 58 138);
+  border-radius: 10px;
 }
 </style>

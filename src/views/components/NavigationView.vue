@@ -1,5 +1,5 @@
 <template>
-  <div class="navbar  bg-primary">
+  <div class="navbar bg-blue-900">
     <div class="flex-none"></div>
     <div class="flex-1">
       <a class="btn btn-ghost normal-case text-white text-xl"
@@ -7,21 +7,19 @@
       >
     </div>
     <div class="flex-none">
-      <details class="dropdown dropdown-end  ">
-        <summary class="m-1 btn  bg-primary hover:bg-green-700">
-       <button class="flex items-center text-2xl">...</button>
+      <details class="dropdown dropdown-end">
+        <summary class="m-1 btn  bg- hover:bg-gray-400">
+        <button class="flex items-center w-9">
+        <img src="../../assets/user.png"/>
+        </button>
         </summary>
         <div v-if="userStore.user.user">
-          <ul
-            class="p-2 shadow menu dropdown-content _bg-secondary rounded-box w-52 text-white font-semibold"
-          >
-            <li><a>Profile</a></li>
-            <li><a @click="authStore.handleLogout">Logout</a></li>
-          </ul>
+          <ul3 color combinations theme for websiteli>
+          </ul3>
         </div>
         <div v-else>
             <ul
-            class="p-2 shadow menu dropdown-content  _bg-secondary rounded-box w-52 text-white font-semibold"
+            class="p-2 shadow menu dropdown-content bg-blue-500 rounded-box w-52 text-white font-semibold"
           >
             <li><router-link to="/register">Register</router-link></li>
             <li><router-link to="/login">Login</router-link></li>

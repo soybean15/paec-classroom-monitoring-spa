@@ -3,8 +3,8 @@
   
   <router-view/>
 
-  <!-- uncomment this
-  <AdminView/> -->
+  uncomment this
+  <AdminView/>
   
 </div>
 
@@ -55,10 +55,30 @@ nav a.router-link-exact-active {
   color: hsl(153, 47%, 49%);
 }
 .bg-primary{
-  @apply bg-green-600;
+  @apply bg-white;
 }
-._bg-secondary{
-  @apply bg-green-700;
+.bg-secondary{
+  @apply bg-white;
 }
+.bg-secondary-variant{
+  @apply bg-blue-900
+}
+.text-color{
+  @apply text-black
+}
+.input-text{
+  @apply text-black
+}
+.focus-ring{
+  @apply focus:ring-blue-500
+}
+.focus-border{
+  @apply focus:border-blue-500
+}
+.input-border{
+  @apply border-gray-300
+}
+
+
 
 </style>

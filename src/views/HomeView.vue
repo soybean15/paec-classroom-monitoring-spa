@@ -5,7 +5,7 @@
         <img class="w-80 h-80" src="../assets/logo/paec-logo.png" />
       </div>
       <div class="flex justify-center">
-        <div class="mt-4 w-5/6 text-5xl text-white font-bold">
+        <div class="mt-4 w-5/6 text-5xl text-black font-bold">
           Peñaranda Off Campus School Monitoring System
         </div>
       </div>
