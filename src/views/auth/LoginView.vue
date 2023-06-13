@@ -1,8 +1,8 @@
 <template> 
-  <img>
-  <div>
-  <section class="">
-    <div class="flex justify-center mt-32">
+
+  <div class="h-full">
+  <section class=" h-full">
+    <div class="flex justify-center h-full">
       <div class="bg-primary w-96 shadow dark:border bg-cover rounded px-8 pt-8 pb-8 ">
         <h1 class="text-xl leading-tight tracking-tight text-color md:text-2xl mb-">
                   Login

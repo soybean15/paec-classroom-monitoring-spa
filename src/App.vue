@@ -2,9 +2,9 @@
 <div class="body">
   
   <router-view/>
-
+<!-- 
   uncomment this
-  <AdminView/>
+  <AdminView/> -->
   
 </div>
 

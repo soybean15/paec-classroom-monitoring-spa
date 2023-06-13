@@ -4,6 +4,7 @@ import LoginView from '../views/auth/LoginView.vue'
 import RegisterView from '../views/auth/RegistrationView.vue'
 import MainView from '../views/MainView.vue'
 import AdminView from '../views/admin/AdminView.vue'
+import AuthView from '../views/auth/AuthView.vue'
 const routes = [
   {
     path: '/',
@@ -17,15 +18,25 @@ const routes = [
         component: HomeView
       },
       {
-        path: '/login',
-        name: 'login',
-        component: LoginView
+        path: '/auth',
+        name: 'auth',
+        component: AuthView,
+        children: [
+          {
+            path: '/login',
+            name: 'login',
+            component: LoginView
+          },
+          {
+            path: '/register',
+            name: 'register',
+            component: RegisterView
+          },
+       
+        ]
       },
-      {
-        path: '/register',
-        name: 'register',
-        component: RegisterView
-      },
+      
+    
 
     ]
   },
@@ -37,6 +48,7 @@ const routes = [
    
     ]
   },
+  
 
  
   {

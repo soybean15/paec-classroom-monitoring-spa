@@ -1,5 +1,5 @@
 <template>
-  <div class="navbar bg-blue-900">
+  <div class="navbar bg-blue-800">
     <div class="flex-none"></div>
     <div class="flex-1">
       <a class="btn btn-ghost normal-case text-white text-xl"
@@ -8,14 +8,14 @@
     </div>
     <div class="flex-none">
       <details class="dropdown dropdown-end">
-        <summary class="m-1 btn  bg- hover:bg-gray-400">
+        <summary class="m-1 btn  bg-blue-900  hover:bg-blue-400">
         <button class="flex items-center w-9">
         <img src="../../assets/user.png"/>
         </button>
         </summary>
         <div v-if="userStore.user.user">
-          <ul3 color combinations theme for websiteli>
-          </ul3>
+          <ul>
+          </ul>
         </div>
         <div v-else>
             <ul
