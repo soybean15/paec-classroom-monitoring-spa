@@ -3,7 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/auth/LoginView.vue'
 import RegisterView from '../views/auth/RegistrationView.vue'
 import MainView from '../views/MainView.vue'
-import AdminView from '../views/admin/AdminView.vue'
+
 import AuthView from '../views/auth/AuthView.vue'
 const routes = [
   {
@@ -43,12 +43,10 @@ const routes = [
   {
     path: '/admin',
     name: 'admin',
-    component: AdminView,
+    component: () => import('../views/admin/AdminView.vue'),
    
   },
   
-
- 
   {
     path: '/user-profile',
     name: 'userProfile',

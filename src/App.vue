@@ -21,8 +21,8 @@ export default{
   },
   setup(){
 
-    const authStore = useAuthStore()
-    authStore.getUser()
+    // const authStore = useAuthStore()
+    // authStore.getUser()
 
   }
 }
