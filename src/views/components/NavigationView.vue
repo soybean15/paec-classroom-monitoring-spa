@@ -19,7 +19,7 @@
         </div>
         <div v-else>
             <ul
-            class="p-2 shadow menu dropdown-content bg-blue-500 rounded-box w-52 text-white font-semibold"
+            class="p-2 shadow menu dropdown-content bg-blue-500 rounded-box w-52 font-semibold"
           >
             <li><router-link to="/register">Register</router-link></li>
             <li><router-link to="/login">Login</router-link></li>

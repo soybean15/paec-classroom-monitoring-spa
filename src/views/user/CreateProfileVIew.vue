@@ -1,14 +1,14 @@
 <template>
-    <div class="flex container  rounded-md shadow-xl border-solid border-2 ">
+    <div class="bg-gray-50 flex container rounded-md shadow-xl border-solid border-2 ">
         <div class="flex-grow ">
             <!-- Photo here -->
 
         </div>
-        <div class="p-6 bg-slate-50">
-            <div class="    pb-4 ">
+        <div class="p-6 bg-white">
+            <div class="pb-4 ">
 
                 <div>
-                    <div class="title text-lg font-bold ">
+                    <div class="title text-lg text-color ">
                         Profile
                         <hr>
                         <div class="flex flex-col justify-center  items-center border">
@@ -30,41 +30,47 @@
                 <!-- Details section -->
 
                 <form @submit.prevent="userStore.handleCreateUser">
-                    <div class="flex flex-col">
+                    <div class="flex flex-col ">
 
 
-                        <div class="flex w-full p-2">
-                            <span class="w-40 flex font-semibold">First Name</span>
+                        <div class=" w-full p-1 text-color text-sm">
+                            <span class="w-40 block text-left">First Name</span>
                             <input v-model="userStore.form.firstname" type="text" placeholder="" 
-                                class=" rounded-sm w-full border-2  ">
+                                class=" rounded-full w-full border-1 w-full max-w-xs px-3 py-2 
+                                    input-text bg-secondary border shadow-sm input-border focus:outline-none 
+                                    focus-border focus-ring sm:text-sm focus:ring-1">
                         </div>
 
-                        <div class="flex w-full p-2">
-                            <span class="w-40 flex font-semibold">MIddle Name </span>
+                        <div class=" w-full p-1">
+                            <span class="w-40 block text-color text-left text-sm">Middle Name </span>
                             <input v-model="userStore.form.middlename" type="text" placeholder="" 
-                                class=" rounded-sm w-full border-2  ">
+                                class=" rounded-full w-full border-1 w-full max-w-xs px-3 py-2 
+                                input-text bg-secondary border shadow-sm input-border focus:outline-none 
+                                focus-border focus-ring sm:text-sm focus:ring-1 ">
                         </div>
 
-                        <div class="flex w-full p-2">
-                            <span class="w-40 flex font-semibold ">Last Name</span>
+                        <div class="w-full p-1">
+                            <span class="w-40 block text-color text-left text-sm">Last Name</span>
                             <input v-model="userStore.form.lastname" type="text" placeholder="" 
-                                class=" rounded-sm w-full border-2  ">
+                                class="rounded-full w-full border-1 w-full max-w-xs mt-1 px-3 py-2 
+                                input-text bg-secondary border shadow-sm input-border focus:outline-none 
+                                focus-border focus-ring sm:text-sm focus:ring-1">
                         </div>
 
 
                         <!-- Gender section -->
-                        <div class=" flex w-full p-2">
+                        <div class=" w-full p-1">
 
-                            <span class="flex font-semibold w-40 ">Gender</span>
-                            <div class=" flex  w-full gap-6">
+                            <span class=" text-color block w-40 text-sm text-left">Gender</span>
+                            <div class="flex justify-center  w-full gap-6">
                                 <div>
                                     <input type="radio"  value="Female" v-model="userStore.form.gender" name="gender">
-                                    <span class="gender" value="Male">Male</span>
+                                    <span class="gender text-color pl-1 text-sm" value="Male">Male</span>
                                 </div>
 
                                 <div>
-                                    <input type="radio"  value="Female" v-model="userStore.form.gender" name="gender">
-                                    <span class="gender">Female</span> 
+                                    <input type="radio"  value="Female text-sm" v-model="userStore.form.gender" name="gender">
+                                    <span class="gender text-color pl-1">Female</span> 
 
                                 </div>
                             </div>
@@ -74,23 +80,29 @@
 
 
                         <!-- Details section -->
-                        <div class="flex w-full p-2">
-                            <span class="w-40 flex font-semibold">Birthday</span>
+                        <div class="w-full p-1 text-color text-sm">
+                            <span class="w-40 block text-left">Birthday</span>
                             <input type="date" placeholder="" v-model="userStore.form.birthdate"
-                                class=" rounded-sm w-full border-2  ">
+                                class="placeholder:text-slate-500 rounded-full w-full border-1 max-w-xs mt-1 px-3 py-2
+                                input-text bg-secondary border shadow-sm input-border focus:outline-none 
+                                focus-border focus-ring sm:text-sm focus:ring-1 ">
                         </div>
 
 
-                        <div class="flex w-full p-2">
-                            <span class="w-40 flex font-semibold">Contact</span>
+                        <div class="w-full p-1">
+                            <span class="w-40 block text-left text-color text-sm">Contact</span>
                             <input type="text" placeholder="" v-model="userStore.form.contact_number"
-                                class=" rounded-sm w-full border-2  ">
+                                class=" rounded-full w-full border-1 w-full max-w-xs mt-1 px-3 py-2 
+                                input-text bg-secondary border shadow-sm input-border focus:outline-none 
+                                focus-border focus-ring rounded-full sm:text-sm focus:ring-1  ">
                         </div>
 
-                        <div class="flex w-full p-2">
-                            <span class="w-40 flex font-semibold">Address</span>
+                        <div class="w-full p-1">
+                            <span class="w-40 block text-left text-color text-sm">Address</span>
                             <textarea type="text" placeholder="" v-model="userStore.form.address"
-                                class=" rounded-sm w-full border-2  "></textarea>
+                                class=" rounded-full w-full border-1 w-full max-w-xs mt-1 px-3 py-2 
+                                input-text bg-secondary border shadow-sm input-border focus:outline-none 
+                                focus-border focus-ring rounded-full sm:text-sm focus:ring-1  "></textarea>
                         </div>
 
                         <!-- Button -->
