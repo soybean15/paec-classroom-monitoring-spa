@@ -44,9 +44,7 @@ const routes = [
     path: '/admin',
     name: 'admin',
     component: AdminView,
-    children: [
    
-    ]
   },
   
 
@@ -54,7 +52,7 @@ const routes = [
   {
     path: '/user-profile',
     name: 'userProfile',
-    component: import('../views/user/CreateProfileVIew.vue')
+    component:() => import('../views/user/CreateProfileVIew.vue')
   },
   {
     path: '/about',
