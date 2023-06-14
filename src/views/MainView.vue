@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { useAuthStore } from '@/store/auth';
+import { useUserStore } from '@/store/user';
 
 import NavigationView from './components/NavigationView.vue';
 export default {
@@ -15,8 +15,8 @@ export default {
     }
 ,
 setup(){
-     //  const userStore = useUserStore()
-      // userStore.getUser()
+      const userStore = useUserStore()
+      userStore.getUser()
 }
 
 }

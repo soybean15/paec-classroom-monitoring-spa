@@ -2,30 +2,36 @@
   <div class="navbar bg-blue-800">
     <div class="flex-none"></div>
     <div class="flex-1">
-      <a class="btn btn-ghost normal-case text-white text-xl"
-        >PCM </a
-      >
+      <a class="btn btn-ghost normal-case text-white text-xl">PCM  {{ authStore.user }}</a>
     </div>
     <div class="flex-none">
-      <details class="dropdown dropdown-end">
-        <summary class="m-1 btn  bg-blue-900  hover:bg-blue-400">
-        <button class="flex items-center w-9">
-        <img src="../../assets/user.png"/>
-        </button>
-        </summary>
-        <div v-if="userStore.user.user">
-          <ul>
-          </ul>
+      <div v-if="authStore.user">
+        <div v-if="userStore.user.profile">
+          <details class="dropdown dropdown-end">
+            
+            <summary class="m-1 w-12 h-12 mb-1 relative bg-blue-900 rounded-full hover:bg-blue-400">
+              <img class="w-12 h-12 p-1 absolute top-0 cursor-pointer rounded-full" :src="userStore.user.profile.image" />
+            </summary>
+
+            <div>
+              <ul
+                class="p-2 shadow  menu dropdown-content bg-blue-500 rounded-box w-52 font-semibold"
+              >
+                <li><router-link to="/user-profile">Profile</router-link></li>
+                <li><div @click = authStore.handleLogout>Logout</div></li>
+              </ul>
+            </div>
+          </details>
         </div>
-        <div v-else>
-            <ul
-            class="p-2 shadow menu dropdown-content bg-blue-500 rounded-box w-52 font-semibold"
-          >
-            <li><router-link to="/register">Register</router-link></li>
-            <li><router-link to="/login">Login</router-link></li>
-          </ul>
+      </div>
+      <div v-else>
+        <div class="flex mr-6">
+          <div class="cursor-pointer p-2" >Sign in</div>
+          <div class="p-1">|</div>
+          <div class="cursor-pointer p-2">Register</div>
         </div>
-      </details>
+
+      </div>
     </div>
   </div>
 </template>
@@ -36,9 +42,9 @@ import { useAuthStore } from "@/store/auth";
 export default {
   setup() {
     const userStore = useUserStore();
-    const authStore = useAuthStore()
-    
-    return { userStore,authStore };
+    const authStore = useAuthStore();
+
+    return { userStore, authStore };
   },
 };
 </script>

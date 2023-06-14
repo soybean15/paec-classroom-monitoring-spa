@@ -1,5 +1,5 @@
 <template>
-  
+  This is Home
 </template>
 
 <script>
@@ -13,7 +13,7 @@ export default {
   setup() {
     const authStore = useAuthStore();
     const userStore = useUserStore()
-    userStore.getUser()
+    authStore.getUser()
     //console.log(authStore.user)
     return { authStore };
   },

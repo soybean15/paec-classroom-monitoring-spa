@@ -1,6 +1,7 @@
 import {defineStore} from 'pinia'
 import axios from 'axios'
 import router from '../router/index'
+import { useUserStore } from './user'
 
 export const useAuthStore = defineStore('auth',{
     state:()=>({
@@ -46,7 +47,7 @@ export const useAuthStore = defineStore('auth',{
                 
             })
 
-            router.push('/admin/')
+            router.push('/home')
         },
         async handleRegister(){
             await axios.post('/register',{
