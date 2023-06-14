@@ -7,7 +7,8 @@ export const useAuthStore = defineStore('auth',{
     state:()=>({
         stateUser: {
             user: null,
-            profile: null
+            profile: null,
+            isAdmin:false
         },
         authForm :{
             email:'',
@@ -53,6 +54,7 @@ export const useAuthStore = defineStore('auth',{
            
             const data = await axios.get('api/user/profile/' + this.stateUser.user.id)
             this.stateUser.profile = data.data.user.user_profile
+            this.stateUser.isAdmin = data.data.user.roles.some(role => role.name === "Admin");
             console.log(this.stateUser)
                 
 
@@ -79,7 +81,7 @@ export const useAuthStore = defineStore('auth',{
             await axios.post('/logout')
             this.stateUser.user = null
  
-            this.router.push('/')
+            this.router.push('/login')
         }
     }
 })

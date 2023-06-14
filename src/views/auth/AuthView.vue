@@ -10,9 +10,7 @@
             Peñaranda Off Campus School Monitoring System
           </div>
         </div>
-        <div class="flex mt-4 justify-center">
-          <button class="btn btn-primary">Get Started</button>
-        </div>
+        
       </div>
     </div>
     <div>

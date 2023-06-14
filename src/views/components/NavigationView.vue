@@ -18,6 +18,7 @@
                 class="p-2 shadow  menu dropdown-content bg-blue-500 rounded-box w-52 font-semibold"
               >
                 <li><router-link to="/user-profile">Profile</router-link></li>
+                <li><div v-if="authStore.user.isAdmin"><router-link to="/admin">Administrator</router-link></div></li>
                 <li><div @click = authStore.handleLogout>Logout</div></li>
               </ul>
             </div>
@@ -26,9 +27,9 @@
       </div>
       <div v-else>
         <div class="flex mr-6">
-          <div class="cursor-pointer p-2" >Sign in</div>
+          <router-link to="/login" class="cursor-pointer p-2" >Sign in</router-link >
           <div class="p-1">|</div>
-          <div class="cursor-pointer p-2">Register</div>
+          <router-link to="/register" class="cursor-pointer p-2">Register</router-link >
         </div>
 
       </div>
