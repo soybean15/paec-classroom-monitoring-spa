@@ -1,5 +1,6 @@
 <template>
     <NavigationViewVue/>
+    <router-view/>
   
 </template>
 

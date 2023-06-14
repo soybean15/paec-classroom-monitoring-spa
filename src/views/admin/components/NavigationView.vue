@@ -39,27 +39,27 @@
         </h5>
 
         <li id="hover">
-          <router-link to="/" class="text-white text-2xl">
+          <router-link to='/dashboard' class="text-white text-2xl">
             <img src="../../../assets/home.svg" class="w-6" />
             Dashboard
           </router-link>
         </li>
         <li>
-          <router-link to="/about" class="text-white text-2xl">
+          <router-link to="/faculty" class="text-white text-2xl">
             <img src="../../../assets/about.svg" class="w-6" />
             Faculty
           </router-link>
         </li>
         <li>
-          <router-link to="/login" class="text-white text-2xl">
+          <router-link to="/report" class="text-white text-2xl">
             <img src="../../../assets/login.svg" class="w-6" />
             Report
           </router-link>
         </li>
         <li>
-          <router-link to="/register" class="text-white text-2xl">
+          <router-link to="/" class="text-white text-2xl">
             <img src="../../../assets/register.svg" class="w-6" />
-            Users
+            Exit
           </router-link>
         </li>
       </ul>

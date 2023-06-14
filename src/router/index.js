@@ -44,6 +44,23 @@ const routes = [
     path: '/admin',
     name: 'admin',
     component: () => import('../views/admin/AdminView.vue'),
+    children:[
+      {
+        path: '/dashboard',
+        name: 'dashboard',
+        component: ()=>import('../views/admin/components/DashBoardView.vue')
+      },
+      {
+        path: '/faculty',
+        name: 'faculty',
+        component: ()=>import('../views/admin/components/FacultyView.vue')
+      },
+      {
+        path: '/report',
+        name: 'report',
+        component: ()=>import('../views/admin/components/ReportView.vue')
+      },
+    ]
    
   },
   
