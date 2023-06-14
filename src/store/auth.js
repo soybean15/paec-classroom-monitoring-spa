@@ -5,7 +5,10 @@ import { useUserStore } from './user'
 
 export const useAuthStore = defineStore('auth',{
     state:()=>({
-        authuser:null,
+        stateUser: {
+            user: null,
+            profile: null
+        },
         authForm :{
             email:'',
             password:'',
@@ -15,7 +18,7 @@ export const useAuthStore = defineStore('auth',{
 
     }),
     getters:{
-        user:(state) =>state.authuser,
+        user:(state) =>state.stateUser,
         form:(state) =>state.authForm
 
     },
@@ -28,7 +31,13 @@ export const useAuthStore = defineStore('auth',{
 
             try{
                 const data = await axios.get('/api/user')
-                this.authuser = data.data
+                if(data){
+                    this.stateUser.user = data.data
+                    this.getProfile()
+                }
+                console.log(this.stateUser.user)
+               
+
                 
             }catch(error){
                 
@@ -38,6 +47,14 @@ export const useAuthStore = defineStore('auth',{
 
             }
             
+
+        },
+        async getProfile(){
+           
+            const data = await axios.get('api/user/profile/' + this.stateUser.user.id)
+            this.stateUser.profile = data.data.user.user_profile
+            console.log(this.stateUser)
+                
 
         },
         async handleLogin(){    
@@ -60,7 +77,7 @@ export const useAuthStore = defineStore('auth',{
         async handleLogout() {
             
             await axios.post('/logout')
-            this.authUser = null
+            this.stateUser.user = null
  
             this.router.push('/')
         }

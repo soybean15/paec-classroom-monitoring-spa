@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import { useUserStore } from '@/store/user';
-
+import { useAuthStore } from '@/store/auth';
+import { onMounted } from 'vue';
 import NavigationView from './components/NavigationView.vue';
 export default {
     components:{
@@ -15,8 +15,12 @@ export default {
     }
 ,
 setup(){
-      const userStore = useUserStore()
-      userStore.getUser()
+      const authStore = useAuthStore()
+      onMounted(()=>{
+        authStore.getUser()
+      })
+      //
+    
 }
 
 }

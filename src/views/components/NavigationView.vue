@@ -2,15 +2,15 @@
   <div class="navbar bg-blue-800">
     <div class="flex-none"></div>
     <div class="flex-1">
-      <a class="btn btn-ghost normal-case text-white text-xl">PCM  {{ authStore.user }}</a>
+      <a class="btn btn-ghost normal-case text-white text-xl">PCM </a>
     </div>
     <div class="flex-none">
-      <div v-if="authStore.user">
-        <div v-if="userStore.user.profile">
+      <div v-if="authStore.user.user">
+        <div v-if="authStore.user.profile">
           <details class="dropdown dropdown-end">
             
             <summary class="m-1 w-12 h-12 mb-1 relative bg-blue-900 rounded-full hover:bg-blue-400">
-              <img class="w-12 h-12 p-1 absolute top-0 cursor-pointer rounded-full" :src="userStore.user.profile.image" />
+              <img class="w-12 h-12 p-1 absolute top-0 cursor-pointer rounded-full" :src="authStore.user.profile.image" />
             </summary>
 
             <div>
@@ -37,14 +37,16 @@
 </template>
 
 <script>
-import { useUserStore } from "@/store/user";
+
 import { useAuthStore } from "@/store/auth";
 export default {
   setup() {
-    const userStore = useUserStore();
+   
     const authStore = useAuthStore();
+   // authStore.getUser()
 
-    return { userStore, authStore };
+
+    return {  authStore };
   },
 };
 </script>

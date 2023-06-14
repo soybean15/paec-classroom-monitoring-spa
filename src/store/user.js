@@ -34,7 +34,8 @@ export const useUserStore = defineStore('user', {
 
                 const authStore = useAuthStore();
                 await authStore.getUser();
-                this.stateUser.user = authStore.user
+                this.stateUser.user = authStore.user.user
+                console.log(authStore.user)
                 await this.getProfile()
 
 
@@ -51,9 +52,10 @@ export const useUserStore = defineStore('user', {
 
         },
         async getProfile() {
-            const data = await axios.get('api/user/profile/' + this.stateUser.user.id)
+            
+            const data = await axios.get('api/user/profile/' + this.stateUser.user.user.id)
             this.stateUser.profile = data.data.user.user_profile
-            console.log(data.data.user)
+            console.log(this.stateUser)
 
         },
         async handleCreateUser() {

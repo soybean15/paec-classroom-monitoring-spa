@@ -3,19 +3,21 @@
 </template>
 
 <script>
-// @ is an alias to /src
+import { onMounted } from 'vue';
 import { useAuthStore } from "@/store/auth";
-import { useUserStore } from '@/store/user';
+// @ is an alias to /src
+
 import CreateProfileVIewVue from "./user/CreateProfileVIew.vue";
 export default {
   name: "HomeView",
   components: {},
   setup() {
-    const authStore = useAuthStore();
-    const userStore = useUserStore()
-    authStore.getUser()
-    //console.log(authStore.user)
-    return { authStore };
+  
+    const authStore = useAuthStore()
+      onMounted(()=>{
+        authStore.getUser()
+        console.log('mounted')
+      })
   },
 };
 </script>
