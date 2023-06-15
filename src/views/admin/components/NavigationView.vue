@@ -7,24 +7,7 @@
         <img src="../../../assets/menu.svg" class="cursor-pointer" />
       </label>
       <div class="flex-grow"></div>
-      <div class="flex">
-        <!-- User Image -->
-        <div v-if="userStore.user.profile">
-          <img
-            class="w-10, h-10 rounded-full m-2"
-            :src="userStore.user.profile.image"
-          />
-        </div>
-
-        <!-- User Name -->
-        <div
-          class="flex items-center mr-6 text-white"
-          v-if="userStore.user.profile"
-        >
-          {{ userStore.user.profile.firstname }}
-          {{ userStore.user.profile.lastname }}
-        </div>
-      </div>
+   
     </div>
     <div class="drawer-side">
       <label for="my-drawer" class="drawer-overlay"></label>
@@ -71,13 +54,12 @@
 </template>
 
 <script>
-import { useUserStore } from "@/store/user";
+
 export default {
   setup() {
-    const userStore = useUserStore();
-    userStore.getUser();
+   
 
-    return { userStore };
+    return {  };
   },
 };
 </script>

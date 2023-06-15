@@ -1,7 +1,6 @@
 import {defineStore} from 'pinia'
 import axios from 'axios'
 import router from '../router/index'
-import { useUserStore } from './user'
 
 export const useAuthStore = defineStore('auth',{
     state:()=>({
@@ -26,19 +25,22 @@ export const useAuthStore = defineStore('auth',{
             image: null,
             address: null,
 
-        }
+        },
+        stateRoles:null
 
     }),
     getters:{
         user:(state) =>state.stateUser,
         form:(state) =>state.authForm,
         userForm: (state) => state.stateUserForm,
+        roles:(state) => state.stateRoles
 
     },
     actions:{
         async getToken(){
             await axios.get('/sanctum/csrf-cookie')
         },
+
         async getUser(){
             this.getToken
 
@@ -60,6 +62,13 @@ export const useAuthStore = defineStore('auth',{
 
             }
             
+
+        },
+        async getRoles(){
+           const data =  await axios.get('api/roles')
+
+           this.stateRoles = data.data.roles
+           console.log(this.stateRoles)
 
         },
         async getProfile(){
