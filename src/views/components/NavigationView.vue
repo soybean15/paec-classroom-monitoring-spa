@@ -17,7 +17,7 @@
               <ul
                 class="p-2 shadow  menu dropdown-content bg-blue-500 rounded-box w-52 font-semibold"
               >
-                <li><router-link to="/user-profile">Profile</router-link></li>
+                <li><button class="" onclick="my_modal_3.showModal()">Profile</button></li>
                 <li><div v-if="authStore.user.isAdmin"><router-link to="/admin">Administrator</router-link></div></li>
                 <li><div @click = authStore.handleLogout>Logout</div></li>
               </ul>
@@ -35,12 +35,25 @@
       </div>
     </div>
   </div>
+
+
+  <!-- Open the modal using ID.showModal() method -->
+
+  <ModalViewVue><CreateProfileVIewVue/></ModalViewVue>
+
 </template>
 
 <script>
 
 import { useAuthStore } from "@/store/auth";
+import ModalViewVue from '@/views/components/ModalView.vue'
+import CreateProfileVIewVue from "../user/CreateProfileVIew.vue";
 export default {
+  components:{
+    ModalViewVue,
+    CreateProfileVIewVue
+
+  },
   setup() {
    
     const authStore = useAuthStore();
