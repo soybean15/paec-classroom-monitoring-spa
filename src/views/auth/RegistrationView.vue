@@ -78,27 +78,18 @@
               />
             </div>
             <div>
-                <label
+              <label
                 for="confirm-password"
                 class="text-left block mb-2 text-sm font-medium text-color"
-                >Role</label>
-              <details class="dropdown flex mb-32 ">
-                <summary class=" btn rounded-full bg-white text-gray-700 flex">open or close</summary>
-                <ul
-                  class="p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52"
-                 
-                >
-                
-                    <li v-for="role in authStore.roles" :key="role.id" ><a>{{role.name}}</a></li>
-                 
-                 
-                  
-                </ul>
-                
-              </details>
+                >Role</label
+              >
+              <select class="select w-full max-w-xs">
+                <option disabled selected>Select Role</option>
+                <option v-for="role in authStore.roles" :key="role.id" @click="selectRole">{{role.name}}</option>
+          
+              </select>
             </div>
-            
-         
+
             <div class="flex items-start">
               <div class="flex items-center h-5">
                 <input
@@ -142,8 +133,12 @@ import { useAuthStore } from "@/store/auth";
 export default {
   setup() {
     const authStore = useAuthStore();
-    authStore.getRoles()
-    return { authStore };
+    authStore.getRoles();
+
+    const selectRole = (role) => {
+      authStore.form.role = role.id;
+    };
+    return { authStore, selectRole };
   },
 };
 </script>

@@ -13,7 +13,8 @@ export const useAuthStore = defineStore('auth',{
             email:'',
             password:'',
             name:'',
-            confirmPassword:''
+            confirmPassword:'',
+            role:null
         },
         stateUserForm: {//for profile
             firstname: null,
@@ -95,7 +96,8 @@ export const useAuthStore = defineStore('auth',{
                     email: this.authForm.email,
                     name:this.authForm.name,
                     password:this.authForm.password,
-                    password_confirmation:this.authForm.confirmPassword
+                    password_confirmation:this.authForm.confirmPassword,
+                    role:this.authForm.role
                 })
                 router.push('/')
             }catch(error){
