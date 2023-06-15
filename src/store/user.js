@@ -9,21 +9,11 @@ export const useUserStore = defineStore('user', {
             user: null,
             profile: null
         },
-        stateUserForm: {
-            firstname: null,
-            lastname: null,
-            middlename: null,
-            gender: null,
-            birthdate: null,
-            contact_number: null,
-            image: null,
-            address: null,
-
-        }
+     
 
     }),
     getters: {
-        form: (state) => state.stateUserForm,
+        //form: (state) => state.stateUserForm,
         user: (state) => state.stateUser
 
     },
@@ -58,24 +48,7 @@ export const useUserStore = defineStore('user', {
             console.log(this.stateUser)
 
         },
-        async handleCreateUser() {
-            const data = await axios.post('api/user/create-profile', {
-                user: this.stateUser,
-                firstname: this.stateUserForm.firstname,
-                lastname: this.stateUserForm.lastname,
-                middlename: this.stateUserForm.middlename,
-                gender: this.stateUserForm.gender,
-                birthdate: this.stateUserForm.birthdate,
-                image: this.stateUserForm.image,
-                contact_number: this.stateUserForm.contact_number,
-                address: this.stateUserForm.address
-            }, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            })
-
-        }
+        
 
 
     }

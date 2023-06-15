@@ -12,8 +12,8 @@
                         Profile
                         <hr>
                         <div class="flex flex-col justify-center  items-center border">
-                            <div v-if="userStore.user.profile">
-                                <img class="w-20 h-20 rounded-full" :src="userStore.user.profile.image"/>
+                            <div v-if="authStore.user.profile">
+                                <img class="w-20 h-20 rounded-full" :src="authStore.user.profile.image"/>
                             </div>
                            
                             <input
@@ -29,13 +29,13 @@
 
                 <!-- Details section -->
 
-                <form @submit.prevent="userStore.handleCreateUser">
+                <form @submit.prevent="authStore.handleCreateUser">
                     <div class="flex flex-col ">
 
 
                         <div class=" w-full p-1 text-color text-sm">
                             <span class="w-40 block text-left">First Name</span>
-                            <input v-model="userStore.form.firstname" type="text" placeholder="" 
+                            <input v-model="authStore.userForm.firstname" type="text" placeholder="" 
                                 class=" rounded-full w-full border-1 w-full max-w-xs px-3 py-2 
                                     input-text bg-secondary border shadow-sm input-border focus:outline-none 
                                     focus-border focus-ring sm:text-sm focus:ring-1">
@@ -43,7 +43,7 @@
 
                         <div class=" w-full p-1">
                             <span class="w-40 block text-color text-left text-sm">Middle Name </span>
-                            <input v-model="userStore.form.middlename" type="text" placeholder="" 
+                            <input v-model="authStore.userForm.middlename" type="text" placeholder="" 
                                 class=" rounded-full w-full border-1 w-full max-w-xs px-3 py-2 
                                 input-text bg-secondary border shadow-sm input-border focus:outline-none 
                                 focus-border focus-ring sm:text-sm focus:ring-1 ">
@@ -51,7 +51,7 @@
 
                         <div class="w-full p-1">
                             <span class="w-40 block text-color text-left text-sm">Last Name</span>
-                            <input v-model="userStore.form.lastname" type="text" placeholder="" 
+                            <input v-model="authStore.userForm.lastname" type="text" placeholder="" 
                                 class="rounded-full w-full border-1 w-full max-w-xs mt-1 px-3 py-2 
                                 input-text bg-secondary border shadow-sm input-border focus:outline-none 
                                 focus-border focus-ring sm:text-sm focus:ring-1">
@@ -64,12 +64,12 @@
                             <span class=" text-color block w-40 text-sm text-left">Gender</span>
                             <div class="flex justify-center  w-full gap-6">
                                 <div>
-                                    <input type="radio"  value="Female" v-model="userStore.form.gender" name="gender">
+                                    <input type="radio"  value="Female" v-model="authStore.userForm.gender" name="gender">
                                     <span class="gender text-color pl-1 text-sm" value="Male">Male</span>
                                 </div>
 
                                 <div>
-                                    <input type="radio"  value="Female text-sm" v-model="userStore.form.gender" name="gender">
+                                    <input type="radio"  value="Female text-sm" v-model="authStore.userForm.gender" name="gender">
                                     <span class="gender text-color pl-1">Female</span> 
 
                                 </div>
@@ -82,7 +82,7 @@
                         <!-- Details section -->
                         <div class="w-full p-1 text-color text-sm">
                             <span class="w-40 block text-left">Birthday</span>
-                            <input type="date" placeholder="" v-model="userStore.form.birthdate"
+                            <input type="date" placeholder="" v-model="authStore.userForm.birthdate"
                                 class="placeholder:text-slate-500 rounded-full w-full border-1 max-w-xs mt-1 px-3 py-2
                                 input-text bg-secondary border shadow-sm input-border focus:outline-none 
                                 focus-border focus-ring sm:text-sm focus:ring-1 ">
@@ -91,7 +91,7 @@
 
                         <div class="w-full p-1">
                             <span class="w-40 block text-left text-color text-sm">Contact</span>
-                            <input type="text" placeholder="" v-model="userStore.form.contact_number"
+                            <input type="text" placeholder="" v-model="authStore.userForm.contact_number"
                                 class=" rounded-full w-full border-1 w-full max-w-xs mt-1 px-3 py-2 
                                 input-text bg-secondary border shadow-sm input-border focus:outline-none 
                                 focus-border focus-ring rounded-full sm:text-sm focus:ring-1  ">
@@ -99,7 +99,7 @@
 
                         <div class="w-full p-1">
                             <span class="w-40 block text-left text-color text-sm">Address</span>
-                            <textarea type="text" placeholder="" v-model="userStore.form.address"
+                            <textarea type="text" placeholder="" v-model="authStore.userForm.address"
                                 class=" rounded-full w-full border-1 w-full max-w-xs mt-1 px-3 py-2 
                                 input-text bg-secondary border shadow-sm input-border focus:outline-none 
                                 focus-border focus-ring rounded-full sm:text-sm focus:ring-1  "></textarea>
@@ -133,21 +133,27 @@
 </template>
 
 <script>
-import {useUserStore} from '@/store/user'
+import {useAuthStore } from '@/store/auth'
+import { onMounted } from 'vue'
 
 export default {
 
     setup(){
-        const userStore = useUserStore()
-        userStore.getUser()
+        const authStore = useAuthStore()
+    
+
+        onMounted(()=>{
+                authStore.getUser()
+               //  authStore.getProfile()
+        })
 
         const onFileChange = (event) => {
-            userStore.form.image = event.target.files[0];
-            userStore.user.profile.image = URL.createObjectURL(event.target.files[0])
+            authStore.userForm.image = event.target.files[0];
+            authStore.user.profile.image = URL.createObjectURL(event.target.files[0])
             
-            console.log(userStore.user.profile.image)
+            console.log(authStore.user.profile.image)
         }
-        return {userStore,onFileChange}
+        return {authStore,onFileChange}
     }
 }
 </script>

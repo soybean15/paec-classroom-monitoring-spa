@@ -35,6 +35,11 @@ const routes = [
        
         ]
       },
+      {
+        path: '/user-profile',
+        name: 'userProfile',
+        component:() => import('../views/user/CreateProfileVIew.vue')
+      },
       
     
 
@@ -64,11 +69,7 @@ const routes = [
    
   },
   
-  {
-    path: '/user-profile',
-    name: 'userProfile',
-    component:() => import('../views/user/CreateProfileVIew.vue')
-  },
+ 
   {
     path: '/about',
     name: 'about',

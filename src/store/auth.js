@@ -10,17 +10,29 @@ export const useAuthStore = defineStore('auth',{
             profile: null,
             isAdmin:false
         },
-        authForm :{
+        authForm :{//for login
             email:'',
             password:'',
             name:'',
             confirmPassword:''
+        },
+        stateUserForm: {//for profile
+            firstname: null,
+            lastname: null,
+            middlename: null,
+            gender: null,
+            birthdate: null,
+            contact_number: null,
+            image: null,
+            address: null,
+
         }
 
     }),
     getters:{
         user:(state) =>state.stateUser,
-        form:(state) =>state.authForm
+        form:(state) =>state.authForm,
+        userForm: (state) => state.stateUserForm,
 
     },
     actions:{
@@ -69,12 +81,18 @@ export const useAuthStore = defineStore('auth',{
             router.push('/home')
         },
         async handleRegister(){
-            await axios.post('/register',{
-                email: this.authForm.email,
-                name:this.authForm.name,
-                password:this.authForm.password,
-                password_confirmation:this.authForm.confirmPassword
-            })
+            try{
+                await axios.post('/register',{
+                    email: this.authForm.email,
+                    name:this.authForm.name,
+                    password:this.authForm.password,
+                    password_confirmation:this.authForm.confirmPassword
+                })
+                router.push('/')
+            }catch(error){
+
+            }
+            
         },
         async handleLogout() {
             
@@ -82,6 +100,24 @@ export const useAuthStore = defineStore('auth',{
             this.stateUser.user = null
  
             this.router.push('/login')
+        },
+        async handleCreateUser() {
+            const data = await axios.post('api/user/create-profile', {
+                user: this.stateUser,
+                firstname: this.stateUserForm.firstname,
+                lastname: this.stateUserForm.lastname,
+                middlename: this.stateUserForm.middlename,
+                gender: this.stateUserForm.gender,
+                birthdate: this.stateUserForm.birthdate,
+                image: this.stateUserForm.image,
+                contact_number: this.stateUserForm.contact_number,
+                address: this.stateUserForm.address
+            }, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+
         }
     }
 })
