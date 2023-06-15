@@ -85,7 +85,7 @@
               >
               <select class="select w-full max-w-xs">
                 <option disabled selected>Select Role</option>
-                <option v-for="role in authStore.roles" :key="role.id" @click="selectRole">{{role.name}}</option>
+                <option v-for="role in authStore.roles" :key="role.id" @click="selectRole(role)">{{role.name}}</option>
           
               </select>
             </div>
@@ -137,6 +137,7 @@ export default {
 
     const selectRole = (role) => {
       authStore.form.role = role.id;
+      console.log(authStore.form)
     };
     return { authStore, selectRole };
   },
