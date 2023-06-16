@@ -27,9 +27,9 @@
       </div>
       <div v-else>
         <div class="flex mr-6">
-          <router-link to="/login" class="cursor-pointer p-2" >Sign in</router-link >
+          <router-link to="/login" class="cursor-pointer p-2 hover:bg-blue-500" >Sign in</router-link >
           <div class="p-1">|</div>
-          <router-link to="/register" class="cursor-pointer p-2">Register</router-link >
+          <router-link to="/register" class="cursor-pointer p-2 hover:bg-blue-500">Register</router-link >
         </div>
 
       </div>

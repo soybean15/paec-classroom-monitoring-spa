@@ -2,8 +2,8 @@
 <div class="body">
   
   <router-view/>
-<!-- 
-  uncomment this
+
+  <!-- uncomment this
   <AdminView/> -->
   
 </div>
