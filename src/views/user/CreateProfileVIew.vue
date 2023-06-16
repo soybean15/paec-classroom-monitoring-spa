@@ -17,7 +17,7 @@
 
               <div class="absolute bottom-1 right-0">
                 <div
-                  class="flex items-center p-1 bg-gray-200 rounded-full cursor-pointer"
+                  class="relative items-center p-1 bg-gray-200 rounded-full cursor-pointer"
                 >
                   <svg
                     fill="#77767b"
@@ -48,7 +48,7 @@
                     ref="imageInput"
                     type="file"
                     name="photo"
-                    class="hidden"
+                    class="w-10 h-15 absolute top-0 left-0 opacity-0 cursor-pointer"
                     @change="onFileChange"
                   />
                 </div>

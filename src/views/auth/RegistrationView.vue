@@ -137,7 +137,7 @@ export default {
 
     const selectRole = (role) => {
       authStore.form.role = role.id;
-      console.log(authStore.form)
+      console.log('Selected')
     };
     return { authStore, selectRole };
   },
