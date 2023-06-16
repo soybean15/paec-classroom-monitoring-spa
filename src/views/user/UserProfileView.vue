@@ -13,10 +13,12 @@
       <div class="flex items-center mt-10">
         <div class="p-5">
           <div v-if="authStore.user.profile">
+
           <img
             class="w-20 h-20 bg-white rounded-full"
             :src="authStore.user.profile.image"
           /></div>
+
         </div>
         <div class="flex flex-col p-5 pl-0">
           <div class="flex font-bold">{{authStore.fullName}}</div>
