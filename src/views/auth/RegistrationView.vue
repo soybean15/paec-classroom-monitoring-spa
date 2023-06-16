@@ -1,26 +1,26 @@
 <template>
   <section class="dark:bg-gray-900">
     <div
-      class="flex flex-col items-center justify-center py-8 mx-auto md:h-screen lg:py-0"
+      class="flex flex-col items-center justify-center py-8 mx-auto lg:py-0"
     >
       <div
-        class="w-full h-full bg-primary shadow-lg shadow-gray-600/50 shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700"
+        class="w-full h-auto bg-primary shadow-lg shadow-gray-600/50 shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700"
       >
-        <div class="w-96 p-6 space-y-4 md:space-y-6 sm:p-8">
+        <div class="w-96 sm:p-8">
           <h1
             class="text-xl leading-tight tracking-tight md:text-2xl text-color"
           >
-            Create an account
-          </h1>
+            Create account
+          </h1> 
           <form
             @submit.prevent="authStore.handleRegister"
-            class="space-y-4 md:space-y-6"
+            class="space-y-4 md:space-y-3"
             action="#"
           >
             <div>
               <label
                 for="email"
-                class="text-left block mb-2 text-sm font-medium text-color"
+                class="text-left block text-sm font-medium text-color"
                 >Your email</label
               >
               <input
@@ -28,14 +28,14 @@
                 name="email"
                 v-model="authStore.form.email"
                 id="email"
-                class="bg-secondary border input-border input-text sm:text-sm rounded-full focus-ring focus:outline-none focus:ring-1 focus:border-blue-500 block w-full p-2.5"
+                class="bg-secondary border input-border input-text sm:text-sm rounded-full focus-ring focus:outline-none focus:ring-1 focus:border-blue-500 block w-full px-3 py-2"
                 placeholder="name@company.com"
               />
             </div>
             <div>
               <label
                 for="name"
-                class="text-left block mb-2 text-sm font-medium text-color"
+                class="text-left block text-sm font-medium text-color"
                 >Name</label
               >
               <input
@@ -43,14 +43,15 @@
                 name="name"
                 v-model="authStore.form.name"
                 id="name"
-                class="bg-secondary border input-border input-text sm:text-sm focus:outline-none focus:ring-1 rounded-full focus-ring focus-border block w-full p-2.5 placeholder-color"
+                class="bg-secondary border input-border input-text sm:text-sm focus:outline-none focus:ring-1 
+                rounded-full focus-ring focus-border block w-full px-3 py-2 placeholder-color"
                 placeholder="Name"
               />
             </div>
             <div>
               <label
                 for="password"
-                class="text-left block mb-2 text-sm font-medium text-color"
+                class="text-left block text-sm font-medium text-color"
                 >Password</label
               >
               <input
@@ -59,13 +60,13 @@
                 v-model="authStore.form.password"
                 id="password"
                 placeholder="••••••••"
-                class="bg-secondary border input-border input-text sm:text-sm rounded-full focus-ring focus:outline-none focus:ring-1 focus-border block w-full p-2.5 placeholder-color"
+                class="bg-secondary border input-border input-text sm:text-sm rounded-full focus-ring focus:outline-none focus:ring-1 focus-border block w-full px-3 py-2 placeholder-color"
               />
             </div>
             <div>
               <label
                 for="confirm-password"
-                class="text-left block mb-2 text-sm font-medium text-color"
+                class="text-left block text-sm font-medium text-color"
                 >Confirm password</label
               >
               <input
@@ -74,16 +75,17 @@
                 v-model="authStore.form.confirmPassword"
                 id="confirm-password"
                 placeholder="••••••••"
-                class="bg-secondary border input-border input-text sm:text-sm rounded-full focus-ring focus-border block w-full p-2.5 placeholder-color focus:outline-none focus:ring-1"
+                class="bg-secondary border input-border input-text sm:text-sm rounded-full focus-ring focus-border block w-full px-3 py-2 placeholder-color focus:outline-none focus:ring-1"
               />
             </div>
             <div>
               <label
                 for="confirm-password"
-                class="text-left block mb-2 text-sm font-medium text-color"
+                class="text-left block text-sm font-medium text-black"
                 >Role</label
               >
-              <select class="select w-full max-w-xs">
+              <select class="select w-full max-w-xs text-black bg-secondary border input-border input-text sm:text-sm focus:outline-none focus:ring-1 
+                rounded-full focus-ring focus-border block w-full px-3 py-2 placeholder-color">
                 <option disabled selected>Select Role</option>
                 <option v-for="role in authStore.roles" :key="role.id" @click="selectRole(role)">{{role.name}}</option>
           
@@ -113,7 +115,7 @@
               type="submit"
               class="bg-secondary-variant hover:bg-blue-500 w-full text-white focus:ring-2 focus:outline-none focus-ring rounded-full text-sm font-semibold px-5 py-2.5 text-center"
             >
-              Create an account
+              Create account
             </button>
             <p class="text-sm font-light text-color">
               Already have an account?
