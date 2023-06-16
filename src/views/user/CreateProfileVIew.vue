@@ -122,7 +122,7 @@
                 <div>
                   <input
                     type="radio"
-                    value="Female text-sm"
+                    value="Female"
                     v-model="authStore.userForm.gender"
                     name="gender"
                   />
