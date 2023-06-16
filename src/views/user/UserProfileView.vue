@@ -13,12 +13,12 @@
       <div class="flex items-center mt-10">
         <div class="p-5">
           <div v-if="authStore.user.profile">
-            <img
+
+          <img
             class="w-20 h-20 bg-white rounded-full"
             :src="authStore.user.profile.image"
-          />
-          </div>
-          
+          /></div>
+
         </div>
         <div class="flex flex-col p-5 pl-0">
           <div class="flex font-bold">{{authStore.fullName}}</div>
@@ -75,7 +75,7 @@
                   </g>
                 </svg>
               </div>
-              <div>marlon@gmail.com</div>
+              <div v-if="authStore.user.user">{{ authStore.user.user.email }}</div>
             </div>
             <div class="flex">
               <div class="w-5 h-5 mr-2">
@@ -105,7 +105,8 @@
                   </g>
                 </svg>
               </div>
-              <div>097263424255</div>
+              <div v-if="authStore.user.profile">{{ authStore.user.profile.contact_number }}</div>
+              
             </div>
           </div>
         </div>
@@ -116,7 +117,7 @@
         <div class="p-3">
           <div class="flex text-sm text-gray-600 font-bold">BirthDate</div>
           <div class="ml-3">
-            <div class="flex">January 1, 2000</div>
+            <div class="flex" v-if="authStore.user.profile">{{ authStore.user.profile.birthdate }}</div>
            
             
           </div>
@@ -126,7 +127,7 @@
         <div class="p-3">
           <div class="flex text-sm text-gray-600 font-bold">Gender</div>
           <div class="ml-3">
-            <div class="flex">Male</div>
+            <div class="flex" v-if="authStore.user.profile">{{ authStore.user.profile.gender }}</div>
            
             
           </div>
@@ -136,7 +137,7 @@
          <div class="p-3">
           <div class="flex text-sm text-gray-600 font-bold">Address</div>
           <div class="ml-3">
-            <div class="flex">Penaranda, Nueva Ecija</div>
+            <div class="flex" v-if="authStore.user.profile">{{ authStore.user.profile.address }}</div>
            
             
           </div>
