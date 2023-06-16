@@ -1,7 +1,7 @@
 <template>
   <div >
 
-    <!-- UserProfile Design -->
+    UserProfile Design
 
   </div>
 </template>
