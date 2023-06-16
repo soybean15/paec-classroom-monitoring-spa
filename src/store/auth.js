@@ -7,7 +7,8 @@ export const useAuthStore = defineStore('auth',{
         stateUser: {
             user: null,
             profile: null,
-            isAdmin:false
+            isAdmin:false,
+            fullName:null
         },
         authForm :{//for login
             email:'',
@@ -35,8 +36,7 @@ export const useAuthStore = defineStore('auth',{
         form:(state) =>state.authForm,
         userForm: (state) => state.stateUserForm,
         roles:(state) => state.stateRoles,
-        fullName:(state)=> state.stateUser.profile.firstname +" "+state.stateUser.profile.lastname
-
+        fullName:(state)=>state.stateUser.fullName
     },
     actions:{
         async getToken(){
@@ -78,6 +78,8 @@ export const useAuthStore = defineStore('auth',{
             const data = await axios.get('api/user/profile/' + this.stateUser.user.id)
             this.stateUser.profile = data.data.user.user_profile
             this.stateUser.isAdmin = data.data.user.roles.some(role => role.name === "Admin");
+            this.stateUser.fullName = this.stateUser.profile.firstname +" "+this.stateUser.profile.lastname
+
             console.log(this.stateUser)
                 
 
