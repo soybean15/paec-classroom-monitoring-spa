@@ -1,15 +1,24 @@
 <template>
-  <div >
 
-    UserProfile Design
-
-  </div>
 </template>
 
 <script>
-export default {
+import { useAuthStore } from "@/store/auth";
+import { onMounted } from "vue";
 
-}
+export default {
+  setup() {
+    const authStore = useAuthStore();
+
+    onMounted(() => {
+      authStore.getUser();
+      //  authStore.getProfile()
+    });
+
+    
+    return { authStore };
+  },
+};
 </script>
 
 <style>
