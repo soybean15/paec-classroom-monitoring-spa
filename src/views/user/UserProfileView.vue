@@ -14,12 +14,12 @@
         <div class="p-5">
           <img
             class="w-20 h-20 bg-white rounded-full"
-            src="../../assets/user.png"
+            :src="authStore.user.profile.image"
           />
         </div>
         <div class="flex flex-col p-5 pl-0">
-          <div class="flex font-bold">Marlon Padilla</div>
-          <div  class="badge badge-primary">Student</div>
+          <div class="flex font-bold">{{authStore.fullName}}</div>
+          <div  class="badge badge-primary">IT Department</div>
         </div>
       </div>
 
@@ -147,7 +147,7 @@
 
 <script>
 import { useAuthStore } from "@/store/auth";
-import { onMounted } from "vue";
+import { onMounted , computed} from "vue";
 
 export default {
   setup() {
@@ -157,6 +157,10 @@ export default {
       authStore.getUser();
       //  authStore.getProfile()
     });
+
+    // const fullName = computed(()=>{
+    //   return authStore.user.profile.firstname +" "+authStore.user.profile.lastname
+    // })
 
     return { authStore };
   },

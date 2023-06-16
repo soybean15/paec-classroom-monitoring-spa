@@ -34,7 +34,8 @@ export const useAuthStore = defineStore('auth',{
         user:(state) =>state.stateUser,
         form:(state) =>state.authForm,
         userForm: (state) => state.stateUserForm,
-        roles:(state) => state.stateRoles
+        roles:(state) => state.stateRoles,
+        fullName:(state)=> state.stateUser.profile.firstname +" "+state.stateUser.profile.lastname
 
     },
     actions:{
