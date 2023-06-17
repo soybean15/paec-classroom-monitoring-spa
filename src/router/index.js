@@ -48,6 +48,7 @@ const routes = [
   {
     path: '/admin',
     name: 'admin',
+    redirect: '/dashboard',
     component: () => import('../views/admin/AdminView.vue'),
     children:[
       {
