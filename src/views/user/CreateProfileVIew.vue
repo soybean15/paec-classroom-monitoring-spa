@@ -4,14 +4,15 @@
       <div class="pb-4">
         <div>
           <div class="title text-lg text-color">
-            <span class="flex">Profile</span>
+            <span class="flex font-bold">Edit Profile</span>
             <hr />
-            <div class="flex  flex-col justify-center items-center border">
+            <div class="flex  flex-col justify-center items-center 
+            mt-3">
             <div class="relative">
-              <div v-if="authStore.user.profile">
+              <div v-if="authStore.userForm.image">
                 <img
                   class="w-20 h-20 rounded-full"
-                  :src="authStore.user.profile.image"
+                  :src="authStore.userForm.image"
                 />
               </div>
 
@@ -65,48 +66,48 @@
 
         <!-- Details section -->
 
-        <form @submit.prevent="authStore.handleCreateUser">
+        <form @submit.prevent="authStore.handleCreateUser" class="mt-5">
           <div class="flex flex-col">
-            <div class="w-full p-1 text-color text-sm">
-              <span class="w-40 block text-left">First Name</span>
+            <div class="w-full p-1 text-color text-sm flex items-center">
+              <span class="w-20 block text-left font-bold text-xs text-gray-600">First Name</span>
               <input
                 v-model="authStore.userForm.firstname"
                 type="text"
                 placeholder=""
-                class="rounded-full w-full border-1 w-full max-w-xs px-3 py-2 input-text bg-secondary border shadow-sm input-border focus:outline-none focus-border focus-ring sm:text-sm focus:ring-1"
+                class="rounded-lg w-full border-1 w-full max-w-xs px-3 py-1 input-text bg-secondary border shadow-sm input-border focus:outline-none focus-border focus-ring sm:text-sm focus:ring-1"
               />
             </div>
 
-            <div class="w-full p-1">
-              <span class="w-40 block text-color text-left text-sm"
+            <div class="w-full p-1 flex items-center">
+              <span class="w-20 block  text-left text-sm font-bold text-xs text-gray-600"
                 >Middle Name
               </span>
               <input
                 v-model="authStore.userForm.middlename"
                 type="text"
                 placeholder=""
-                class="rounded-full w-full border-1 w-full max-w-xs px-3 py-2 input-text bg-secondary border shadow-sm input-border focus:outline-none focus-border focus-ring sm:text-sm focus:ring-1"
+                class="rounded-lg w-full border-1 w-full max-w-xs px-3 py-1 input-text bg-secondary border shadow-sm input-border focus:outline-none focus-border focus-ring sm:text-sm focus:ring-1"
               />
             </div>
 
-            <div class="w-full p-1">
-              <span class="w-40 block text-color text-left text-sm"
+            <div class="w-lg p-1 flex items-center">
+              <span class="w-20 block  text-left text-sm font-bold text-xs text-gray-600"
                 >Last Name</span
               >
               <input
                 v-model="authStore.userForm.lastname"
                 type="text"
                 placeholder=""
-                class="rounded-full w-full border-1 w-full max-w-xs mt-1 px-3 py-2 input-text bg-secondary border shadow-sm input-border focus:outline-none focus-border focus-ring sm:text-sm focus:ring-1"
+                class="rounded-lg w-full border-1 w-full max-w-xs mt-1 px-3 py-1 input-text bg-secondary border shadow-sm input-border focus:outline-none focus-border focus-ring sm:text-sm focus:ring-1"
               />
             </div>
 
             <!-- Gender section -->
-            <div class="w-full p-1">
-              <span class="text-color block w-40 text-sm text-left"
+            <div class="w-full p-1 flex items-center">
+              <span class=" block w-20 text-sm text-left font-bold text-xs text-gray-600"
                 >Gender</span
               >
-              <div class="flex justify-center w-full gap-6">
+              <div class="flex px-5 w-full gap-6">
                 <div>
                   <input
                     type="radio"
@@ -114,7 +115,7 @@
                     v-model="authStore.userForm.gender"
                     name="gender"
                   />
-                  <span class="gender text-color pl-1 text-sm" value="Male"
+                  <span class="gender text-color  pl-1 text-sm" value="Male"
                     >Male</span
                   >
                 </div>
@@ -132,37 +133,37 @@
             </div>
 
             <!-- Details section -->
-            <div class="w-full p-1 text-color text-sm">
-              <span class="w-40 block text-left">Birthday</span>
+            <div class="w-full p-1  text-sm flex items-center" >
+              <span class="w-20 block text-left font-bold text-xs text-gray-600">Birthday</span>
               <input
                 type="date"
                 placeholder=""
                 v-model="authStore.userForm.birthdate"
-                class="placeholder:text-slate-500 rounded-full w-full border-1 max-w-xs mt-1 px-3 py-2 input-text bg-secondary border shadow-sm input-border focus:outline-none focus-border focus-ring sm:text-sm focus:ring-1"
+                class="placeholder:text-slate-500 rounded-lg w-full border-1 max-w-xs mt-1 px-3 py-1 input-text bg-secondary border shadow-sm input-border focus:outline-none focus-border focus-ring sm:text-sm focus:ring-1"
               />
             </div>
 
-            <div class="w-full p-1">
-              <span class="w-40 block text-left text-color text-sm"
+            <div class="w-full p-1 flex items-center">
+              <span class="w-20 block text-left  text-sm font-bold text-xs text-gray-600"
                 >Contact</span
               >
               <input
                 type="text"
                 placeholder=""
                 v-model="authStore.userForm.contact_number"
-                class="rounded-full w-full border-1 w-full max-w-xs mt-1 px-3 py-2 input-text bg-secondary border shadow-sm input-border focus:outline-none focus-border focus-ring rounded-full sm:text-sm focus:ring-1"
+                class="rounded-lg w-full border-1 w-full max-w-xs mt-1 px-3 py-1 input-text bg-secondary border shadow-sm input-border focus:outline-none focus-border focus-ring rounded-full sm:text-sm focus:ring-1"
               />
             </div>
 
-            <div class="w-full p-1">
-              <span class="w-40 block text-left text-color text-sm"
+            <div class="w-full p-1 flex items-center">
+              <span class="w-20 block text-left  text-sm font-bold text-xs text-gray-600"
                 >Address</span
               >
               <textarea
                 type="text"
                 placeholder=""
                 v-model="authStore.userForm.address"
-                class="rounded-full w-full border-1 w-full max-w-xs mt-1 px-3 py-2 input-text bg-secondary border shadow-sm input-border focus:outline-none focus-border focus-ring rounded-full sm:text-sm focus:ring-1"
+                class="rounded-lg w-full border-1 w-full max-w-xs mt-1 px-3 py-1 input-text bg-secondary border shadow-sm input-border focus:outline-none focus-border focus-ring rounded-full sm:text-sm focus:ring-1"
               ></textarea>
             </div>
 

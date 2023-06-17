@@ -1,5 +1,5 @@
 <template>
-   <UserProfileView/>
+   Home
 </template>
 
 <script>

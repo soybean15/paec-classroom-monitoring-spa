@@ -6,7 +6,7 @@
         <div class="p-3 text-xl font-bold">My Account</div>
         <div class="flex grow"></div>
 
-        <div class="p-3"><button class="btn btn-outline btn-info">Edit Profile</button></div>
+        <div class="p-3"><button onclick="my_modal_3.showModal()" class="btn btn-outline p-1 btn-info">Edit Profile</button></div>
       </div>
 
       <!-- image -->
@@ -147,13 +147,24 @@
       
     </div>
   </div>
+
+
+  <!-- Open the modal using ID.showModal() method -->
+
+  <ModalViewVue><CreateProfileVIewVue /></ModalViewVue>
 </template>
 
 <script>
 import { useAuthStore } from "@/store/auth";
 import { onMounted , computed} from "vue";
+import ModalViewVue from "@/views/components/ModalView.vue";
+import CreateProfileVIewVue from "../user/CreateProfileVIew.vue";
 
 export default {
+  components: {
+    ModalViewVue,
+    CreateProfileVIewVue,
+  },
   setup() {
     const authStore = useAuthStore();
 
