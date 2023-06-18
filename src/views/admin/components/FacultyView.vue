@@ -9,8 +9,8 @@
     </div>
     <div class="flex items-center pl-2">
       <div class="flex gap-1">
-      <div ><button class="btn btn-outline btn-sm">Default</button></div>
-        <div><button class="btn btn-outline btn-sm">Default</button></div>
+      <div ><button @click="adminStore.getUserByRole(2)" :class="{'btn-active':adminStore.roleButtonState.teacher_btn}" class="btn btn-outline btn-primary btn-sm">Teachers</button></div>
+        <div><button @click="adminStore.getUserByRole(3)" :class="{'btn-active':adminStore.roleButtonState.student_btn}" class="btn btn-outline btn-primary btn-sm">Student</button></div>
       </div>
       <div class="flex grow"></div>
       <div class="p-3">
@@ -25,7 +25,7 @@
       </div>
       
       <div class="p-3 relative">
-        <button class="btn btn-primary">
+        <button class="btn btn-sm  btn-primary">
           Request
           <div class="badge badge-success" v-if="adminStore.pendingRequest.pendingUsers">
          {{adminStore.pendingRequest.pendingUsers.count}}
@@ -36,9 +36,9 @@
 
 
     <!-- User Table -->
-    <div>
+    <div class="z-0">
       <div class="overflow-x-auto text-black">
-        <table class="table">
+        <table class="table  "  > 
           <!-- head -->
           <thead>
             <tr>
@@ -48,8 +48,8 @@
                 </label>
               </th>
               <th class=" text-black">Name</th>
-              <th class=" text-black">Job</th>
-              <th class=" text-black">Favorite Color</th>
+              <th class=" text-black">Address</th>
+              <th class=" text-black">Contacts</th>
               <th></th>
             </tr>
           </thead>
@@ -91,5 +91,8 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.table-zebra {
+  --zebra-bg-color: rgb(216, 61, 61); /* Replace "your-color" with the desired background color */
+}
 </style>

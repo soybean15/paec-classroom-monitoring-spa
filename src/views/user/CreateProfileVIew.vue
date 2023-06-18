@@ -9,10 +9,10 @@
             <div class="flex  flex-col justify-center items-center 
             mt-3">
             <div class="relative">
-              <div v-if="authStore.userForm.image">
+              <div v-if="authStore.userForm.dummyImage">
                 <img
                   class="w-20 h-20 rounded-full"
-                  :src="authStore.userForm.image"
+                  :src="authStore.userForm.dummyImage"
                 />
               </div>
 
@@ -196,10 +196,16 @@ export default {
     });
 
     const onFileChange = (event) => {
+     
+      //these 2 are literally different object
       authStore.userForm.image = event.target.files[0];
+     
+     // authStore.user.profile.image = 'hello'
+     
       authStore.user.profile.image = URL.createObjectURL(event.target.files[0]);
+      authStore.userForm.dummyImage= URL.createObjectURL(event.target.files[0]);
 
-      console.log(authStore.user.profile.image);
+      console.log(authStore.userForm.image );
     };
     return { authStore, onFileChange };
   },

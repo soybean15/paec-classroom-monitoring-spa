@@ -34,6 +34,15 @@ export const useAdminStore = defineStore('admin',{
         async getUserByRole(roleId){
             const data = await axios.get('api/admin/users/role/'+roleId)
             this.stateUsers = data.data.users
+
+
+            if(roleId ===2){
+                this.stateButton.teacher_btn =true
+                this.stateButton.student_btn = false
+            }else{
+                this.stateButton.teacher_btn =false
+                this.stateButton.student_btn = true
+            }
             console.log( this.stateUsers )
         }
     }

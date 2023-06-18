@@ -78,7 +78,15 @@ export const useAuthStore = defineStore('auth',{
            
             const data = await axios.get('api/user/profile/' + this.stateUser.user.id)
             this.stateUser.profile = data.data.user.user_profile
-            this.stateUserForm = data.data.user.user_profile
+
+            this.stateUserForm = structuredClone(data.data.user.user_profile);
+
+
+            this.stateUserForm.dummyImage =this.stateUserForm.image 
+
+
+
+            
             this.stateUser.isAdmin = data.data.user.roles.some(role => role.name === "Admin");
 
             this.stateUser.fullName= this.stateUser.profile.firstname +" "+this.stateUser.profile.lastname
