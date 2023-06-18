@@ -5,34 +5,36 @@ import router from '../router/index'
 export const useAdminStore = defineStore('admin',{
     state:()=>({
 
-        statePending:{
-            users:null,
-            user_count:null
-            
-        },
-        stateFaculties:{
-            pending_users:null,
-            users:null,
-            user_count:null
+        statePending:{},
+        stateUsers:{},
+        stateButton:{
+            teacher_btn:false,
+            student_btn:false
         }
     }),
     getters:{
-        pendingRequest:(state)=>state.statePending
+        pendingRequest:(state)=>state.statePending,
+        users:(state)=>state.stateUsers,
+        roleButtonState:(state)=>state.stateButton
     },
     actions:{
         async index(){
             const data = await axios.get('api/admin')
-            this.statePending.users = data.data.pendingUsers
-            this.statePending.user_count = this.statePending.users.length
+            this.statePending = data.data.pendingUsers
+            
 
             console.log(this.statePending)
         },
         async getUsers(){
             const data = await axios.get('api/admin/users')
-            this.statePending.users = data.data.pendingUsers
-            this.statePending.user_count = this.statePending.users.length
+            this.statePending = data.data
 
             console.log(this.statePending)
+        },
+        async getUserByRole(roleId){
+            const data = await axios.get('api/admin/users/role/'+roleId)
+            this.stateUsers = data.data.users
+            console.log( this.stateUsers )
         }
     }
 

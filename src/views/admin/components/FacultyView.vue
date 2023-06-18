@@ -7,7 +7,12 @@
         class="input input-ghost p-0 h-7 w-full bg-slate-200 max-w-xs"
       />
     </div>
-    <div class="flex">
+    <div class="flex items-center pl-2">
+      <div class="flex gap-1">
+      <div ><button class="btn btn-outline btn-sm">Default</button></div>
+        <div><button class="btn btn-outline btn-sm">Default</button></div>
+      </div>
+      <div class="flex grow"></div>
       <div class="p-3">
         <select
           class="select select-ghost bg-white text-black w-full max-w-xs border"
@@ -18,27 +23,71 @@
           <option>React</option>
         </select>
       </div>
-      <div class="flex grow"></div>
+      
       <div class="p-3 relative">
         <button class="btn btn-primary">
-          Inbox
-          <div class="badge badge-success">+99</div>
+          Request
+          <div class="badge badge-success" v-if="adminStore.pendingRequest.pendingUsers">
+         {{adminStore.pendingRequest.pendingUsers.count}}
+          </div>
         </button>
-        
+      </div>
+    </div>
+
+
+    <!-- User Table -->
+    <div>
+      <div class="overflow-x-auto text-black">
+        <table class="table">
+          <!-- head -->
+          <thead>
+            <tr>
+              <th>
+                <label>
+                  <input type="checkbox" class="checkbox" />
+                </label>
+              </th>
+              <th class=" text-black">Name</th>
+              <th class=" text-black">Job</th>
+              <th class=" text-black">Favorite Color</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- row 1 -->
+            <tr v-for="user in adminStore.users.data" :key="user.id">
+
+              <UserCard :user="user"/>
+            </tr>
+          
+            <!-- row 2 -->
+           
+          </tbody>
+          <!-- foot -->
+         
+        </table>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { useAdminStore } from '@/store/admin';
+import UserCard from './cards/UserCard'
+import { useAdminStore } from "@/store/admin";
+import { onMounted } from 'vue';
 export default {
-  setup(){
-    const adminStore = useAdminStore()
-    adminStore.getUsers()
-    return {adminStore}
+  components:{
+    UserCard
+  },
+  setup() {
+    const adminStore = useAdminStore();
+    adminStore.getUsers();
 
-  }
+    //2 on teacher 3 on student
+    adminStore.getUserByRole(2)
+
+    return { adminStore };
+  },
 };
 </script>
 
