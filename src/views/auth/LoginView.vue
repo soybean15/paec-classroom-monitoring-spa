@@ -30,10 +30,11 @@
               <input type="password" name="password" v-model="authStore.form.password" class="input-text w-full max-w-xs
               px-3 py-2 bg-secondary border shadow-sm input-border focus:outline-none focus-border 
               focus-ring rounded-full sm:text-sm focus:ring-1" placeholder="password" />
-              <div class="text-xs text-red-400" v-if="authStore.errors.password">
+             
+            </label>
+            <div class="text-xs text-red-400" v-if="authStore.errors.password">
               {{authStore.errors.password[0]  }}
             </div>
-            </label>
             <div class="mt-2 space-x-10">
               <button class="btn btn-ghost text-sm font-medium text-color h-1">Forgot password?</button>
               <button class="bg-secondary-variant hover:bg-blue-500 text-white font-bold py-1 px-4 rounded-full">Login</button>

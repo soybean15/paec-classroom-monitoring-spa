@@ -83,11 +83,8 @@ export const useAuthStore = defineStore('auth', {
 
             this.stateUserForm = structuredClone(data.data.user.user_profile);
 
-
+            //this will handle blob url 
             this.stateUserForm.dummyImage = this.stateUserForm.image
-
-
-
 
             this.stateUser.isAdmin = data.data.user.roles.some(role => role.name === "Admin");
 
@@ -98,6 +95,7 @@ export const useAuthStore = defineStore('auth', {
         },
         async handleLogin() {
 
+            this.authErrors=[]
             try {
                 const data = await axios.post('/login', {
                     email: this.authForm.email,
@@ -135,7 +133,8 @@ export const useAuthStore = defineStore('auth', {
         async handleLogout() {
 
             await axios.post('/logout')
-            this.stateUser.user = null
+            this.stateUser = null
+            this.authErrors =[]
 
             this.router.push('/login')
         },

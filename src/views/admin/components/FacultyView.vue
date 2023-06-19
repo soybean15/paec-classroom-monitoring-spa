@@ -23,25 +23,6 @@
             >Students</a
           >
         </div>
-
-        <!-- <div>
-          <button
-            @click="adminStore.getUserByRole(2)"
-            :class="{ 'btn-active': adminStore.roleButtonState.teacher_btn }"
-            class="btn btn-outline btn-primary btn-sm"
-          >
-            Teachers
-          </button>
-        </div>
-        <div>
-          <button
-            @click="adminStore.getUserByRole(3)"
-            :class="{ 'btn-active': adminStore.roleButtonState.student_btn }"
-            class="btn btn-outline btn-primary btn-sm"
-          >
-            Student
-          </button>
-        </div> -->
       </div>
       <div class="flex grow"></div>
       <div class="p-3">
@@ -56,7 +37,7 @@
       </div>
 
       <div class="p-3 relative">
-        <button class="btn btn-sm btn-primary">
+        <button onclick="my_modal_3.showModal()" class="btn btn-sm btn-primary">
           Request
           <div
             class="badge badge-success"
@@ -99,15 +80,23 @@
       </div>
     </div>
   </div>
+
+
+  <ModalViewVue><PendingUsersModal/></ModalViewVue>
 </template>
 
 <script>
 import UserCard from "./cards/UserCard";
+import ModalViewVue from "@/views/components/ModalView.vue";
+import PendingUsersModal from './modals/PendingUsersModal.vue'
 import { useAdminStore } from "@/store/admin";
 import { onMounted } from "vue";
+import PendingUsersModalVue from './modals/PendingUsersModal.vue';
 export default {
   components: {
     UserCard,
+    ModalViewVue,
+    PendingUsersModal
   },
   setup() {
     const adminStore = useAdminStore();

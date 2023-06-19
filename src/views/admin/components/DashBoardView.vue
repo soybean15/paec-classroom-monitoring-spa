@@ -1,7 +1,7 @@
 <template>
  <div>
 
-  {{ adminStore.pendingRequest }}
+
 
  </div>
 </template>
