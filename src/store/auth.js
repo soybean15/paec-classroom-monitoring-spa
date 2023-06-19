@@ -1,21 +1,21 @@
-import {defineStore} from 'pinia'
+import { defineStore } from 'pinia'
 import axios from 'axios'
 import router from '../router/index'
 
-export const useAuthStore = defineStore('auth',{
-    state:()=>({
+export const useAuthStore = defineStore('auth', {
+    state: () => ({
         stateUser: {
             user: null,
             profile: null,
-            isAdmin:false,
-            fullName:null
+            isAdmin: false,
+            fullName: null
         },
-        authForm :{//for login
-            email:'',
-            password:'',
-            name:'',
-            confirmPassword:'',
-            role:null
+        authForm: {//for login
+            email: '',
+            password: '',
+            name: '',
+            confirmPassword: '',
+            role: null
         },
         stateUserForm: {//for profile
             firstname: null,
@@ -28,101 +28,115 @@ export const useAuthStore = defineStore('auth',{
             address: null,
 
         },
-        stateRoles:null
+        stateRoles: null,
+        authErrors: []
 
     }),
-    getters:{
-        user:(state) =>state.stateUser,
-        form:(state) =>state.authForm,
+    getters: {
+        user: (state) => state.stateUser,
+        form: (state) => state.authForm,
         userForm: (state) => state.stateUserForm,
-        roles:(state) => state.stateRoles,
-        fullName:(state)=>state.stateUser.fullName
+        roles: (state) => state.stateRoles,
+        fullName: (state) => state.stateUser.fullName,
+        errors:(state)=>state.authErrors
 
     },
-    actions:{
-        async getToken(){
+    actions: {
+        async getToken() {
             await axios.get('/sanctum/csrf-cookie')
         },
 
-        async getUser(){
+        async getUser() {
             this.getToken
 
-            try{
+            try {
                 const data = await axios.get('/api/user')
-                if(data){
+                if (data) {
                     this.stateUser.user = data.data
                     this.getProfile()
                 }
                 console.log(this.stateUser.user)
-               
 
-                
-            }catch(error){
-                
-                if(error.response.status === 401){
+
+
+            } catch (error) {
+
+                if (error.response.status === 401) {
                     router.push('/login')
                 }
 
             }
-            
+
 
         },
-        async getRoles(){
-           const data =  await axios.get('api/roles')
+        async getRoles() {
+            const data = await axios.get('api/roles')
 
-           this.stateRoles = data.data.roles
-           console.log(this.stateRoles)
+            this.stateRoles = data.data.roles
+            console.log(this.stateRoles)
 
         },
-        async getProfile(){
-           
+        async getProfile() {
+
             const data = await axios.get('api/user/profile/' + this.stateUser.user.id)
             this.stateUser.profile = data.data.user.user_profile
 
             this.stateUserForm = structuredClone(data.data.user.user_profile);
 
 
-            this.stateUserForm.dummyImage =this.stateUserForm.image 
+            this.stateUserForm.dummyImage = this.stateUserForm.image
 
 
 
-            
+
             this.stateUser.isAdmin = data.data.user.roles.some(role => role.name === "Admin");
 
-            this.stateUser.fullName= this.stateUser.profile.firstname +" "+this.stateUser.profile.lastname
+            this.stateUser.fullName = this.stateUser.profile.firstname + " " + this.stateUser.profile.lastname
             console.log(this.stateUser)
-                
+
 
         },
-        async handleLogin(){    
-            const data = await axios.post('/login',{
-                email:this.authForm.email,
-                password:this.authForm.password
-                
-            })
+        async handleLogin() {
 
-            router.push('/home')
-        },
-        async handleRegister(){
-            try{
-                await axios.post('/register',{
+            try {
+                const data = await axios.post('/login', {
                     email: this.authForm.email,
-                    name:this.authForm.name,
-                    password:this.authForm.password,
-                    password_confirmation:this.authForm.confirmPassword,
-                    role:this.authForm.role
+                    password: this.authForm.password
+
+                })
+
+                router.push('/home')
+            } catch (error) {
+
+                if (error.response.status === 422) {
+                    this.authErrors =error.response.data.errors
+                    console.log(this.authErrors)
+                    
+                   
+                }
+            }
+
+        },
+        async handleRegister() {
+            try {
+                await axios.post('/register', {
+                    email: this.authForm.email,
+                    name: this.authForm.name,
+                    password: this.authForm.password,
+                    password_confirmation: this.authForm.confirmPassword,
+                    role: this.authForm.role
                 })
                 router.push('/')
-            }catch(error){
+            } catch (error) {
 
             }
-            
+
         },
         async handleLogout() {
-            
+
             await axios.post('/logout')
             this.stateUser.user = null
- 
+
             this.router.push('/login')
         },
         async handleCreateUser() {
