@@ -25,9 +25,9 @@ export const useAdminStore = defineStore('admin',{
 
             console.log(this.statePending)
         },
-        async getUsers(){
-            const data = await axios.get('api/admin/users')
-            this.statePending = data.data
+        async getPendingUsers(){
+            const data = await axios.get('api/admin/users/pending')
+            this.statePending = data.data.pendingUsers
 
             console.log(this.statePending)
         },

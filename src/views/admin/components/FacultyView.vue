@@ -41,9 +41,9 @@
           Request
           <div
             class="badge badge-success"
-            v-if="adminStore.pendingRequest.pendingUsers"
+            v-if="adminStore.pendingRequest"
           >
-            {{ adminStore.pendingRequest.pendingUsers.count }}
+            {{ adminStore.pendingRequest.count }}
           </div>
         </button>
       </div>
@@ -100,7 +100,7 @@ export default {
   },
   setup() {
     const adminStore = useAdminStore();
-    adminStore.getUsers();
+    adminStore.getPendingUsers();
 
     //2 on teacher 3 on student
     adminStore.getUserByRole(2);
