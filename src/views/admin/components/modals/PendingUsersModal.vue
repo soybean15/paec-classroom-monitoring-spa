@@ -5,7 +5,7 @@
     <div class="h-96 overflow-auto">
 
         <div v-for="user in adminStore.pendingRequest.users" :key="user.id">
-           <UserCard :user="user"/>
+           <UserCard :user="user" :store="adminStore"/>
         </div>
     </div>
 </div>
@@ -24,13 +24,6 @@ export default {
     setup(){
         const adminStore = useAdminStore()
 
-        const fullName = computed(()=>{
-
-        })
-
-        onMounted(()=>{
-            adminStore.getPendingUsers()
-        })
         return {adminStore}
     }
 

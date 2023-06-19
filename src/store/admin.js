@@ -44,6 +44,12 @@ export const useAdminStore = defineStore('admin',{
                 this.stateButton.student_btn = true
             }
             console.log( this.stateUsers )
+        },
+        async acceptUser(user){
+             await axios.post(`api/admin/users/pending/${user.id}`)
+             user.accepted = true
+             this.statePending.count -=1 
+             console.log(`Accept ${ this.statePending.count }`)         
         }
     }
 

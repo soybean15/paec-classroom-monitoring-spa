@@ -37,7 +37,7 @@
       </div>
 
       <div class="p-3 relative">
-        <button onclick="my_modal_3.showModal()" class="btn btn-sm btn-primary">
+        <button onclick="my_modal_3.showModal()" @click="adminStore.getPendingUsers" class="btn btn-sm btn-primary">
           Request
           <div
             class="badge badge-success"
@@ -51,10 +51,10 @@
 
     <!-- User Table -->
     <div class="z-0">
-      <div class="overflow-x-auto text-black">
+      <div class="overflow-x-auto text-black ">
         <table class="table">
           <!-- head -->
-          <thead>
+          <thead class="head">
             <tr>
               <th>
                 <label>
@@ -69,9 +69,12 @@
           </thead>
           <tbody>
             <!-- row 1 -->
-            <tr v-for="user in adminStore.users.data" :key="user.id">
+          
+            <tr class=" " v-for="user in adminStore.users.data" :key="user.id">
+             
               <UserCard :user="user" />
             </tr>
+           
 
             <!-- row 2 -->
           </tbody>
@@ -115,4 +118,13 @@ export default {
   font-weight: bold;
   @apply text-zinc-600;
 }
+table,tr{
+  border:none;
+}
+tr:nth-child(even) {
+  background: #ece9e9;
+
+}
+.head{background: #ece9e9}
+
 </style>

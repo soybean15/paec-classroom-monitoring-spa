@@ -1,10 +1,12 @@
 <template>
-  <th>
+
+  <th >
     <label>
       <input type="checkbox" class="checkbox" />
     </label>
   </th>
   <td>
+    
     <div class="flex items-center space-x-3" v-if="user.user_profile">
       <div class="avatar">
         <div class="mask mask-squircle w-12 h-12">
@@ -15,12 +17,12 @@
         </div>
       </div>
       <div>
-        <div class="font-bold" v-if="user.user_profile">
-          {{ user.user_profile.firstname }} {{ user.user_profile.lastname }}
+        <div class="font-bold text-neutral-700" v-if="user.user_profile">
+          {{fullName}}
         </div>
         <div>
           <span
-            class="badge badge-ghost badge-sm"
+            class="badge badge-sm" :class="role.id === 2 ? 'badge-warning' : 'badge-info'"
             v-for="role in user.roles"
             :key="role.id"
             >{{ role.name }}</span
@@ -29,7 +31,7 @@
       </div>
     </div>
   </td>
-  <td v-if="user.user_profile">
+  <td class="text-neutral-500" v-if="user.user_profile">
     {{ user.user_profile.address }}
     <br />
   </td>
@@ -50,8 +52,20 @@
 </template>
 
 <script>
+import {computed} from 'vue'
 export default {
   props: ["user"],
+  setup(props){
+    
+    const fullName = computed(()=>{
+            if(props.user.user_profile){
+
+                return `${props.user.user_profile.firstname} ${props.user.user_profile.lastname}`
+            }
+        })
+
+        return {fullName}
+  }
 };
 </script>
 
