@@ -12,13 +12,13 @@
         <div class="tabs">
           <a
             class="tab tab-md"
-            @click="adminStore.getUserByRole(2)"
+            @click="adminStore.getUserByRole(null,2)"
             :class="{ 'tab-active': adminStore.roleButtonState.teacher_btn }"
             >Teachers</a
           >
           <a
             class="tab  tab-md"
-            @click="adminStore.getUserByRole(3)"
+            @click="adminStore.getUserByRole(null,3)"
             :class="{ 'tab-active': adminStore.roleButtonState.student_btn }"
             >Students</a
           >
@@ -49,6 +49,8 @@
       </div>
     </div>
 
+
+
     <!-- User Table -->
     <div class="z-0">
       <div class="overflow-x-auto text-black ">
@@ -64,7 +66,12 @@
               <th class="text-black">Name</th>
               <th class="text-black">Address</th>
               <th class="text-black">Contacts</th>
-              <th></th>
+              <th class="flex flex-row-reverse">
+                <div class="join">
+                  <button @click="adminStore.getUserByRole(link.url)" class="join-item btn btn-sm" :class="{'active':link.active}" v-for="link in adminStore.users.links" :key="link.id"><h1 v-html="link.label"></h1></button>
+                  
+                  </div>
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -105,8 +112,9 @@ export default {
     const adminStore = useAdminStore();
     adminStore.getPendingUsers();
 
-    //2 on teacher 3 on student
-    adminStore.getUserByRole(2);
+    //first param should be null,
+    //second param: 2 on teachers 3 on student
+    adminStore.getUserByRole(null,2);
 
     return { adminStore };
   },
@@ -126,5 +134,11 @@ tr:nth-child(even) {
 
 }
 .head{background: #ece9e9}
-
+.join-item{
+  background: #cecccc;
+  @apply border border-gray-400 text-gray-600;
+}
+.join-item.active{
+  background: #919090;
+}
 </style>

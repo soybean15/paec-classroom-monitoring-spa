@@ -10,12 +10,15 @@ export const useAdminStore = defineStore('admin',{
         stateButton:{
             teacher_btn:false,
             student_btn:false
-        }
+        },
+        stateRole:2
+        
     }),
     getters:{
         pendingRequest:(state)=>state.statePending,
         users:(state)=>state.stateUsers,
-        roleButtonState:(state)=>state.stateButton
+        roleButtonState:(state)=>state.stateButton,
+       
     },
     actions:{
         async index(){
@@ -31,20 +34,28 @@ export const useAdminStore = defineStore('admin',{
 
             console.log(this.statePending)
         },
-        async getUserByRole(roleId){
-            const data = await axios.get('api/admin/users/role/'+roleId)
-            this.stateUsers = data.data.users
+        async getUserByRole(path,roleId){
 
+            this.stateRole = roleId != null ? roleId : this.stateRole;
+            if(!path){
+                 path = `api/admin/users/role/${this.stateRole }`;
+            }
+            console.log(`path ${path} staterole ${this.stateRole } role${roleId} `)
+           
+            const data = await axios.get(path)
+            this.stateUsers = data.data.users      
 
-            if(roleId ===2){
+            if(this.stateRole ===2){
                 this.stateButton.teacher_btn =true
                 this.stateButton.student_btn = false
             }else{
                 this.stateButton.teacher_btn =false
                 this.stateButton.student_btn = true
             }
-            console.log( this.stateUsers )
+            
         },
+        
+
         async acceptUser(user){
              await axios.post(`api/admin/users/pending/${user.id}`)
              user.accepted = true
