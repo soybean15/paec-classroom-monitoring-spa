@@ -1,153 +1,74 @@
 <template>
-  <section class="dark:bg-gray-900">
-    <div class="flex flex-col items-center justify-center  mx-auto lg:py-0">
-      <div
-        class="w-full h-auto bg-primary shadow-lg shadow-gray-600/50 shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700"
-      >
-        <div class="w-96 sm:p-8">
-          <h1
-            class="text-xl leading-tight tracking-tight md:text-2xl text-color"
-          >
-            Create account
-          </h1>
-          <form
-            @submit.prevent="authStore.handleRegister"
-            class="space-y-4 md:space-y-3"
-            action="#"
-          >
-            <div>
-              <label
-                for="email"
-                class="text-left block text-sm font-medium text-color"
-                >Your email</label
-              >
-              <input
-                type="email"
-                name="email"
-                v-model="authStore.form.email"
-                id="email"
-                class="bg-secondary border input-border input-text sm:text-sm rounded-full focus-ring focus:outline-none focus:ring-1 focus:border-blue-500 block w-full px-3 py-2"
-                placeholder="name@company.com"
-              />
-              <div class="text-xs text-red-400" v-if="authStore.errors.email">
-              {{authStore.errors.email[0]  }}
-            </div>
-            </div>
-            <div>
-              <label
-                for="name"
-                class="text-left block text-sm font-medium text-color"
-                >Name</label
-              >
-              <input
-                type="text"
-                name="name"
-                v-model="authStore.form.name"
-                id="name"
-                class="bg-secondary border input-border input-text sm:text-sm focus:outline-none focus:ring-1 rounded-full focus-ring focus-border block w-full px-3 py-2 placeholder-color"
-                placeholder="Name"
-              />
-              <div class="text-xs text-red-400" v-if="authStore.errors.name">
-              {{authStore.errors.name[0]  }}
-            </div>
-            </div>
-            <div>
-              <label
-                for="password"
-                class="text-left block text-sm font-medium text-color"
-                >Password</label
-              >
-              <input
-                type="password"
-                name="password"
-                v-model="authStore.form.password"
-                id="password"
-                placeholder="••••••••"
-                class="bg-secondary border input-border input-text sm:text-sm rounded-full focus-ring focus:outline-none focus:ring-1 focus-border block w-full px-3 py-2 placeholder-color"
-              />
-
-              <div
-                class="text-xs text-red-400"
-                v-if="authStore.errors.password"
-              >
-                {{ authStore.errors.password[0] }}
-              </div>
-            </div>
-            <div>
-              <label
-                for="confirm-password"
-                class="text-left block text-sm font-medium text-color"
-                >Confirm password</label
-              >
-              <input
-                type="confirm-password"
-                name="confirm-password"
-                v-model="authStore.form.confirmPassword"
-                id="confirm-password"
-                placeholder="••••••••"
-                class="bg-secondary border input-border input-text sm:text-sm rounded-full focus-ring focus-border block w-full px-3 py-2 placeholder-color focus:outline-none focus:ring-1"
-              />
-            </div>
-            <div>
-              <label
-                for="confirm-password"
-                class="text-left block text-sm font-medium text-black"
-                >Role</label
-              >
-              <select
-                class="select w-full max-w-xs text-black bg-secondary border input-border input-text sm:text-sm focus:outline-none focus:ring-1 rounded-full focus-ring focus-border block w-full px-3 py-2 placeholder-color"
-              >
-                <option disabled selected>Select Role</option>
-                <option
-                  v-for="role in authStore.roles"
-                  :key="role.id"
-                  @click="selectRole(role)"
-                >
-                  {{ role.name }}
-                </option>
-
-              </select>
-              <div class="text-xs text-red-400" v-if="authStore.errors.role">
-              {{authStore.errors.role[0]  }}
-            </div>
-            </div>
-
-            <div class="flex items-start">
-              <div class="flex items-center h-5">
-                <input
-                  id="terms"
-                  aria-describedby="terms"
-                  type="checkbox"
-                  class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600"
-                  required=""
-                />
-              </div>
-              <div class="ml-3 text-sm">
-                <label for="terms" class="text-color"
-                  >I accept the
-                  <a class="font-medium text-color hover:underline" href="#"
-                    >Terms and Conditions</a
-                  ></label
-                >
-              </div>
-            </div>
-            <button
-              type="submit"
-              class="bg-secondary-variant hover:bg-blue-500 w-full text-white focus:ring-2 focus:outline-none focus-ring rounded-full text-sm font-semibold px-5 py-2.5 text-center"
-            >
-              Create account
-            </button>
-            <p class="text-sm font-light text-color">
-              Already have an account?
-              <a href="#" class="font-medium text-blue-500 hover:underline"
-                >Login here</a
-              >
-            </p>
-          </form>
-        </div>
+  <div class="card mb-40 flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 bg-opacity-75">
+    <form @submit.prevent="authStore.handleRegister" class="card-body">
+      <h1 class="text-xl font-bold flex">Register </h1>
+      <div class="form-control">
+        <label class="label flex">
+          <span class="label-text">Email</span>
+          <div class="flex grow"></div>
+          <span class="label-text text-red-400" v-if="authStore.errors.email">{{ authStore.errors.email[0] }}</span>
+        </label>
+        <input type="email" v-model="authStore.form.email" placeholder="example@gmail.com" class="input input-bordered" />
       </div>
-    </div>
-  </section>
+      <div class="form-control">
+        <label class="label flex">
+          <span class="label-text">Username</span>
+          <div class="flex grow"></div>
+          <span class="label-text text-red-400" v-if="authStore.errors.name">{{ authStore.errors.name[0] }}</span>
+        </label>
+        <input type="text" v-model="authStore.form.name" placeholder="username123" class="input input-bordered" />
+      </div>
+
+
+      <div class="form-control">
+        <label class="label flex">
+          <span class="label-text">Password</span>
+          <div class="flex grow"></div>
+          <span class="label-text text-red-400" v-if="authStore.errors.password">{{ authStore.errors.password[0] }}</span>
+        </label>
+        <input type="password" v-model="authStore.form.password" placeholder="••••••••" class="input input-bordered" />
+
+      </div>
+
+      <div class="form-control">
+        <label class="label flex">
+          <span class="label-text">Confirm Password</span>
+          <div class="flex grow"></div>
+         
+        </label>
+        <input type="password" v-model="authStore.form.confirmPassword" placeholder="••••••••"
+          class="input input-bordered" />
+      </div>
+
+      <div class="form-control">
+        <label class="label flex">
+        <span class="label-text">Role</span>
+        <div class="flex grow"></div>
+        <div class="label-text text-red-400" v-if="authStore.errors.role">
+          {{ authStore.errors.role[0] }}
+        </div>
+      </label>
+        <select
+          class="input input-bordered">
+          <option disabled selected>Select Role</option>
+          <option v-for="role in authStore.roles" :key="role.id" @click="selectRole(role)">
+            {{ role.name }}
+          </option>
+
+        </select>
+        
+
+      </div>
+
+
+
+
+
+      <div class="form-control mt-6">
+        <button class="btn btn-primary">Login</button>
+      </div>
+    </form>
+  </div>
 </template>
 
 <script>
@@ -166,5 +87,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

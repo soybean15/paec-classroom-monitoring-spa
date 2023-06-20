@@ -60,11 +60,14 @@ export const useAuthStore = defineStore('auth', {
 
 
             } catch (error) {
-
-                if (error.response.status === 401) {
-                    router.push('/login')
+                if(error.response){
+                      if (error.response.status === 401) {
+                   // router.push('/login')
                    
                 }
+                }
+
+              
 
             }
 
@@ -141,7 +144,7 @@ export const useAuthStore = defineStore('auth', {
         async handleLogout() {
 
             await axios.post('/logout')
-            this.stateUser = null
+            this.stateUser = {}
             this.authErrors =[]
 
             this.router.push('/login')
@@ -165,9 +168,20 @@ export const useAuthStore = defineStore('auth', {
 
         },
         async handleForgotPassword(){
-            await axios.post('/forgot-password',{
+            this.authErrors=[]
+            try{
+                 await axios.post('/forgot-password',{
                 email: this.authForm.email
             })
+            }catch(error){
+                if (error.response.status === 422) {
+                    this.authErrors =error.response.data.errors
+                    console.log(this.authErrors)
+                    
+                   
+                }
+            }
+           
         },
         async handleResetPassword(){
             await axios.post('/reset-password',{
