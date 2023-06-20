@@ -26,13 +26,13 @@ export const useAdminStore = defineStore('admin',{
             this.statePending = data.data.pendingUsers
             
 
-            console.log(this.statePending)
+           
         },
         async getPendingUsers(){
             const data = await axios.get('api/admin/users/pending')
             this.statePending = data.data.pendingUsers
 
-            console.log(this.statePending)
+            
         },
         async getUserByRole(path,roleId){
 
@@ -40,8 +40,7 @@ export const useAdminStore = defineStore('admin',{
             if(!path){
                  path = `api/admin/users/role/${this.stateRole }`;
             }
-            console.log(`path ${path} staterole ${this.stateRole } role${roleId} `)
-           
+            
             const data = await axios.get(path)
             this.stateUsers = data.data.users      
 
@@ -60,7 +59,7 @@ export const useAdminStore = defineStore('admin',{
              await axios.post(`api/admin/users/pending/${user.id}`)
              user.accepted = true
              this.statePending.count -=1 
-             console.log(`Accept ${ this.statePending.count }`)         
+            
         }
     }
 

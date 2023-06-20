@@ -116,6 +116,7 @@ export const useAuthStore = defineStore('auth', {
 
         },
         async handleRegister() {
+            this.authErrors=[]
             try {
                 await axios.post('/register', {
                     email: this.authForm.email,
@@ -126,6 +127,12 @@ export const useAuthStore = defineStore('auth', {
                 })
                 router.push('/')
             } catch (error) {
+                if (error.response.status === 422) {
+                    this.authErrors =error.response.data.errors
+                    console.log(this.authErrors)
+                    
+                   
+                }
 
             }
 

@@ -1,8 +1,6 @@
 <template>
   <section class="dark:bg-gray-900">
-    <div
-      class="flex flex-col items-center justify-center py-8 mx-auto lg:py-0"
-    >
+    <div class="flex flex-col items-center justify-center py-8 mx-auto lg:py-0">
       <div
         class="w-full h-auto bg-primary shadow-lg shadow-gray-600/50 shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700"
       >
@@ -11,7 +9,7 @@
             class="text-xl leading-tight tracking-tight md:text-2xl text-color"
           >
             Create account
-          </h1> 
+          </h1>
           <form
             @submit.prevent="authStore.handleRegister"
             class="space-y-4 md:space-y-3"
@@ -31,6 +29,9 @@
                 class="bg-secondary border input-border input-text sm:text-sm rounded-full focus-ring focus:outline-none focus:ring-1 focus:border-blue-500 block w-full px-3 py-2"
                 placeholder="name@company.com"
               />
+              <div class="text-xs text-red-400" v-if="authStore.errors.email">
+              {{authStore.errors.email[0]  }}
+            </div>
             </div>
             <div>
               <label
@@ -43,10 +44,12 @@
                 name="name"
                 v-model="authStore.form.name"
                 id="name"
-                class="bg-secondary border input-border input-text sm:text-sm focus:outline-none focus:ring-1 
-                rounded-full focus-ring focus-border block w-full px-3 py-2 placeholder-color"
+                class="bg-secondary border input-border input-text sm:text-sm focus:outline-none focus:ring-1 rounded-full focus-ring focus-border block w-full px-3 py-2 placeholder-color"
                 placeholder="Name"
               />
+              <div class="text-xs text-red-400" v-if="authStore.errors.name">
+              {{authStore.errors.name[0]  }}
+            </div>
             </div>
             <div>
               <label
@@ -62,6 +65,13 @@
                 placeholder="••••••••"
                 class="bg-secondary border input-border input-text sm:text-sm rounded-full focus-ring focus:outline-none focus:ring-1 focus-border block w-full px-3 py-2 placeholder-color"
               />
+
+              <div
+                class="text-xs text-red-400"
+                v-if="authStore.errors.password"
+              >
+                {{ authStore.errors.password[0] }}
+              </div>
             </div>
             <div>
               <label
@@ -84,12 +94,22 @@
                 class="text-left block text-sm font-medium text-black"
                 >Role</label
               >
-              <select class="select w-full max-w-xs text-black bg-secondary border input-border input-text sm:text-sm focus:outline-none focus:ring-1 
-                rounded-full focus-ring focus-border block w-full px-3 py-2 placeholder-color">
+              <select
+                class="select w-full max-w-xs text-black bg-secondary border input-border input-text sm:text-sm focus:outline-none focus:ring-1 rounded-full focus-ring focus-border block w-full px-3 py-2 placeholder-color"
+              >
                 <option disabled selected>Select Role</option>
-                <option v-for="role in authStore.roles" :key="role.id" @click="selectRole(role)">{{role.name}}</option>
-          
+                <option
+                  v-for="role in authStore.roles"
+                  :key="role.id"
+                  @click="selectRole(role)"
+                >
+                  {{ role.name }}
+                </option>
+
               </select>
+              <div class="text-xs text-red-400" v-if="authStore.errors.role">
+              {{authStore.errors.role[0]  }}
+            </div>
             </div>
 
             <div class="flex items-start">
@@ -139,7 +159,7 @@ export default {
 
     const selectRole = (role) => {
       authStore.form.role = role.id;
-      console.log('Selected')
+      console.log("Selected");
     };
     return { authStore, selectRole };
   },
