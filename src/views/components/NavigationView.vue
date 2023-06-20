@@ -80,7 +80,7 @@ export default {
   },
   setup() {
     const authStore = useAuthStore();
-    // authStore.getUser()
+     authStore.getUser()
 
     return { authStore };
   },

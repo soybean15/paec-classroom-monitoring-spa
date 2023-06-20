@@ -1,6 +1,6 @@
 <template>
   <section class="dark:bg-gray-900">
-    <div class="flex flex-col items-center justify-center py-8 mx-auto lg:py-0">
+    <div class="flex flex-col items-center justify-center  mx-auto lg:py-0">
       <div
         class="w-full h-auto bg-primary shadow-lg shadow-gray-600/50 shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700"
       >
