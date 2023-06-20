@@ -63,6 +63,7 @@ export const useAuthStore = defineStore('auth', {
 
                 if (error.response.status === 401) {
                     router.push('/login')
+                   
                 }
 
             }
@@ -162,6 +163,19 @@ export const useAuthStore = defineStore('auth', {
                 }
             })
 
+        },
+        async handleForgotPassword(){
+            await axios.post('/forgot-password',{
+                email: this.authForm.email
+            })
+        },
+        async handleResetPassword(){
+            await axios.post('/reset-password',{
+                email:this.authForm.email,
+                password: this.authForm.password,
+                password_confirmation: this.authForm.confirmPassword,
+                token: this.authForm.token
+            })
         }
     }
 })

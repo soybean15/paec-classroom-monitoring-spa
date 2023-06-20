@@ -17,7 +17,7 @@ export default {
 setup(){
       const authStore = useAuthStore()
       onMounted(()=>{
-        authStore.getUser()
+        //authStore.getUser()
       })
       //
     

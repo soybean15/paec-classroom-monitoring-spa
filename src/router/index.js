@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/auth/LoginView.vue'
 import RegisterView from '../views/auth/RegistrationView.vue'
@@ -31,6 +31,16 @@ const routes = [
             path: '/register',
             name: 'register',
             component: RegisterView
+          },
+          {
+            path: '/forgot-password',
+            name: 'forgot-password',
+            component:() => import('@/views/auth/ForgotPasswordView')
+          },
+          {
+            path: '/reset-password/:token',
+            name: 'reset-password',
+            component:() => import('@/views/auth/ResetPasswordView')
           },
        
         ]
@@ -83,7 +93,7 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes
 })
 

@@ -35,8 +35,9 @@
             <div class="text-xs text-red-400" v-if="authStore.errors.password">
               {{authStore.errors.password[0]  }}
             </div>
-            <div class="mt-2 space-x-10">
-              <button class="btn btn-ghost text-sm font-medium text-color h-1">Forgot password?</button>
+            <div class="mt-2 flex text-black">
+              <router-link to="/forgot-password">Forgot password?</router-link>
+              <div class="flex grow"></div>
               <button class="bg-secondary-variant hover:bg-blue-500 text-white font-bold py-1 px-4 rounded-full">Login</button>
             </div>
             <div>
@@ -48,6 +49,7 @@
   </section>
 
   </div>
+
   </template>
   
 
