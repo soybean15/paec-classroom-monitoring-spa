@@ -2,7 +2,7 @@ import {defineStore} from 'pinia'
 import axios from 'axios'
 import router from '../router/index'
 
-export const useAdminStore = defineStore('admin',{
+export const useUserStore = defineStore('users',{
     state:()=>({
 
         statePending:{},
@@ -59,6 +59,7 @@ export const useAdminStore = defineStore('admin',{
              await axios.post(`api/admin/users/pending/${user.id}`)
              user.accepted = true
              this.statePending.count -=1 
+             this.getUserByRole(null,2)
             
         }
     }

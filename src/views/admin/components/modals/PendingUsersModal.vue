@@ -4,15 +4,15 @@
 
     <div class="h-96 overflow-auto">
 
-        <div v-for="user in adminStore.pendingRequest.users" :key="user.id">
-           <UserCard :user="user" :store="adminStore"/>
+        <div v-for="user in userStore.pendingRequest.users" :key="user.id">
+           <UserCard :user="user" :store="userStore"/>
         </div>
     </div>
 </div>
 </template>
 
 <script>
-import { useAdminStore } from '@/store/admin';
+import { useUserStore } from '@/store/users';
 import { onMounted,computed } from 'vue';
 import UserCard from './UserCard'
 
@@ -22,9 +22,9 @@ export default {
         UserCard
     },
     setup(){
-        const adminStore = useAdminStore()
+        const userStore = useUserStore()
 
-        return {adminStore}
+        return {userStore}
     }
 
 }

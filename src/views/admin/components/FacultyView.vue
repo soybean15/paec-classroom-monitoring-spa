@@ -12,14 +12,14 @@
         <div class="tabs">
           <a
             class="tab tab-md"
-            @click="adminStore.getUserByRole(null,2)"
-            :class="{ 'tab-active': adminStore.roleButtonState.teacher_btn }"
+            @click="userStore.getUserByRole(null,2)"
+            :class="{ 'tab-active': userStore.roleButtonState.teacher_btn }"
             >Teachers</a
           >
           <a
             class="tab  tab-md"
-            @click="adminStore.getUserByRole(null,3)"
-            :class="{ 'tab-active': adminStore.roleButtonState.student_btn }"
+            @click="userStore.getUserByRole(null,3)"
+            :class="{ 'tab-active': userStore.roleButtonState.student_btn }"
             >Students</a
           >
         </div>
@@ -37,13 +37,13 @@
       </div>
 
       <div class="p-3 relative">
-        <button onclick="my_modal_3.showModal()" @click="adminStore.getPendingUsers" class="btn btn-sm btn-primary">
+        <button onclick="my_modal_3.showModal()" @click="userStore.getPendingUsers" class="btn btn-sm btn-primary">
           Request
           <div
             class="badge badge-success"
-            v-if="adminStore.pendingRequest"
+            v-if="userStore.pendingRequest"
           >
-            {{ adminStore.pendingRequest.count }}
+            {{ userStore.pendingRequest.count }}
           </div>
         </button>
       </div>
@@ -68,7 +68,7 @@
               <th class="text-black">Contacts</th>
               <th class="flex flex-row-reverse">
                 <div class="join">
-                  <button @click="adminStore.getUserByRole(link.url)" class="join-item btn btn-sm" :class="{'active':link.active}" v-for="link in adminStore.users.links" :key="link.id"><h1 v-html="link.label"></h1></button>
+                  <button @click="userStore.getUserByRole(link.url)" class="join-item btn btn-sm" :class="{'active':link.active}" v-for="link in userStore.users.links" :key="link.id"><h1 v-html="link.label"></h1></button>
                   
                   </div>
               </th>
@@ -77,7 +77,7 @@
           <tbody>
             <!-- row 1 -->
           
-            <tr class=" " v-for="user in adminStore.users.data" :key="user.id">
+            <tr class=" " v-for="user in userStore.users.data" :key="user.id">
              
               <UserCard :user="user" />
             </tr>
@@ -99,7 +99,7 @@
 import UserCard from "./cards/UserCard";
 import ModalViewVue from "@/views/components/ModalView.vue";
 import PendingUsersModal from './modals/PendingUsersModal.vue'
-import { useAdminStore } from "@/store/admin";
+import { useUserStore } from "@/store/users";
 import { onMounted } from "vue";
 import PendingUsersModalVue from './modals/PendingUsersModal.vue';
 export default {
@@ -109,14 +109,14 @@ export default {
     PendingUsersModal
   },
   setup() {
-    const adminStore = useAdminStore();
-    adminStore.getPendingUsers();
+    const userStore = useUserStore();
+    userStore.getPendingUsers();
 
     //first param should be null,
     //second param: 2 on teachers 3 on student
-    adminStore.getUserByRole(null,2);
+    userStore.getUserByRole(null,2);
 
-    return { adminStore };
+    return { userStore };
   },
 };
 </script>

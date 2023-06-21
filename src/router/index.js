@@ -83,6 +83,11 @@ const routes = [
         name: 'report',
         component: ()=>import('../views/admin/components/ReportView.vue')
       },
+      {
+        path: '/academics',
+        name: 'academics',
+        component: ()=>import('../views/admin/components/AcademicsView.vue')
+      },
     ]
    
   },
