@@ -1,6 +1,6 @@
 <template>
-  <div class="flex justify-center bg-white w-full text-black">
-    <div class="h-full w-full mx-3 md:mx-40 my-5 flex flex-col shadow-2xl rounded-lg">
+  <div class="flex justify-center w-full text-white ">
+    <div class="h-full w-full mx-3 md:mx-40 my-5 flex flex-col shadow-2xl rounded-lg bg-secondary">
       <!-- my account +  edit button -->
       <div class="flex items-center">
         <div class="p-3 text-xl font-bold">My Account</div>
@@ -26,9 +26,9 @@
         </div>
       </div>
 
-      <div class="flex flex-col  bg-gray-200 m-5 mt-1 rounded-md text-black font-bold">
+      <div class="flex flex-col  shadow-2xl bg-base-300 bg-opacity-75 m-5 mt-1 rounded-md text-white font-bold">
         <div class="p-3">
-          <div class="flex text-sm text-gray-600 font-bold">Contact</div>
+          <div class="flex text-sm text-gray-300 font-bold">Contact</div>
           <div class="ml-3">
             <div class="flex">
               <div class="w-5 h-5 mr-2">
@@ -52,7 +52,7 @@
 
 
         <div class="p-3">
-          <div class="flex text-sm text-gray-600 font-bold">BirthDate</div>
+          <div class="flex text-sm text-gray-300 font-bold">BirthDate</div>
           <div class="ml-3">
             <div class="flex" v-if="authStore.user.profile">{{ authStore.user.profile.birthdate }}</div>
            
@@ -62,7 +62,7 @@
 
 
         <div class="p-3">
-          <div class="flex text-sm text-gray-600 font-bold">Gender</div>
+          <div class="flex text-sm text-gray-300 font-bold">Gender</div>
           <div class="ml-3">
             <div class="flex" v-if="authStore.user.profile">{{ authStore.user.profile.gender }}</div>
            
@@ -72,7 +72,7 @@
 
 
          <div class="p-3">
-          <div class="flex text-sm text-gray-600 font-bold">Address</div>
+          <div class="flex text-sm text-gray-300 font-bold">Address</div>
           <div class="ml-3">
             <div class="flex" v-if="authStore.user.profile">{{ authStore.user.profile.address }}</div>
            

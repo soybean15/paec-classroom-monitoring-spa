@@ -2,7 +2,7 @@
   <div class="navbar bg-blue-800">
     <div class="flex-none"></div>
     <div class="flex-1">
-      <a class="btn btn-ghost normal-case text-white text-xl">PCM </a>
+      <router-link :to="{name:'userHome'}" class="btn btn-ghost normal-case text-white text-xl">PCM </router-link>
     </div>
     <div class="flex-none">
       <div v-if="authStore.user.user">
@@ -10,7 +10,7 @@
           <div class="dropdown dropdown-end">
             <label tabindex="0" class=" w-12" 
               >
-              <div class="rounded-full m-1 w-12 h-12 mb-1 relative  bg-blue-900 hover:bg-blue-400">\
+              <div class="rounded-full m-1 w-12 h-12 mb-1 relative  bg-blue-900 hover:bg-blue-400">
                 <img
                 class="w-12 h-12 p-1 absolute top-0  cursor-pointer rounded-full"
                 :src="authStore.user.profile.image"

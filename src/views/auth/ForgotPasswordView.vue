@@ -2,7 +2,7 @@
 
 
 
-<div class="card mb-40 flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 bg-opacity-75">
+<div class="card mb-40 flex-shrink-0 w-full max-w-sm bg-secondary">
     <form  @submit.prevent="authStore.handleForgotPassword"  class="card-body">
       <h1 class="text-xl font-bold flex">Forgot Password </h1>
       <div class="form-control">

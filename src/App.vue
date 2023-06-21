@@ -58,7 +58,7 @@ nav a.router-link-exact-active {
   @apply bg-white;
 }
 .bg-secondary{
-  @apply bg-white;
+  @apply shadow-2xl bg-base-100 bg-opacity-75;
 }
 .bg-secondary-variant{
   @apply bg-blue-900
@@ -78,6 +78,7 @@ nav a.router-link-exact-active {
 .input-border{
   @apply border-gray-300
 }
+
 
 
 

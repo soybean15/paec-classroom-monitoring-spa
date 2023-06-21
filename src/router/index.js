@@ -9,11 +9,11 @@ const routes = [
   {
     path: '/',
     name: 'main',
-    redirect:'/home',
+    redirect:'/',
     component: MainView,
     children:[
       {
-        path: '/home',
+        path: '/',
         name: 'home',
         component: HomeView,
         children: [
@@ -51,6 +51,12 @@ const routes = [
         name: 'userProfile',
         component:() => import('../views/user/UserProfileView.vue')
       },
+      {
+        path: '/home',
+        name: 'userHome',
+        component:() => import('../views/user/UserHomeView.vue')
+      },
+      
       
     
 

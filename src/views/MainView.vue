@@ -7,7 +7,7 @@
     <div class="flex ">
         <div class="hero min-h-screen" :style="`background-image: url(${bgImage})`">
             <div class="hero-overlay bg-opacity-60"></div>
-            <div class=" w-full flex h-full pt-3">
+            <div class=" w-full flex h-full ">
 
                 <router-view />
 

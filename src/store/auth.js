@@ -108,7 +108,11 @@ export const useAuthStore = defineStore('auth', {
 
                 })
 
+
+                
+
                 router.push('/home')
+               
             } catch (error) {
 
                 if (error.response.status === 422) {
