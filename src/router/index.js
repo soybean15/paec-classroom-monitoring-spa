@@ -15,12 +15,7 @@ const routes = [
       {
         path: '/home',
         name: 'home',
-        component: HomeView
-      },
-      {
-        path: '/auth',
-        name: 'auth',
-        component: AuthView,
+        component: HomeView,
         children: [
           {
             path: '/login',
@@ -44,6 +39,12 @@ const routes = [
           },
        
         ]
+      },
+      {
+        path: '/auth',
+        name: 'auth',
+        component: AuthView,
+       
       },
       {
         path: '/user-profile',

@@ -52,11 +52,12 @@
       </div>
       <div v-else>
         <div class="flex mr-6">
-          <router-link to="/login" class="cursor-pointer p-2 hover:bg-blue-500"
+          <router-link @click="navStore.handleShowAuth" to="/login" class="cursor-pointer p-2 hover:bg-blue-500"
             >Sign in</router-link
           >
           <div class="p-1">|</div>
           <router-link
+          @click="navStore.handleShowAuth"
             to="/register"
             class="cursor-pointer p-2 hover:bg-blue-500"
             >Register</router-link
@@ -73,6 +74,7 @@
 import { useAuthStore } from "@/store/auth";
 import ModalViewVue from "@/views/components/ModalView.vue";
 import CreateProfileVIewVue from "../user/CreateProfileVIew.vue";
+import {useNavStore} from '@/store/nav'
 export default {
   components: {
     ModalViewVue,
@@ -81,8 +83,9 @@ export default {
   setup() {
     const authStore = useAuthStore();
      authStore.getUser()
-
-    return { authStore };
+     const navStore = useNavStore()
+    
+    return { authStore ,navStore};
   },
 };
 </script>

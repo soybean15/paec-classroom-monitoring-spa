@@ -57,9 +57,11 @@
 
 export default {
   setup() {
+
+   
    
 
-    return {  };
+    return { navStore };
   },
 };
 </script>
