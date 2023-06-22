@@ -1,12 +1,35 @@
 <template>
   <div class="bg-white">
-    <div class="flex flex-row-reverse p-3">
-      <input
-        type="text"
-        placeholder="Search"
-        class="input input-ghost p-0 h-7 w-full bg-slate-200 max-w-xs"
-      />
-    </div>
+    <div class="flex items-center py-1 px-3 shadow-lg">
+            <button class="btn btn-active btn-primary btn-sm">Search</button>
+            <input type="text" placeholder="Search"
+                class="input input-bordered input-info input-sm w-full bg-slate-100 mx-3 max-w-xs" />
+            <div class="flex grow"></div>
+            <div class="">
+                <div class="dropdown dropdown-bottom dropdown-end">
+                    <label tabindex="0" class="btn m-1 btn-success btn-sm ">Create
+                        <div class=""><svg fill="#00000" height="14px" width="14px" version="1.1" id="Layer_1"
+                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                viewBox="0 0 330 330" xml:space="preserve">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <path id="XMLID_225_"
+                                        d="M325.607,79.393c-5.857-5.857-15.355-5.858-21.213,0.001l-139.39,139.393L25.607,79.393 c-5.857-5.857-15.355-5.858-21.213,0.001c-5.858,5.858-5.858,15.355,0,21.213l150.004,150c2.813,2.813,6.628,4.393,10.606,4.393 s7.794-1.581,10.606-4.394l149.996-150C331.465,94.749,331.465,85.251,325.607,79.393z">
+                                    </path>
+                                </g>
+                            </svg></div>
+                    </label>
+                    <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-emerald-500 rounded-box w-52">
+                        <li class="hover:bg-emerald-700"><a>Course</a></li>
+                        <li class="hover:bg-emerald-700"><a>Subject</a></li>
+                    </ul>
+                </div>
+
+
+            </div>
+
+        </div>
     <div class="flex items-center pl-2">
       <div class="flex">
         <div class="tabs">

@@ -1,21 +1,47 @@
 <template>
-    <div class="bg-white p-3 z-0">
-        <div class="flex flex-row-reverse p-3">
+    <div class="bg-white  z-0">
+        <div class="flex items-center py-1 px-3 shadow-lg">
             <button class="btn btn-active btn-primary btn-sm">Search</button>
-            <input type="text" placeholder="Search" class="input input-bordered input-info input-sm w-full bg-slate-100 mx-3 max-w-xs" />
+            <input type="text" placeholder="Search"
+                class="input input-bordered input-info input-sm w-full bg-slate-100 mx-3 max-w-xs" />
+            <div class="flex grow"></div>
+            <div class="">
+                <div class="dropdown dropdown-bottom dropdown-end">
+                    <label tabindex="0" class="btn m-1 btn-success btn-sm ">Create
+                        <div class=""><svg fill="#00000" height="14px" width="14px" version="1.1" id="Layer_1"
+                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                viewBox="0 0 330 330" xml:space="preserve">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <path id="XMLID_225_"
+                                        d="M325.607,79.393c-5.857-5.857-15.355-5.858-21.213,0.001l-139.39,139.393L25.607,79.393 c-5.857-5.857-15.355-5.858-21.213,0.001c-5.858,5.858-5.858,15.355,0,21.213l150.004,150c2.813,2.813,6.628,4.393,10.606,4.393 s7.794-1.581,10.606-4.394l149.996-150C331.465,94.749,331.465,85.251,325.607,79.393z">
+                                    </path>
+                                </g>
+                            </svg></div>
+                    </label>
+                    <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-emerald-500 rounded-box w-52">
+                        <li class="hover:bg-emerald-700"><a>Course</a></li>
+                        <li class="hover:bg-emerald-700"><a>Subject</a></li>
+                    </ul>
+                </div>
+
+
+            </div>
 
         </div>
-        <div class="flex  items-center">
+
+        <div class="flex p-3 pb-0 items-center shadow-sm">
             <div>
                 <div class="tabs ">
-                    <a class="tab text-lg tab-active text-gray-700">Courses</a>
+                    <a class="tab " @click="academicsStore.changeTab" :class="{ 'tab-active': academicsStore.onCourseTab }">Courses</a>
 
-                    <a class="tab text-lg text-gray-700">Subjects</a>
+                    <a class="tab" @click="academicsStore.changeTab"  :class="{ 'tab-active': !academicsStore.onCourseTab }">Subjects</a>
                 </div>
 
             </div>
             <div class="flex grow"></div>
-            <div class="text-black  font-bold mx-3" >35 Subjects</div>
+            <div class="text-black  font-bold mx-3">35 Subjects</div>
             <div class="mx-3">
                 <select class="select select-primary bg-slate-50 text-black w-full max-w-xs ">
                     <option disabled selected>Filter</option>
@@ -27,21 +53,20 @@
             </div>
 
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 overflow-auto h-screen p-4">
-            <div v-for="subject in academicsStore.subjects" :key="subject.id">
 
-                <div class="card w-60 h-32 m-2 bg-base-100 shadow-xl image-full z-0">
-                    <figure><img class="w-60 " :src="subject.image" alt="bg" /></figure>
-                    <div class="card-body p-3  h-28">
-                        <h2 class="card-title text-sm h-20"> {{ subject.name }}</h2>
-                        <p class="text-xs">If a dog chews shoes whose shoes does he choose?</p>
 
-                    </div>
-                </div>
-                <img />
-
+        <div>
+            <div v-if="academicsStore.onCourseTab ">
+                <CoursesGrid :courses ='academicsStore.courses'/>
             </div>
+            <div v-else>
+                <SubjectGrid :subjects = 'academicsStore.subjects'/>  
+            </div>
+           
+           
+            
         </div>
+        
 
     </div>
 </template>
@@ -49,7 +74,14 @@
 <script>
 import { useAcademicStore } from '@/store/academics';
 import { onMounted } from 'vue';
+import SubjectGrid from './containers/SubjectGrid'
+import CoursesGrid from './containers/CoursesGrid.vue'
+import CoursesGridVue from './containers/CoursesGrid.vue';
 export default {
+    components:{
+        SubjectGrid,
+        CoursesGrid
+    },
     setup() {
         const academicsStore = useAcademicStore()
         onMounted(() => {
@@ -61,4 +93,10 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.tab-active {
+
+    font-weight: bold;
+    @apply text-zinc-600;
+}
+</style>
