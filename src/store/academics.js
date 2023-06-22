@@ -5,13 +5,18 @@ export const useAcademicStore = defineStore('academics',{
     state:()=>({
         stateSubjects:{},
         stateCourses:{},
-        stateOnCourseTab:true
+        stateOnCourseTab:true,
+        stateModal:{
+            subject:false,
+            
+        }
         
     }),
     getters:{
         subjects:(state)=>state.stateSubjects,
         courses:(state)=>state.stateCourses,
-        onCourseTab:(state)=>state.stateOnCourseTab
+        onCourseTab:(state)=>state.stateOnCourseTab,
+        modal:(state)=>state.stateModal
        
     },
     actions:{
@@ -24,6 +29,18 @@ export const useAcademicStore = defineStore('academics',{
         },
         changeTab(){
             this.stateOnCourseTab = ! this.stateOnCourseTab
+        },
+        openCreateModal(modalName){
+            if(modalName === "Subject"){
+             
+                this.stateModal.subject  = true
+               
+            }else{
+             
+                this.stateModal.subject  = false
+               
+            }
+
         }
      
     }

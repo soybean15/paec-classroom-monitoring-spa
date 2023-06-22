@@ -1,10 +1,12 @@
 <template>
     <div class="bg-white  z-0">
         <div class="flex items-center py-1 px-3 shadow-lg">
-            <button class="btn btn-active btn-primary btn-sm">Search</button>
+           
             <input type="text" placeholder="Search"
-                class="input input-bordered input-info input-sm w-full bg-slate-100 mx-3 max-w-xs" />
+                class="input input-bordered input-info input-sm w-full bg-slate-100 mx-1 max-w-xs" />
+                <button class="btn btn-active btn-primary btn-sm">Search</button>
             <div class="flex grow"></div>
+            
             <div class="">
                 <div class="dropdown dropdown-bottom dropdown-end">
                     <label tabindex="0" class="btn m-1 btn-success btn-sm ">Create
@@ -21,8 +23,8 @@
                             </svg></div>
                     </label>
                     <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-emerald-500 rounded-box w-52">
-                        <li class="hover:bg-emerald-700"><a>Course</a></li>
-                        <li class="hover:bg-emerald-700"><a>Subject</a></li>
+                        <li class="hover:bg-emerald-700"><a  onclick="my_modal_3.showModal()" @click="academicsStore.openCreateModal('Course',)">Course</a></li>
+                        <li class="hover:bg-emerald-700"><a  onclick="my_modal_3.showModal()"  @click="academicsStore.openCreateModal('Subject')">Subject</a></li>
                     </ul>
                 </div>
 
@@ -59,7 +61,7 @@
             <div v-if="academicsStore.onCourseTab ">
                 <CoursesGrid :courses ='academicsStore.courses'/>
             </div>
-            <div v-else>
+            <div  v-if="!academicsStore.onCourseTab ">
                 <SubjectGrid :subjects = 'academicsStore.subjects'/>  
             </div>
            
@@ -69,6 +71,16 @@
         
 
     </div>
+
+    <ModalView>
+    <div v-if="academicsStore.modal.subject">
+        <CreateSubjectModalVue/>
+     
+    </div>
+    <div  v-else>
+        <CreateCourseModal/>
+    </div>
+</ModalView>
 </template>
 
 <script>
@@ -76,11 +88,17 @@ import { useAcademicStore } from '@/store/academics';
 import { onMounted } from 'vue';
 import SubjectGrid from './containers/SubjectGrid'
 import CoursesGrid from './containers/CoursesGrid.vue'
-import CoursesGridVue from './containers/CoursesGrid.vue';
+import ModalView from '@/views/components/ModalView.vue'
+import CreateCourseModal from './modals/CreateCourseModal.vue'
+import CreateSubjectModalVue from './modals/CreateSubjectModal.vue';
+
 export default {
     components:{
         SubjectGrid,
-        CoursesGrid
+        CoursesGrid,
+        ModalView,
+        CreateCourseModal,
+        CreateSubjectModalVue
     },
     setup() {
         const academicsStore = useAcademicStore()

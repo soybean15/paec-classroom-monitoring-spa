@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 overflow-auto h-screen p-4">
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 overflow-auto h-screen p-4">
             <div v-for="course in courses" :key="course.id">
 
                 <div class="card w-60 h-32 m-2 my-1 bg-base-100 shadow-xl image-full z-0">
