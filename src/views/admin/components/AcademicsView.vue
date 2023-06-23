@@ -36,9 +36,9 @@
         <div class="flex p-3 pb-0 items-center shadow-sm">
             <div>
                 <div class="tabs ">
-                    <a class="tab " @click="academicsStore.changeTab" :class="{ 'tab-active': academicsStore.onCourseTab }">Courses</a>
+                    <a class="tab " @click="academicsStore.changeTab('Course')" :class="{ 'tab-active': academicsStore.tab.onCourse }">Courses</a>
 
-                    <a class="tab" @click="academicsStore.changeTab"  :class="{ 'tab-active': !academicsStore.onCourseTab }">Subjects</a>
+                    <a class="tab" @click="academicsStore.changeTab('Subject')"  :class="{ 'tab-active': !academicsStore.tab.onCourse }">Subjects</a>
                 </div>
 
             </div>
@@ -58,10 +58,10 @@
 
 
         <div>
-            <div v-if="academicsStore.onCourseTab ">
+            <div v-if="academicsStore.tab.onCourse ">
                 <CoursesGrid :courses ='academicsStore.courses'/>
             </div>
-            <div  v-if="!academicsStore.onCourseTab ">
+            <div  v-if="!academicsStore.tab.onCourse ">
                 <SubjectGrid :subjects = 'academicsStore.subjects'/>  
             </div>
            
@@ -74,11 +74,11 @@
 
     <ModalView>
     <div v-if="academicsStore.modal.subject">
-        <CreateSubjectModalVue/>
+        <CreateSubjectModalVue :store= 'academicsStore'/>
      
     </div>
     <div  v-else>
-        <CreateCourseModal/>
+        <CreateCourseModal :store='academicsStore'/>
     </div>
 </ModalView>
 </template>
