@@ -2,44 +2,58 @@
     <div class="mt-4 ">
         <div class="font-semibold  ">Create New Course</div>
         <div class="mb-4">
-            <input type="text" v-model="course.name" placeholder="Course Name" class="input input-bordered input-primary w-full max-w-xs" />
+            <input type="text" v-model="course.name" placeholder="Course Name"
+                class="input input-bordered input-primary w-full max-w-xs" />
         </div>
         <div>
-            <textarea v-model="course.description" class="textarea textarea-primary w-full  max-w-xs" placeholder="Bio"></textarea>
-          
+            <textarea v-model="course.description" class="textarea textarea-primary w-full  max-w-xs"
+                placeholder="Bio"></textarea>
+
         </div>
         <div class=" w-full my-3 mb-5 ">
-            
-            <button @click.prevent="store.addCourse(course)" class="btn btn-active btn-accent btn-sm ">Save</button>
+
+            <button @click="(event) => onSave(event)" class="btn btn-active btn-accent btn-sm ">Save</button>
         </div>
-       
-       
+
+
     </div>
-  
 </template>
 
 <script>
 import { onUnmounted, ref } from 'vue'
-export default {
-    props:['store'],
 
-    setup(){
+
+export default {
+    props: ['store'],
+
+    setup(props) {
 
         const course = ref({
-            name:null,
-            description:null
+            name: null,
+            description: null
         })
-        onUnmounted(()=>{
+        onUnmounted(() => {
             console.log('unmounter')
         })
 
-        return {course}
+
+        const onSave = (event) => {
+            
+            if (!course.value.name || course.value.name.trim() === '') {
+              
+                event.preventDefault();
+            } else {
+                props.store.addCourse(course)
+            }
+
+         
+        }
+
+        return { course, onSave }
 
     }
 
 }
 </script>
 
-<style>
-
-</style>
+<style></style>
