@@ -79,7 +79,7 @@ export const useAcademicStore = defineStore('academics', {
                     description: course.value.description
                 })
 
-                this.stateCourses.push(data.data.course);
+                this.stateCourses.courses.push(data.data.course);
                 console.log(this.stateCourses)
             } catch (error) {
 
@@ -102,15 +102,20 @@ export const useAcademicStore = defineStore('academics', {
                     unit: subject.value.unit
                 })
 
-                this.stateSubjects.push(data.data.subject);
+                this.stateSubjects.subjects.push(data.data.subject);
                 console.log(this.stateSubjects)
             } catch (error) {
-
-                if (error.response.status === 422) {
+                console.log(error)
+                if(error.response){
+                   
+                    if (error.response.status === 422) {
                     this.stateErrors = error.response.data
 
 
                 }
+                }
+
+                
             }
 
 
