@@ -47,14 +47,23 @@
     </div>
   </td>
   <th>
-    <button class="btn btn-ghost btn-xs">details</button>
+    <button onclick="my_modal_3.showModal()" class="btn btn-ghost btn-xs">details</button>
   </th>
+
+
+   <ModalView :isProfile="true"><UserProfileModal :user="user"/></ModalView>
 </template>
 
 <script>
+
 import {computed} from 'vue'
+import ModalView from '@/views/components/ModalView.vue';
+import UserProfileModal from '../modals/UserProfileModal.vue';
 export default {
   props: ["user"],
+  components:{
+    ModalView,UserProfileModal
+  },
   setup(props){
     
     const fullName = computed(()=>{

@@ -1,8 +1,8 @@
 <template>
-  <div class="flex h-screen bg-white w-full">
+  <div class="flex flex-col md:flex-row h-screen bg-white w-full">
     <div class="w-full ">
       <div class="text-black flex p-3 font-semibold text-lg">Dashboard</div>
-      <div class="flex gap-3 mx-5">
+      <div class="flex flex-wrap gap-3 mx-5">
 
         <div class="relative shadow-lg bg-violet-500 h-32 rounded-lg">
           <figure class="z-0 w-52 h-32"><img class="rounded-md object-center w-52 h-32" src="@/assets/img/teacher.jpg" alt="Shoes" /></figure>
@@ -68,6 +68,8 @@
       </div>
 
     </div>
+
+
     <div class="w-128 border-s-2">
       <div class="flex text-black p-3">Summary</div>
     </div>
