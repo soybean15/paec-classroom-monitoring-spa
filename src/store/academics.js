@@ -3,37 +3,58 @@ import axios from 'axios'
 
 export const useAcademicStore = defineStore('academics', {
     state: () => ({
-        stateSubjects: {},
-        stateCourses: {},
+        stateSubjects: {
+            subjects:{},
+            count:0
+        },
+        stateCourses: {
+            courses:{},
+            count:0
+        },
         stateTab: {
             onCourse: true,
-            itemCount: 0
+            label: 0
         },
         stateModal: {
             subject: false,
 
         },
-        stateErrors: []
+        stateErrors: [],
+       
+        
 
     }),
     getters: {
-        subjects: (state) => state.stateSubjects,
-        courses: (state) => state.stateCourses,
+        subjects: (state) => state.stateSubjects.subjects,
+        courses: (state) => state.stateCourses.courses,
         tab: (state) => state.stateTab,
         modal: (state) => state.stateModal,
-        errors: (state) => state.stateErrors
+        errors: (state) => state.stateErrors,
+        
 
     },
     actions: {
         async index() {
             const data = await axios.get('api/admin/academics');
-            this.stateSubjects = data.data.subjects
-            this.stateCourses = data.data.courses
+            this.stateSubjects.subjects = data.data.subjects
+            this.stateSubjects.count = data.data.subject_count
+            this.stateCourses.courses = data.data.courses
+            this.stateCourses.count = data.data.course_count
+
             console.log(this.stateSubjects)
+            this. changeTab('Course')
 
         },
         changeTab(tabName) {
-            this.stateTab.onCourse = tabName === 'Subject' ? false : true;
+           
+            if(tabName === 'Subject'){
+                this.stateTab.onCourse = false
+                this.stateTab.label = `${this.stateSubjects.count} ${tabName}(s)`
+            }else{
+                this.stateTab.onCourse = true
+                this.stateTab.label = `${this.stateCourses.count} ${tabName}(s)`
+            }
+
             console.log(this.stateTab)
         },
         openCreateModal(modalName) {

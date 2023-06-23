@@ -43,7 +43,7 @@
 
             </div>
             <div class="flex grow"></div>
-            <div class="text-black  font-bold mx-3">35 Subjects</div>
+            <div class="text-black  font-bold mx-3">{{academicsStore.tab.label}}</div>
             <div class="mx-3">
                 <select class="select select-primary bg-slate-50 text-black w-full max-w-xs ">
                     <option disabled selected>Filter</option>
