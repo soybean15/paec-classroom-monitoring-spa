@@ -4,12 +4,12 @@ import axios from 'axios'
 export const useAcademicStore = defineStore('academics', {
     state: () => ({
         stateSubjects: {
-            subjects:{},
-            count:0
+            subjects: {},
+            count: 0
         },
         stateCourses: {
-            courses:{},
-            count:0
+            courses: {},
+            count: 0
         },
         stateTab: {
             onCourse: true,
@@ -20,8 +20,8 @@ export const useAcademicStore = defineStore('academics', {
 
         },
         stateErrors: [],
-       
-        
+
+
 
     }),
     getters: {
@@ -30,7 +30,7 @@ export const useAcademicStore = defineStore('academics', {
         tab: (state) => state.stateTab,
         modal: (state) => state.stateModal,
         errors: (state) => state.stateErrors,
-        
+
 
     },
     actions: {
@@ -42,15 +42,15 @@ export const useAcademicStore = defineStore('academics', {
             this.stateCourses.count = data.data.course_count
 
             console.log(this.stateSubjects)
-            this. changeTab('Course')
+            this.changeTab('Course')
 
         },
         changeTab(tabName) {
-           
-            if(tabName === 'Subject'){
+
+            if (tabName === 'Subject') {
                 this.stateTab.onCourse = false
                 this.stateTab.label = `${this.stateSubjects.count} ${tabName}(s)`
-            }else{
+            } else {
                 this.stateTab.onCourse = true
                 this.stateTab.label = `${this.stateCourses.count} ${tabName}(s)`
             }
@@ -106,19 +106,24 @@ export const useAcademicStore = defineStore('academics', {
                 console.log(this.stateSubjects)
             } catch (error) {
                 console.log(error)
-                if(error.response){
-                   
+                if (error.response) {
+
                     if (error.response.status === 422) {
-                    this.stateErrors = error.response.data
+                        this.stateErrors = error.response.data
 
 
+                    }
                 }
-                }
 
-                
+
             }
 
 
+        },
+        async getSubjects(){
+            const data = await axios.get('api/admin/academics/subject')
+            this.stateSubjects.subjects = data.data.subjects
+            
         }
 
     }
