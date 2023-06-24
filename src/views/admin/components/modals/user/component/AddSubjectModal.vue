@@ -11,7 +11,7 @@
         </div>
         <div class="h-80 overflow-auto text-black">
 
-            <div class="bg-stone-200 m-2 p-2 shadow-lg rounded-md cursor-pointer" v-for="subject in academicsStore.subjects" :key="subject.id">
+            <div class="bg-stone-200 m-2 p-2 shadow-lg rounded-md cursor-pointer" @click="onSelected(subject)" :class="{'bg-stone-300':subject.selected}" v-for="subject in academicsStore.subjects" :key="subject.id">
                 <div class="flex">
                     <div class="font-semibold">{{ subject.name }}</div>
                     <div class="grow"></div>
@@ -35,7 +35,19 @@ export default {
             academicsStore.getSubjects()
         })
 
-        return { academicsStore }
+        let selectedSubject = null
+
+        const onSelected=(subject)=>{
+            if(selectedSubject){
+                selectedSubject.selected = false
+            }
+            subject.selected = true
+            selectedSubject = subject
+
+        }
+
+       
+        return { academicsStore ,onSelected}
     }
 
 }

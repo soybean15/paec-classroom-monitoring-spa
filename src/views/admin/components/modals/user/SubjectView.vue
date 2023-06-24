@@ -58,7 +58,7 @@
 </template>
 
 <script>
-import Modal2View from '@/views/components/Modal2View.vue'
+import Modal2View from '@/views/components/ChildModalView.vue'
 import AddSubjectModal from './component/AddSubjectModal.vue'
 
 export default {

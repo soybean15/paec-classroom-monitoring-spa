@@ -1,5 +1,6 @@
 import {defineStore} from 'pinia'
 import axios from 'axios'
+
 import router from '../router/index'
 
 export const useUserStore = defineStore('users',{
@@ -11,13 +12,15 @@ export const useUserStore = defineStore('users',{
             teacher_btn:false,
             student_btn:false
         },
-        stateRole:2
+        stateRole:2,
+        stateOnPendingModal:false
         
     }),
     getters:{
         pendingRequest:(state)=>state.statePending,
         users:(state)=>state.stateUsers,
         roleButtonState:(state)=>state.stateButton,
+        onPendingModal:(state)=>state.stateOnPendingModal
        
     },
     actions:{
@@ -31,6 +34,7 @@ export const useUserStore = defineStore('users',{
         async getPendingUsers(){
             const data = await axios.get('api/admin/users/pending')
             this.statePending = data.data.pendingUsers
+           this.stateOnPendingModal = true
 
             
         },
