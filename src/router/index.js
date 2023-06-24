@@ -74,9 +74,12 @@ const routes = [
         component: ()=>import('../views/admin/components/DashBoardView.vue')
       },
       {
-        path: '/faculty',
-        name: 'faculty',
-        component: ()=>import('../views/admin/components/FacultyView.vue')
+        path: '/user',
+        name: 'user',
+     
+        component: ()=>import('../views/admin/components/FacultyView.vue'),
+        
+        
       },
       {
         path: '/report',

@@ -9,60 +9,44 @@
                 <div>{{ fullName }}</div>
             </div>
 
-            <div class="bg-stone-200 h-full mt-5">
+            <div class="bg-stone-100  h-full mt-5 border-y-1 border-black shadow-xl">
 
-                <div class="flex justify-center items-center p-3 border bg-white shadow-md">
+                <div :class="{'bg-white shadow-md  text-black':button.active, 'hover:bg-stone-200 text-gray-600':!button.active}" @click="navigate(button)" class="flex  justify-center items-center p-3 border cursor-pointer"  v-for="button in sideButtons" :key="button.name">
 
-                    <div class="text-black   font-bold font-sans ">CLASSES</div>
+                 <div class="   font-bold font-sans ">{{button.label}}</div>
                 </div>
-                <div class="flex justify-center items-center p-3 border  ">
-                    <div class="text-black    font-bold font-sans">Subjects</div>
-                </div>
-                <div class="flex justify-center items-center p-3 border">
-                    <div class="text-black    font-bold font-sans">Calendar</div>
-                </div>
-                <div class="flex justify-center items-center p-3 border">
-                    <div class="text-black    font-bold font-sans">Report</div>
-                </div>
+               
             </div>
 
 
         </div>
 
 
-        <div class="  grow">
-            <div class=" m-5 rounded-lg shadow-xl overflow-hidden">
-                <ul class="steps steps-vertical w-full ">
-                    <li class="step step-primary  text-black w-full">
-                        <div class="bg-white w-full h-full flex flex-col justify-center px-4">
-                            <div class="flex text-md font-semibold">Math</div>
-                            <div  class="flex text-xs text-gray-600 ">Schedules</div>
-                        </div>
-                    </li>
-                    <li class="step step-primary  text-black w-full">
-                        <div class="bg-white w-full h-full flex flex-col justify-center px-4">
-                            <div class="flex text-md font-semibold">English</div>
-                            <div  class="flex text-xs text-gray-600 ">Schedules</div>
-                        </div>
-                    </li>
-                    <li class="step step-primary  text-black w-full">
-                        <div class="bg-white w-full h-full flex flex-col justify-center px-4">
-                            <div class="flex text-md font-semibold">Programming 1</div>
-                            <div  class="flex text-xs text-gray-600 ">Schedules</div>
-                        </div>
-                    </li>
-                </ul>
+        <div class="flex flex-col  grow">
+            <div v-if="sideButtons[0].active">
+                <ClassesView/>
             </div>
+            <div v-if="sideButtons[1].active">
+                <SubjectView/>
+            </div>
+           
+            
         </div>
 
     </div>
 </template>
 
 <script>
-import { computed } from 'vue'
 
+import { computed,ref } from 'vue'
+import ClassesView from './user/ClassesView.vue'
+import SubjectView from './user/SubjectView.vue'
 export default {
     props: ['user'],
+    components:{
+        ClassesView,
+        SubjectView
+    },  
     setup(props) {
 
         const fullName = computed(() => {
@@ -72,7 +56,28 @@ export default {
             }
         })
 
-        return { fullName }
+
+        const sideButtons = ref([
+            {label: 'Classes', active:true},
+            {label: 'Subject', active:false},
+            {label: 'Calendar', active:false},
+            {label: 'Report', active:false},
+        ])
+
+        let activeButtom = sideButtons.value[0]
+
+        const navigate=(button)=>{
+          
+           
+            activeButtom.active = false
+            
+            button.active = true
+            activeButtom = button 
+            console.log(sideButtons)
+
+        }
+
+        return { fullName, sideButtons,navigate }
 
     }
 }
