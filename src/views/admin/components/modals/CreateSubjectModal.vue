@@ -16,12 +16,11 @@
             <label class=" w-40 flex mr-5 text-sm">Year Level</label>
             <div class="flex w-full">
                 <select class="select select-primary select-sm w-full">
-                <option disabled selected>Select year level</option>
-                <option>Game of Thrones</option>
-                <option>Lost</option>
-                <option>Breaking Bad</option>
-                <option>Walking Dead</option>
-            </select>
+                    <option disabled selected>Select year level</option>
+                    <option v-for="year in yearLevel" :key="year.value" @click="subject.yearLevel = year.value">
+                        {{ year.label }}</option>
+
+                </select>
             </div>
 
         </div>
@@ -29,22 +28,53 @@
             <label class=" w-40 flex mr-5 text-sm">Semester</label>
             <div class="flex w-full gap-4">
                 <div class="flex">
-                    <input type="radio" name="radio-2" class="radio radio-primary radio-sm" checked />
+                    <input type="radio" name="radio-2" class="radio radio-primary radio-sm" value="1"  v-model="subject.semester" checked />
                     <label>1st semester</label>
                 </div>
 
                 <div class="flex">
-                    <input type="radio" name="radio-2" class="radio radio-primary radio-sm" checked />
+                    <input type="radio" name="radio-2" class="radio radio-primary radio-sm" value="2" v-model="subject.semester"  />
                     <label>2nd semester</label>
                 </div>
             </div>
 
         </div>
 
-        <div class="flex items-center mb-1">
+        <div class="flex items-center mb-1 ">
             <label class=" w-40 flex mr-5 text-sm">Course</label>
-            <input type="number" min="1" max="10" v-model="subject.unit" placeholder="Number of units"
-                class="input input-bordered input-sm input-primary w-full" />
+            <div class="flex flex-col  w-full">
+
+                <input type="text" @input="selectCourse" id="search" placeholder="Type here..."
+                    class="input input-bordered input-sm input-primary" v-model="searchTerm" list="searchCourses">
+
+
+                <datalist class="text-sm text-black" id="searchCourses">
+
+                    <option v-for="course in searchCourses" :key="course.id" :value="course.id">
+                        {{ course.name }}
+                    </option>
+                </datalist>
+                <!-- <div class="relative">
+
+                <input type="text" id="search" placeholder="Type here..."
+                    class="input input-bordered input-sm input-primary" v-model="searchTerm" list="searchCourses">
+
+
+                <select class="text-sm text-black" >
+
+                    <option v-for="course in searchCourses" :key="course.id">
+                        {{ course.name }}
+                    </option>
+                </select>
+
+                </div> -->
+
+
+
+
+
+
+            </div>
         </div>
 
 
@@ -59,19 +89,28 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref, onMounted, computed } from 'vue';
+
 export default {
     props: ['store'],
 
     setup(props) {
         const subject = ref({
             name: null,
-            unit: 1
+            unit: 1,
+            yearLevel: null,
+            semester: null,
+            course: null
+
         })
+
+        let _course = null
+
+
 
         const onSave = (event) => {
 
-            if (!subject.value.name || subject.value.name.trim() === '') {
+            if (!subject.value.name || subject.value.name.trim() === '' || subject.yearLevel) {
 
                 event.preventDefault();
             } else {
@@ -88,7 +127,52 @@ export default {
             { label: "Third Year", value: 1 },
             { label: "Fourth Year", value: 1 },
         ]
-        return { subject, onSave, }
+
+
+        let searchTerm = ref('')
+
+        const searchCourses = computed(() => {
+            if (searchTerm.value === '') {
+                return props.store.courses
+                //.map(course => "course.name");
+            }
+
+            let matches = 0
+
+            return props.store.courses.filter(course => {
+                if (
+                    course.name.toLowerCase().includes(searchTerm.value.toLowerCase())
+                    && matches < 10
+                ) {
+                    matches++
+                    return course
+                }
+            })
+        });
+
+
+        const selectCourse = (e) => {
+            console.log(e.data)
+            let id = e.data
+
+            subject.value.course = id
+            _course = props.store.courses.find(course => course.id == id);
+            console.log(_course)
+            if (_course) {
+                searchTerm.value = _course.name
+            }
+
+
+        }
+
+        return {
+            subject,
+            onSave,
+            yearLevel,
+            searchTerm,
+            searchCourses,
+            selectCourse
+        }
     }
 
 }
