@@ -113,9 +113,9 @@ export default {
             if (!subject.value.name || subject.value.name.trim() === '' || subject.yearLevel) {
 
                 event.preventDefault();
-            } else {
+            } 
                 props.store.addSubject(subject)
-            }
+            
 
 
 
