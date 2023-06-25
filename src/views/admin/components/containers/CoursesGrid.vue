@@ -6,7 +6,7 @@
                     <figure><img class="w-60 " :src="course.image" alt="bg" /></figure>
                     <div class="card-body p-3  h-28">
                         <h2 class="card-title text-sm h-20 text-white"> {{ course.name }}</h2>
-                        <p class="text-xs">If a dog chews shoes whose shoes does he choose?</p>
+                        <p class="text-xs">{{ course.description }}</p>
 
                     </div>
                 </div>
