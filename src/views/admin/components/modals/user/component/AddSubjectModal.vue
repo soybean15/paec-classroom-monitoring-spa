@@ -9,15 +9,54 @@
             </div>
 
         </div>
+        <div class="flex px-3 text-black items-center">
+            <div>Filter</div>
+            <div class="flex flex-row-reverse grow">
+                <select class="select select-primary select-sm w-28 mx-0.5 bg-stone-100 font-thin">
+                    <option disabled selected>Semester</option>
+                    <option>None</option>
+                    <option>Game of Thrones</option>
+                    <option>Lost</option>
+                    <option>Breaking Bad</option>
+                    <option>Walking Dead</option>
+                </select>
+                <select class="select select-primary select-sm w-28 mx-0.5 bg-stone-100 font-thin">
+                    <option disabled selected>Year Level</option>
+                    <option>None</option>
+                    <option>Game of Thrones</option>
+                    <option>Lost</option>
+                    <option>Breaking Bad</option>
+                    <option>Walking Dead</option>
+                </select>
+                <select class="select select-primary select-sm w-28 mx-0.5 bg-stone-100 font-thin">
+                    <option disabled selected>Course</option>
+                    <option>None</option>
+                    <option>Game of Thrones</option>
+                    <option>Lost</option>
+                    <option>Breaking Bad</option>
+                    <option>Walking Dead</option>
+                </select>
+
+            </div>
+        </div>
         <div class="h-80 overflow-auto text-black">
 
-            <div class="bg-stone-200 m-2 p-2 shadow-lg rounded-md cursor-pointer" @click="onSelected(subject)" :class="{'bg-stone-300':subject.selected}" v-for="subject in academicsStore.subjects" :key="subject.id">
+            <div class="bg-stone-200 m-2 p-2 shadow-lg rounded-md cursor-pointer" @click="onSelected(subject)"
+                :class="{ 'bg-stone-300': subject.selected }" v-for="subject in academicsStore.subjects" :key="subject.id">
                 <div class="flex">
                     <div class="font-semibold">{{ subject.name }}</div>
                     <div class="grow"></div>
                     <div class="text-gray-600 text-xs">Created at : {{ subject.formatted_date }} </div>
                 </div>
-                <div class="flex">Units: {{subject.unit}}</div>
+                <div class="flex">
+                    <div class="flex text-gray-600 text-xs ">
+                        <div  > {{ `Year Level: ${subject.year_level}` }}</div>
+                        <div class="mx-5"> {{ `Semester: ${subject.semester} `}}</div>
+                    </div>
+                    <div class="grow"></div>
+                    <div class="text-gray-800 text-xs">Units: {{ subject.unit }}</div>
+                </div>
+               
             </div>
 
         </div>
@@ -35,19 +74,22 @@ export default {
             academicsStore.getSubjects()
         })
 
-        let selectedSubject = null
+        
 
-        const onSelected=(subject)=>{
-            if(selectedSubject){
-                selectedSubject.selected = false
+        const onSelected = (subject) => {
+            
+            if(!subject.selected){
+                subject.selected =true
+            }else{
+                subject.selected =false
             }
-            subject.selected = true
-            selectedSubject = subject
+            console.log(subject)
+        
 
         }
 
-       
-        return { academicsStore ,onSelected}
+
+        return { academicsStore, onSelected }
     }
 
 }
