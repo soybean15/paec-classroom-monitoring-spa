@@ -38,13 +38,14 @@ export default {
 
 
         const onSave = (event) => {
+            console.log(course.value.name )
             
             if (!course.value.name || course.value.name.trim() === '') {
               
                 event.preventDefault();
-            } else {
+            } 
                 props.store.addCourse(course)
-            }
+            
 
          
         }
