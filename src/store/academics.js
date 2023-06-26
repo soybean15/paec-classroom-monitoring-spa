@@ -126,6 +126,7 @@ export const useAcademicStore = defineStore('academics', {
         async getCourses(){
             const data = await axios.get('api/admin/academics/course')
             this.stateCourses.courses = data.data.courses
+            console.log(this.stateCourses)
             
         }
 
