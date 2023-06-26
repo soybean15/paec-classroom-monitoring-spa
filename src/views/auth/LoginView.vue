@@ -11,7 +11,7 @@
         <input type="text" v-model="authStore.form.email" placeholder="example@gmail.com" class="input input-bordered" />
       </div>
       <div class="form-control">
-        <label class="label flex">
+        <label class="label flex"> 
           <span class="label-text" >Password</span>
           <div class="flex grow"></div>
           <span class="label-text text-red-400" v-if="authStore.errors.password">{{  authStore.errors.password[0]}}</span>

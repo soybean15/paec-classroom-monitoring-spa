@@ -112,6 +112,7 @@ export const useAcademicStore = defineStore('academics', {
               if (error.response) {
                 if (error.response.status === 422) {
                   this.stateErrors = error.response.data;
+            
                 }
               }
             }
