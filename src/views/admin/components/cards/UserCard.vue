@@ -39,13 +39,13 @@
     </div>
   </td>
   <th>
-    <button onclick="my_modal_3.showModal()" class="btn btn-ghost btn-xs">details</button>
+    <button onclick="my_modal_3.showModal()" @click="store.selectUser(user)"  class="btn btn-ghost btn-xs">details</button>
   </th>
 
 
   <ModalView :isProfile="true">
 
-    <UserProfileModal :user="user" />
+    <UserProfileModal :user='user' :store="store" />
 
   </ModalView>
 </template>
@@ -56,7 +56,7 @@ import { computed } from 'vue'
 import ModalView from '@/views/components/ModalView.vue';
 import UserProfileModal from '../modals/UserProfileModal.vue';
 export default {
-  props: ["user", "store"],
+  props: ["user","store"],
   components: {
     ModalView, UserProfileModal
   },

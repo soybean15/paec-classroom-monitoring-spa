@@ -118,8 +118,13 @@ export const useAcademicStore = defineStore('academics', {
             }
           }
           ,
-        async getSubjects(){
-            const data = await axios.get('api/admin/academics/subject')
+        async getSubjects(id){
+            let path = `api/admin/academics/subject/${-1}`
+            if(id){
+                 path = `api/admin/academics/subject/${id}`
+            }
+
+            const data = await axios.get(path)
             this.stateSubjects.subjects = data.data.subjects
             
         },

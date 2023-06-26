@@ -92,7 +92,7 @@
 
             <tr class=" " v-for="user in userStore.users.data" :key="user.id">
 
-              <UserCard :user="user" :store="userStore" />
+              <UserCard :user="user" :store="userStore"  />
             </tr>
 
 

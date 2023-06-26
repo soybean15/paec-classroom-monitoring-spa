@@ -1,8 +1,8 @@
 <template>
-    <div class=" flex bg-stone-200 h-full w-full  ">
+    <div class=" flex bg-stone-200 h-full w-full  "  v-if="store.selectedUser">
         <div class=" flex flex-col border-r-2 w-56 shadow-lg bg-white">
             <div class="flex justify-center  p-5 pb-3">
-                <img class="w-32" :src="user.user_profile.image">
+                <img class="w-32" :src="store.selectedUser.user_profile.image">
             </div>
             <div class="flex  items-center justify-center text-black font-semibold w-full">
                 <div class="bg-black p-1 rounded-md font-semibold font-sans text-xs mx-1 text-white">Name</div>
@@ -27,7 +27,7 @@
                 <ClassesView/>
             </div>
             <div v-if="sideButtons[1].active">
-                <SubjectView/>
+                <SubjectView :store="adminStore"/>
             </div>
            
             
@@ -41,18 +41,21 @@
 import { computed,ref } from 'vue'
 import ClassesView from './user/ClassesView.vue'
 import SubjectView from './user/SubjectView.vue'
+import { useAdminStore } from '@/store/admin'
 export default {
-    props: ['user'],
+    props: ['user','store'],
     components:{
         ClassesView,
         SubjectView
     },  
     setup(props) {
 
-        const fullName = computed(() => {
-            if (props.user.user_profile) {
+        const adminStore = useAdminStore()
 
-                return `${props.user.user_profile.firstname} ${props.user.user_profile.lastname}`
+        const fullName = computed(() => {
+            if (props.store.selectedUser.user_profile) {
+
+                return `${props.store.selectedUser.user_profile.firstname} ${props.store.selectedUser.user_profile.lastname}`
             }
         })
 
@@ -77,7 +80,12 @@ export default {
 
         }
 
-        return { fullName, sideButtons,navigate }
+        return { 
+            fullName, 
+            sideButtons,
+            navigate,
+            adminStore
+        }
 
     }
 }

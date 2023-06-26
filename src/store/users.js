@@ -6,6 +6,7 @@ import router from '../router/index'
 export const useUserStore = defineStore('users',{
     state:()=>({
 
+        stateSelectedUser:null,    
         statePending:{},
         stateUsers:{},
         stateButton:{
@@ -20,9 +21,11 @@ export const useUserStore = defineStore('users',{
         pendingRequest:(state)=>state.statePending,
         users:(state)=>state.stateUsers,
         roleButtonState:(state)=>state.stateButton,
-        onPendingModal:(state)=>state.stateOnPendingModal
+        onPendingModal:(state)=>state.stateOnPendingModal,
+        selectedUser:(state)=>state.stateSelectedUser
        
     },
+    
     actions:{
         async index(){
             const data = await axios.get('api/admin')
@@ -38,6 +41,8 @@ export const useUserStore = defineStore('users',{
 
             
         },
+
+
         async getUserByRole(path,roleId){
 
             this.stateRole = roleId != null ? roleId : this.stateRole;
@@ -65,7 +70,16 @@ export const useUserStore = defineStore('users',{
              this.statePending.count -=1 
              this.getUserByRole(null,2)
             
+        },
+
+        async addSubjectsOnTeacher(subjects){
+
+        },
+        selectUser(user){
+            this.stateSelectedUser = user
+            console.log(this.stateSelectedUser)
         }
+    
     }
 
 

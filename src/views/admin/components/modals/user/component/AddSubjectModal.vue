@@ -1,5 +1,6 @@
 <template>
     <div class=" flex flex-col w-full h-full bg-white p-2 ">
+        {{ userStore.selectedUser.user_profile.firstname }}
         <div class="flex items-center p-2">
             <div class=" font-semibold text-black">Select Subject(s)</div>
             <div class="grow"></div>
@@ -13,10 +14,10 @@
             <div>Filter</div>
             <div class="flex overflow-x-hidden grow" v-dragscroll="true">
 
-
+                <div @click="academicsStore.getSubjects()" class="p-1 bg-slate-200 mx-1 rounded-lg cursor-pointer">All</div>
 
                 <div v-for="course in academicsStore.courses" :key="course.id">
-                    <div class="p-1 bg-slate-200 mx-1 rounded-lg cursor-pointer">
+                    <div @click="academicsStore.getSubjects(course.id)" class="p-1 bg-slate-200 mx-1 rounded-lg cursor-pointer">
                         {{ course.name }}
                     </div>
                 </div>
@@ -60,6 +61,8 @@
                     </div>
 
                     {{ subject.name }}
+
+               
                 </div>
             </div>
         </div>
@@ -80,12 +83,14 @@
 import { useAcademicStore } from '@/store/academics'
 import { dragscroll } from 'vue-dragscroll'
 import { onMounted, ref } from 'vue'
+import { useUserStore } from '@/store/users'
 export default {
     directives: {
         dragscroll
     },
     setup() {
         const academicsStore = useAcademicStore()
+        const userStore = useUserStore()
         onMounted(() => {
             academicsStore.getSubjects()
             academicsStore.getCourses()
@@ -123,7 +128,8 @@ export default {
             academicsStore,
             onSelected,
             selectedSubjects,
-            onRemove
+            onRemove,
+            userStore
          }
     }
 

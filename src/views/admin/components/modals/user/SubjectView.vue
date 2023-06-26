@@ -1,10 +1,18 @@
 <template>
     <div class=" flex-1  ">
-        <div class="text black">Subjects</div>
 
-        <div>
+
+        <div class="text-black font-semibold mt-5 px-4 flex flex-col">
+            
+            <div class="mr-10 flex">Subjects</div>
+            <div class="font-thin text-xs text-gray-500 flex">{{`School year: ${store.settings[0].school_year} Semester ${store.settings[0].semester}`}}</div>
+          
+        </div>
+
+        <div class="px-3 ">
+          
             <ul >
-                <li class="hover:bg-transparent px-3 py-0.5">
+                <li class="hover:bg-transparent py-0.5">
                     <div class="collapse bg-white ">
                         <input type="checkbox"  />
                         
@@ -18,7 +26,7 @@
                         </div>
                     </div>
                 </li>
-                <li class="hover:bg-transparent px-3 py-0.5">
+                <li class="hover:bg-transparent py-0.5">
                     <div class="collapse bg-white ">
                         <input type="checkbox"  />
                         
@@ -32,7 +40,7 @@
                         </div>
                     </div>
                 </li>
-                <li class="hover:bg-transparent px-3 py-0.5">
+                <li class="hover:bg-transparent py-0.5">
                     <div class="collapse bg-white ">
                         <input type="checkbox"  />
                         
@@ -62,6 +70,8 @@ import Modal2View from '@/views/components/ChildModalView.vue'
 import AddSubjectModal from './component/AddSubjectModal.vue'
 
 export default {
+    props:['store'],
+    
     components:{
         AddSubjectModal,
         Modal2View
