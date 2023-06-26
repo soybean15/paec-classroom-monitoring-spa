@@ -1,13 +1,17 @@
 <template>
     <div class="mt-4 ">
         <div class="font-semibold  ">Create New Course</div>
+
+        <div v-if="store.errors.errors"> 
+            <span class="label-text text-red-400" v-if="store.errors.errors.name"> {{ store.errors.errors.name[0] }} </span>
+        </div>
         <div class="mb-4">
             <input type="text" v-model="course.name" placeholder="Course Name"
                 class="input input-bordered input-primary w-full max-w-xs" />
         </div>
         <div>
             <textarea v-model="course.description" class="textarea textarea-primary w-full  max-w-xs"
-                placeholder="Bio"></textarea>
+                placeholder="Description"></textarea>
 
         </div>
         <div class=" w-full my-3 mb-5 ">
