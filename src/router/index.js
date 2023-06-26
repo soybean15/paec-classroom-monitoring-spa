@@ -91,6 +91,11 @@ const routes = [
         name: 'academics',
         component: ()=>import('../views/admin/components/AcademicsView.vue')
       },
+      {
+        path: '/settings',
+        name: 'settings',
+        component: ()=>import('../views/admin/components/SettingsView.vue')
+      },
     ]
    
   },
