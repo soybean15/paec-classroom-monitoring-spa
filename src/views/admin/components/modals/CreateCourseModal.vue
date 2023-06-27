@@ -7,7 +7,7 @@
         </div>
         <div>
             <textarea v-model="course.description" class="textarea textarea-primary w-full  max-w-xs"
-                placeholder="Bio"></textarea>
+                placeholder="Description"></textarea>
 
         </div>
         <div class=" w-full my-3 mb-5 ">
@@ -15,8 +15,8 @@
             <button @click="(event) => onSave(event)" class="btn btn-active btn-accent btn-sm ">Save</button>
         </div>
 
-
-    </div>
+</div>
+    
 </template>
 
 <script>
