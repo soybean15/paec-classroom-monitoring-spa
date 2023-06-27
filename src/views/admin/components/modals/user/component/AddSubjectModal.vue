@@ -69,7 +69,7 @@
         <div class="w-full flex pb-2">
             <div class="grow"></div>
             <div class="mx-4">
-                <button class="btn btn-success btn-xs mx-1">Submit</button>
+                <button @click="userStore.addSubjectsOnTeacher(selectedSubjects,settings)" class="btn btn-success btn-xs mx-1">Submit</button>
                 <button class="btn btn-error btn-xs mx-1">Close</button>
             </div>
 
@@ -85,6 +85,7 @@ import { dragscroll } from 'vue-dragscroll'
 import { onMounted, ref } from 'vue'
 import { useUserStore } from '@/store/users'
 export default {
+    props:['settings'],
     directives: {
         dragscroll
     },

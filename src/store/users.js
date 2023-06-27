@@ -72,8 +72,22 @@ export const useUserStore = defineStore('users',{
             
         },
 
-        async addSubjectsOnTeacher(subjects){
+        async addSubjectsOnTeacher(subjects,settings){
+            const data = await axios.post(`api/admin/users/teacher/${this.stateSelectedUser.id}/subjects`,{
+                subjects:subjects,
+                settings:settings
+            })
 
+        },
+        async getTeacherSubjects(settings){
+            const data = await axios.get('api/admin/users/teacher/subjects',{
+                params:{
+                    user_id: this.stateSelectedUser.id,
+                    settings: settings
+                }
+              
+
+            })
         },
         selectUser(user){
             this.stateSelectedUser = user
