@@ -7,8 +7,10 @@
             <div class="flex  items-center justify-center text-black font-semibold w-full">
                 <div class="bg-black p-1 rounded-md font-semibold font-sans text-xs mx-1 text-white">Name</div>
                 <div>{{ fullName }}</div>
+              
             </div>
-
+            <div class="text-black">{{ store.selectedUser.name }}</div>
+            <div class="text-black">{{ store.selectedUser.id }}</div>
             <div class="bg-stone-100  h-full mt-5 border-y-1 border-black shadow-xl">
 
                 <div :class="{'bg-white shadow-md  text-black':button.active, 'hover:bg-stone-200 text-gray-600':!button.active}" @click="navigate(button)" class="flex  justify-center items-center p-3 border cursor-pointer"  v-for="button in sideButtons" :key="button.name">

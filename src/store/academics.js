@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
+import { useUserStore } from './users';
 
 export const useAcademicStore = defineStore('academics', {
     state: () => ({
@@ -118,13 +119,23 @@ export const useAcademicStore = defineStore('academics', {
             }
           }
           ,
-        async getSubjects(id){
+        async getSubjects(id,settings){
+
+
+            const userStore = useUserStore()
+            console.log(userStore.selectedUser)
             let path = `api/admin/academics/subject/${-1}`
             if(id){
                  path = `api/admin/academics/subject/${id}`
             }
 
-            const data = await axios.get(path)
+            const data = await axios.get(path,{
+                params:{
+                    user_id:userStore.selectedUser.id,
+                    settings:settings
+
+                }
+            })
             this.stateSubjects.subjects = data.data.subjects
             
         },

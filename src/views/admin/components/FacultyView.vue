@@ -131,8 +131,6 @@ export default {
     const userStore = useUserStore();
     userStore.getPendingUsers();
 
-    //first param should be null,
-    //second param: 2 on teachers 3 on student
     userStore.getUserByRole(null, 2);
 
     return { userStore };

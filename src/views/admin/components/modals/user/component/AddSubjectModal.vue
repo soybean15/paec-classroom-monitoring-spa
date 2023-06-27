@@ -14,10 +14,10 @@
             <div>Filter</div>
             <div class="flex overflow-x-hidden grow" v-dragscroll="true">
 
-                <div @click="academicsStore.getSubjects()" class="p-1 bg-slate-200 mx-1 rounded-lg cursor-pointer">All</div>
+                <div @click="academicsStore.getSubjects(null, settings)" class="p-1 bg-slate-200 mx-1 rounded-lg cursor-pointer">All</div>
 
                 <div v-for="course in academicsStore.courses" :key="course.id">
-                    <div @click="academicsStore.getSubjects(course.id)" class="p-1 bg-slate-200 mx-1 rounded-lg cursor-pointer">
+                    <div @click="academicsStore.getSubjects(course.id,settings)" class="p-1 bg-slate-200 mx-1 rounded-lg cursor-pointer">
                         {{ course.name }}
                     </div>
                 </div>
@@ -69,7 +69,7 @@
         <div class="w-full flex pb-2">
             <div class="grow"></div>
             <div class="mx-4">
-                <button @click="userStore.addSubjectsOnTeacher(selectedSubjects,settings)" class="btn btn-success btn-xs mx-1">Submit</button>
+                <button @click="onSubmit" class="btn btn-success btn-xs mx-1">Submit</button>
                 <button class="btn btn-error btn-xs mx-1">Close</button>
             </div>
 
@@ -89,11 +89,11 @@ export default {
     directives: {
         dragscroll
     },
-    setup() {
+    setup(props) {
         const academicsStore = useAcademicStore()
         const userStore = useUserStore()
         onMounted(() => {
-            academicsStore.getSubjects()
+          
             academicsStore.getCourses()
         })
 
@@ -125,12 +125,25 @@ export default {
         }
 
 
+        const onSubmit =()=>{
+            userStore.addSubjectsOnTeacher(selectedSubjects.value,props.settings)
+            selectedSubjects.value = []
+
+          
+  academicsStore.subjects.forEach((subject) => {
+    subject.selected = false;
+  });
+
+        }
+
+
         return {
             academicsStore,
             onSelected,
             selectedSubjects,
             onRemove,
-            userStore
+            userStore,
+            onSubmit
          }
     }
 

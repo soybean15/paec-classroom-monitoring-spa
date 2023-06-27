@@ -26,7 +26,7 @@
 
       <div class="h-20 bg-stone-white flex  items-center px-2.5 mx-4 ">
         <div class="flex  mb-1">
-          <label class="flex  p-5 text-md  text-black w-64  justify-start">Semester</label>
+          <label class="flex text-md  text-black w-64  justify-start">Semester</label>
         </div>
         <div class=" grow"></div>
         <div class="flex gap-4  w-40">
@@ -47,7 +47,7 @@
 
       <div class="h-20 bg-stone-200 flex  items-center   px-2.5 mx-4">
         <div class="flex items-center mb-1 ">
-          <label class="  flex mr-5 pl-5 text-md text-black w-64 ">Start of school year </label>
+          <label class="  flex  text-md text-black w-64 ">Start of school year </label>
         </div>
         <div class="grow"></div>
         <div class="flex w-40   justify-start">

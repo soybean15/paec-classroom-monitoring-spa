@@ -1,6 +1,6 @@
 import {defineStore} from 'pinia'
 import axios from 'axios'
-
+import { useAdminStore } from './admin'
 import router from '../router/index'
 
 export const useUserStore = defineStore('users',{
@@ -80,6 +80,8 @@ export const useUserStore = defineStore('users',{
                 settings:settings
             })
 
+            this.stateTeacherSubjects = this.stateTeacherSubjects.concat(data.data.subjects)
+          
         },
         async getTeacherSubjects(settings){
             const data = await axios.get('api/admin/users/teacher/subjects',{
@@ -90,9 +92,12 @@ export const useUserStore = defineStore('users',{
             })
             this.stateTeacherSubjects = data.data.subjects
         },
+
         selectUser(user){
             this.stateSelectedUser = user
-            console.log(this.stateSelectedUser)
+            const adminStore = useAdminStore()
+            //pass settings to filter by school year and semester
+            this.getTeacherSubjects(adminStore.settings[0])
         }
     
     }
