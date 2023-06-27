@@ -12,7 +12,7 @@
         <div class="px-3 ">
           
             <ul >
-                <li class="hover:bg-transparent py-0.5" >
+                <li class="hover:bg-transparent py-0.5"  v-for="subject in userStore.teacherSubjects" :key="subject.id">
                     <div class="collapse bg-white ">
                         <input type="checkbox"  />
                         
@@ -26,7 +26,7 @@
                         </div>
                     </div>
                 </li>
-                <li class="hover:bg-transparent py-0.5">
+                <!-- <li class="hover:bg-transparent py-0.5">
                     <div class="collapse bg-white ">
                         <input type="checkbox"  />
                         
@@ -54,7 +54,7 @@
                         </div>
                     </div>
                 </li>
-                
+                 -->
             </ul>
 
 
