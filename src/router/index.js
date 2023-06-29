@@ -96,6 +96,7 @@ const routes = [
         name: 'settings',
         component: ()=>import('../views/admin/components/SettingsView.vue')
       },
+      
     ]
    
   },

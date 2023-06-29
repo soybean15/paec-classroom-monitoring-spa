@@ -35,8 +35,7 @@
         <div class="tabs">
           <a class="tab tab-md" @click="userStore.getUserByRole(null, 2)"
             :class="{ 'tab-active': userStore.roleButtonState.teacher_btn }">Teachers</a>
-          <a class="tab  tab-md" @click="userStore.getUserByRole(null, 3)"
-            :class="{ 'tab-active': userStore.roleButtonState.student_btn }">Students</a>
+          
         </div>
       </div>
       <div class="flex grow"></div>
