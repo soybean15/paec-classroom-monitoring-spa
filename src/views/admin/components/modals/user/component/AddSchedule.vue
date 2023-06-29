@@ -58,7 +58,7 @@
                     <span>Section: </span>
                     <div class=" flex mx-1 items-center">
                         <span>{{ sectionPrefix }} </span>
-                        <input type="text" placeholder=""
+                        <input v-model="scheduleForm.section" type="text" placeholder=""
                             class="input input-xs  w-10 max-w-xs border-gray-200 bg-slate-50" />
 
                     </div>
@@ -72,7 +72,7 @@
 
             </div>
 
-            <button @click.prevent="onClick" class="btn btn-primary">Submit</button>
+            <button @click.prevent="scheduleStore.addSchedule(scheduleForm)" class="btn btn-primary">Submit</button>
 
 
         </div>
@@ -82,12 +82,16 @@
 <script>
 import { useAdminStore } from '@/store/admin'
 import { computed ,ref} from 'vue'
+import {useScheduleStore} from '@/store/schedule'
 export default {
     props: ['subject'],
 
     setup(props) {
 
+        console.log(props.subject)
+
         const adminStore = useAdminStore()
+        const scheduleStore = useScheduleStore()
         const weekdays = [
             { value: 1, label: 'Monday' },
             { value: 2, label: 'Tuesday' },
@@ -107,18 +111,22 @@ export default {
             start: null,
             end: null,
             room: null,
-            section: null
+            prefix: sectionPrefix,
+            section: null,
+            subject_teacher_id:props.subject.pivot_id
         })
 
         const onClick = () => {
             console.log(scheduleForm.value)
         }
+
         return {
             weekdays,
             adminStore,
             sectionPrefix,
             scheduleForm,
-            onClick
+            onClick,
+            scheduleStore
 
         }
     }

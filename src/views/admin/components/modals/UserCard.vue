@@ -27,10 +27,6 @@ export default {
             }
         })
 
-        onMounted(()=>{
-            console.log('mounted')
-        })
-
         return {fullName}
         
     }

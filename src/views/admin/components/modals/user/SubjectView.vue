@@ -24,7 +24,7 @@
                         </div>
 
                         <div class="collapse-content py-0 px-1">
-                            <p class="text-sm text-gray-700 px-3">No Schedule yet</p>
+                           <ScheduleView :subject="subject" />
 
                             <AddSchedule :subject="subject"></AddSchedule>
 
@@ -71,6 +71,7 @@ import AddSubjectModal from './component/AddSubjectModal.vue'
 import { useAcademicStore } from '@/store/academics'
 import { useUserStore } from '@/store/users'
 import AddSchedule from './component/AddSchedule.vue'
+import ScheduleView from './component/ScheduleView.vue'
 
 export default {
     props: ['store'],
@@ -78,7 +79,8 @@ export default {
     components: {
         AddSubjectModal,
         Modal2View,
-        AddSchedule
+        AddSchedule,
+        ScheduleView
     },
     setup() {
         const userStore = useUserStore()
