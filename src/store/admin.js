@@ -3,12 +3,14 @@ import axios from 'axios'
 
 export const useAdminStore = defineStore('admin', {
     state: () => ({
-        stateSettings:null
+        stateSettings:null,
+        stateRooms:null,
 
 
     }),
     getters: {
-        settings:(state)=>state.stateSettings
+        settings:(state)=>state.stateSettings,
+        rooms:(state)=>state.stateRooms
        
 
 
@@ -16,9 +18,13 @@ export const useAdminStore = defineStore('admin', {
     actions: {
         async getSettings(){
             const data = await axios('api/admin/settings')
+            
 
             this.stateSettings = data.data.settings
-        }
+            this.stateRooms = data.data.rooms
+        },
+       
+  
        
 
     }

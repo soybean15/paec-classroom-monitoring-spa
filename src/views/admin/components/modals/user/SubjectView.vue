@@ -19,71 +19,14 @@
 
                         <div class="collapse-title   ">
                             <div class="text-lg font-semibold text-black">{{ subject.name }}</div>
+                        
                             <div class="text-gray-400 text-sm ">Click to show Schedules</div>
                         </div>
 
                         <div class="collapse-content py-0 px-1">
                             <p class="text-sm text-gray-700 px-3">No Schedule yet</p>
 
-
-                            <div class="collapse px-3 m-0  hover:bg-gray-100">
-                                <input type="checkbox" class="p-0 m-0" />
-                                <div class="flex items-center collapse-title text-xs text-gray-600 pl-0 m-0   font-medium">
-                                    <img class="w-5 mr-1" src="@/assets/icons/add.svg" />
-                                    Add Schedule
-                                </div>
-                                <div class="collapse-content  ">
-                                    <select
-                                        class="select  w-full bg-slate-50 text-gray-500 border-gray-200 select-xs max-w-xs my-0.5">
-                                        <option disabled selected>Select Day</option>
-                                        <option>Monday</option>
-                                        <option>Greedo</option>
-                                    </select>
-                                    <div class=" text-gray-500 my-0.5 flex">
-                                        <div class="mx-1">
-                                            <span>Start: </span>
-                                            <input type="time" placeholder="Type here"
-                                                class="input input-xs  w-full max-w-xs border-gray-200 bg-slate-50" />
-
-                                        </div>
-                                        <div class="mx-1">
-                                            <span>End: </span>
-                                            <input type="time" placeholder="Type here"
-                                                class="input input-xs  w-full max-w-xs border-gray-200 bg-slate-50" />
-
-                                        </div>
-
-
-
-
-                                    </div>
-
-
-                                    <div class=" text-gray-500 my-0.5 flex">
-                                        <div class="mx-1">
-                                            <span>Room: </span>
-
-
-                                            <select
-                                        class="select  w-full bg-slate-50 text-gray-500 border-gray-200 select-xs max-w-xs my-0.5">
-                                        <option disabled selected>Select Room</option>
-                                        <option>Monday</option>
-                                        <option>Greedo</option>
-                                    </select>
-                                           
-
-                                        </div>
-                                        <div class="mx-1">
-                                            
-                                        </div>
-
-
-
-
-                                    </div>
-
-                                </div>
-                            </div>
+                            <AddSchedule :subject="subject"></AddSchedule>
 
                         </div>
 
@@ -127,13 +70,15 @@ import Modal2View from '@/views/components/ChildModalView.vue'
 import AddSubjectModal from './component/AddSubjectModal.vue'
 import { useAcademicStore } from '@/store/academics'
 import { useUserStore } from '@/store/users'
+import AddSchedule from './component/AddSchedule.vue'
 
 export default {
     props: ['store'],
 
     components: {
         AddSubjectModal,
-        Modal2View
+        Modal2View,
+        AddSchedule
     },
     setup() {
         const userStore = useUserStore()
