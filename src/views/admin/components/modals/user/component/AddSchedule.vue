@@ -88,7 +88,7 @@ export default {
 
     setup(props) {
 
-        console.log(props.subject)
+        
 
         const adminStore = useAdminStore()
         const scheduleStore = useScheduleStore()

@@ -24,7 +24,8 @@
                         </div>
 
                         <div class="collapse-content py-0 px-1">
-                           <ScheduleView :subject="subject" />
+                           
+                            <ScheduleView :subject="subject" />
 
                             <AddSchedule :subject="subject"></AddSchedule>
 

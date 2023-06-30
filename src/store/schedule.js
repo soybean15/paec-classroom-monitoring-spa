@@ -17,8 +17,10 @@ export const useScheduleStore = defineStore('schedule', {
         async addSchedule(form){
             const data = await axios.post('api/admin/users/teacher/schedule/add',form)
         },
-        async getSchedules(id){
-            const data = await axios.get(`api/admin/users/teacher/schedule/${id}`)
+        async getSchedules(subject){
+            const data = await axios.get(`api/admin/users/teacher/schedule/${subject.pivot_id}`)
+          
+         
         }
        
   
