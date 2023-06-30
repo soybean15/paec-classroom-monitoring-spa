@@ -90,7 +90,7 @@ import { useAdminStore } from '@/store/admin'
 import { computed ,ref} from 'vue'
 import {useScheduleStore} from '@/store/schedule'
 export default {
-    props: ['subject'],
+    props: ['subject','user'],
 
     setup(props) {
 
@@ -119,6 +119,7 @@ export default {
             room: null,
             prefix: sectionPrefix,
             section: null,
+            user_id:props.user.id,
             subject_teacher_id:props.subject.pivot_id
         })
 

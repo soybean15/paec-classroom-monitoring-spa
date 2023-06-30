@@ -27,7 +27,7 @@
                            
                             <ScheduleView :subject="subject" />
 
-                            <AddSchedule :subject="subject"></AddSchedule>
+                            <AddSchedule :subject="subject" :user="userStore.selectedUser"></AddSchedule>
 
                         </div>
 
