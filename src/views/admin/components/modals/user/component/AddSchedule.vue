@@ -8,7 +8,7 @@
         <div class="collapse-content  ">
             <select  v-model="scheduleForm.day" class="select  w-full bg-slate-50 text-gray-500 border-gray-200 select-xs max-w-xs my-0.5">
                 <option disabled selected>Select Day</option>
-                <option v-for="day in weekdays" :key="day.value">{{ day.label }}</option>
+                <option v-for="day in weekdays" :key="day.value" :value="day.value">{{ day.label }}</option>
             </select>
             <div class=" text-gray-500 my-0.5 flex">
                 <div class="mx-1">
@@ -59,7 +59,7 @@
                     <div class=" flex mx-1 items-center">
                         <span>{{ sectionPrefix }} </span>
                         <input v-model="scheduleForm.section" type="text" placeholder=""
-                            class="input input-xs  w-10 max-w-xs border-gray-200 bg-slate-50" />
+                            class="input input-xs  w-10 max-w-xs  border-gray-200 bg-slate-50"  />
 
                     </div>
 
@@ -71,8 +71,14 @@
 
 
             </div>
+            <div class="text-xs text-red-500" v-if="scheduleStore.errors.errors">
+                <div  v-if="scheduleStore.errors.errors.day">{{`*${scheduleStore.errors.errors.day[0]}` }}</div>
+                <div v-if="scheduleStore.errors.errors.start">{{ `*${scheduleStore.errors.errors.start[0]}`}}</div>
+                <div v-if="scheduleStore.errors.errors.end">{{ `*${scheduleStore.errors.errors.end[0]}` }}</div>
+            
+            </div>
 
-            <button @click.prevent="scheduleStore.addSchedule(scheduleForm)" class="btn btn-primary">Submit</button>
+            <button @click.prevent="scheduleStore.addSchedule(scheduleForm)" class="btn btn-sm btn-success">Add</button>
 
 
         </div>
