@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "docker": "docker build . -t app && docker run -d -p 8080:8080 app"
   },
   "dependencies": {
     "axios": "^1.4.0",
@@ -22,6 +23,7 @@
     "autoprefixer": "^10.4.14",
     "daisyui": "^3.1.0",
     "postcss": "^8.4.24",
-    "tailwindcss": "^3.3.2"
+    "tailwindcss": "^3.3.2",
+    "vue-cli-plugin-docker": "~0.2.2"
   }
 }
