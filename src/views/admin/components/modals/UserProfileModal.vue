@@ -31,6 +31,9 @@
             <div v-if="sideButtons[1].active">
                 <SubjectView :store="adminStore"/>
             </div>
+            <div v-if="sideButtons[2].active">
+                <CalendarView/>
+            </div>
            
             
         </div>
@@ -43,12 +46,14 @@
 import { computed,ref } from 'vue'
 import ClassesView from './user/ClassesView.vue'
 import SubjectView from './user/SubjectView.vue'
+import CalendarView from './user/CalendarView.vue'
 import { useAdminStore } from '@/store/admin'
 export default {
     props: ['user','store'],
     components:{
         ClassesView,
-        SubjectView
+        SubjectView,
+        CalendarView
     },  
     setup(props) {
 
