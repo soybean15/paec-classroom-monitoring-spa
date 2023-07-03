@@ -1,10 +1,11 @@
 <template>
    
-    <div class="flex  w-full"> <div class="text-black">{{ current }}</div>
+    <div class="flex  w-full"> 
+
         
         <div class="flex  grow flex-col  w-128 border">
             <div class="flex overflow-x-auto h-10  ">
-                <div class="p-1" v-for="(month, index) in months" :key="month" :class="{ 'p-1 cursor-pointer text-green-600': true, 'bg-yellow-200': index + 1 === current.month }">
+                <div class="p-1" v-for="(month, index) in months" :key="month" :class="{ 'p-1 cursor-pointer text-green-600': true, 'bg-yellow-200': index + 1 ===  current.dayjs.value.$M  }">
 
                     <div @click="set('month',index+1)" class="p-1 cursor-pointer text-green-600">{{ readableMonths(month) }}</div>
 
@@ -53,6 +54,11 @@ export default {
         const readableMonths = computed(() => {
             return (timestamp) => {
                 const date = new Date(timestamp);
+
+                console.log(current['dayjs'])
+                console.log(current['dayjs']['M'])
+                console.log(current.dayjs.value.$m)
+
                 const monthNames = [
                     "January",
                     "February",
