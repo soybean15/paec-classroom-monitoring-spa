@@ -26,7 +26,7 @@ export default {
 <style>
 .user-profile{
   width: 90% !important;
-  height: 90% !important;
+  height: 95% !important;
   margin: auto;
   max-width: 100% !important;
 }

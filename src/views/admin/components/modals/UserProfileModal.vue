@@ -13,7 +13,7 @@
             <div class="text-black">{{ store.selectedUser.id }}</div> -->
             <div class="bg-stone-100  h-full mt-5 border-y-1 border-black shadow-xl">
 
-                <div :class="{'bg-white shadow-md  text-black':button.active, 'hover:bg-stone-200 text-gray-600':!button.active}" @click="navigate(button)" class="flex  justify-center items-center p-3 border cursor-pointer"  v-for="button in sideButtons" :key="button.name">
+                <div :class="{'bg-white shadow-md  text-black':button.active, 'hover:bg-stone-200 text-gray-600':!button.active}" @click="navigate(button)" class="flex  justify-center items-center p-1 border cursor-pointer"  v-for="button in sideButtons" :key="button.name">
 
                  <div class="   font-bold font-sans ">{{button.label}}</div>
                 </div>
@@ -24,7 +24,7 @@
         </div>
 
 
-        <div class="flex flex-col  grow">
+        <div class="flex flex-col  grow overflow-auto ">
             <div v-if="sideButtons[0].active">
                 <ClassesView/>
             </div>

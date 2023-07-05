@@ -9,6 +9,10 @@ module.exports = {
         '132':'40rem'
       }
     },
+    fontSize:{
+      'xxs':'0.5rem'
+
+    }
   },
   plugins: [require("daisyui")],
 }

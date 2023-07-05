@@ -1,17 +1,19 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
-
+import { useUserStore } from './users';
 export const useScheduleStore = defineStore('schedule', {
     state: () => ({
         stateSchedules:null,
-        stateErrors:[]
+        stateErrors:[],
+        stateSubjects:null
 
 
     }),
     getters: {
      
         schedules :(state)=>state.stateSchedules,
-        errors:(state)=>state.stateErrors
+        errors:(state)=>state.stateErrors,
+        subjects:(state)=>state.stateSubjects 
 
 
     },
@@ -28,8 +30,10 @@ export const useScheduleStore = defineStore('schedule', {
             }
            
         },
-        async getSchedules(subject){
-            const data = await axios.get(`api/admin/users/teacher/schedule/${subject.pivot_id}`)
+        async getSchedules(){
+            const userStore = useUserStore()
+             this.stateSubjects = userStore.teacherSubjects
+   
           
          
         }
