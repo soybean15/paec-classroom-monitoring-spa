@@ -43,18 +43,20 @@
 
 
             </div>
-            <div class="flex overflow-x-hidden h-10  " v-dragscroll="true">
+            <div class="flex overflow-x-hidden h-10  " v-dragscroll="true" >
                 <div v-for="(month, index) in months" :key="month" class="p-1 cursor-pointer text-gray-600"
                     :class="{ 'text-green-600 border-b-2 border-slate-600': index + 1 === (current.dayjs.value.$M === 0 ? 12 : current.dayjs.value.$M) }">
 
-                    <div @click="set('month', index + 1)" class="p-1 cursor-pointer font-mono">{{ readableMonths(month) }}
+                    <div @click="set('month', index + 1)"
+                        class="p-1 cursor-pointer font-mono">{{
+                            readableMonths(month) }}
                     </div>
 
                 </div>
             </div>
 
             <div class="grid grid-cols-7 mt-1 gap-0 w-full font-bold text-black">
-                <div v-for="day in weeks" :key="day" >
+                <div v-for="day in weeks" :key="day">
                     {{ day }}</div>
 
             </div>
@@ -93,14 +95,12 @@ export default {
 
         const selectedDate = ref(current.dayjs.value);
 
-        console.log(selectedDate.value)
 
         const dateIsSelected = (date) => {
-            console.log(date)
-            console.log(date.$W)
+
 
             const isSelected = date.format("DD-MM-YYYY") === selectedDate.value.format("DD-MM-YYYY");
-            const isSunday = date.$W=== 0;
+            const isSunday = date.$W === 0;
 
 
             return {
@@ -135,7 +135,7 @@ export default {
         })
 
         const weeks = [
-          
+
             'Mon',
             'Tue',
             'Wed',
@@ -153,7 +153,8 @@ export default {
             months,
             readableMonths,
             current,
-            weeks
+            weeks,
+
         }
     }
 

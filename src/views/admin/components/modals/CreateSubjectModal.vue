@@ -12,6 +12,12 @@
             <input type="text" v-model="subject.name" placeholder=""
                 class="input input-bordered input-sm input-primary w-full" />
         </div>
+        <div class="mb-1 flex items-center"  >
+            
+            <label class=" flex mr-5 w-40 text-sm">Subject Code</label>
+            <input type="text" v-model="subject.code" placeholder=""
+                class="input input-bordered input-sm input-primary w-full" />
+        </div>
 
      
         <div class="flex items-center mb-1">
@@ -117,8 +123,9 @@ export default {
         const subject = ref({
             name: null,
             unit: 1,
+            code:null,
             yearLevel: null,
-            semester: null,
+            semester: 1,
             course: null
 
         })

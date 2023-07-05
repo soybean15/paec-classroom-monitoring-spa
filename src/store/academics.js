@@ -101,6 +101,7 @@ export const useAcademicStore = defineStore('academics', {
               const data = await axios.post('api/admin/academics/subject/add', {
                 name: subject.value.name,
                 unit: subject.value.unit,
+                code:subject.value.code,
                 year_level: subject.value.yearLevel,
                 semester: subject.value.semester,
                 course_id: subject.value.course

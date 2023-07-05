@@ -31,7 +31,7 @@
             <div v-if="sideButtons[1].active">
                 <SubjectView :store="adminStore"/>
             </div>
-            <div v-if="sideButtons[2].active">
+            <div v-if="sideButtons[3].active">
                 <CalendarView/>
             </div>
            
@@ -78,7 +78,8 @@ export default {
         const sideButtons = ref([
             {label: 'Classes', active:true},
             {label: 'Subject', active:false},
-            {label: 'Calendar', active:false},
+            {label: 'Schedules', active:false},
+            {label: 'Calendar', active:false},          
             {label: 'Report', active:false},
         ])
 
