@@ -31,6 +31,9 @@
             <div v-if="sideButtons[1].active">
                 <SubjectView :store="adminStore"/>
             </div>
+            <div v-if="sideButtons[2].active">
+                <WeeklyScheduleView/>
+            </div>
             <div v-if="sideButtons[3].active">
                 <CalendarView/>
             </div>
@@ -48,12 +51,14 @@ import ClassesView from './user/ClassesView.vue'
 import SubjectView from './user/SubjectView.vue'
 import CalendarView from './user/CalendarView.vue'
 import { useAdminStore } from '@/store/admin'
+import WeeklyScheduleView from './user/WeeklyScheduleView.vue'
 export default {
     props: ['user','store'],
     components:{
         ClassesView,
         SubjectView,
-        CalendarView
+        CalendarView,
+        WeeklyScheduleView
     },  
     setup(props) {
 

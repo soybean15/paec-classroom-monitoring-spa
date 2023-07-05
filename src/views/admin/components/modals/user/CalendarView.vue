@@ -1,59 +1,68 @@
 <template>
-    <div class="flex w-full overflow-auto">
+    <div class="w-full">
 
 
-        <div class="flex p-1 mt-5 grow flex-col  w-96  h-96 border">
-            <div class="flex items-center">
-                <div @click.prevent="set('year', 'decrement')" class="text-2xl text-black cursor-pointer">
-                    <svg fill="#2ec27e" height="15px" width="15px" version="1.1" id="Layer_1"
-                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512"
-                        xml:space="preserve">
-                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                        <g id="SVGRepo_iconCarrier">
-                            <g>
-                                <g>
-                                    <path
-                                        d="M256,0C114.837,0,0,114.837,0,256s114.837,256,256,256s256-114.837,256-256S397.163,0,256,0z M313.749,347.584 c8.341,8.341,8.341,21.824,0,30.165c-4.16,4.16-9.621,6.251-15.083,6.251c-5.461,0-10.923-2.091-15.083-6.251L176.917,271.083 c-8.341-8.341-8.341-21.824,0-30.165l106.667-106.667c8.341-8.341,21.824-8.341,30.165,0s8.341,21.824,0,30.165L222.165,256 L313.749,347.584z">
-                                    </path>
-                                </g>
-                            </g>
-                        </g>
-                    </svg>
-                </div>
-                <div class="text-gray-500 font-semibold px-2">{{ current.dayjs.value.$y }}</div>
+        <div class="flex p-1 mt-5 grow flex-col  w-full  h-96 border">
 
-                <div @click.prevent="set('year', 'add')" class="text-2xl text-black cursor-pointer">
-                    <svg fill="#2ec27e" height="15px" width="15px" version="1.1" id="Layer_1"
-                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512"
-                        xml:space="preserve">
-                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                        <g id="SVGRepo_iconCarrier">
-                            <g>
-                                <g>
-                                    <path
-                                        d="M256,0C114.615,0,0,114.615,0,256s114.615,256,256,256s256-114.616,256-256S397.385,0,256,0z M346.899,280.959 l-85.594,85.594c-13.783,13.784-36.132,13.784-49.917,0c-13.784-13.784-13.784-36.133,0-49.917L272.023,256l-60.635-60.635 c-13.784-13.784-13.784-36.133,0-49.917s36.134-13.784,49.917,0l85.594,85.594C360.683,244.825,360.683,267.175,346.899,280.959z">
-                                    </path>
-                                </g>
-                            </g>
-                        </g>
-                    </svg>
-                </div>
+            <div class="flex">
+                <div class="flex h-10 w-128 overflow-x-hidden gradient-bg " v-dragscroll="true">
+                    <div v-for="(month, index) in months" :key="month" class="p-1 cursor-pointer text-gray-600"
+                        :class="{ 'text-white border-b-2 border-slate-600': current.dayjs.value.$M === index }">
 
-
-            </div>
-            <div class="flex overflow-x-hidden h-10  " v-dragscroll="true" >
-                <div v-for="(month, index) in months" :key="month" class="p-1 cursor-pointer text-gray-600"
-                    :class="{ 'text-green-600 border-b-2 border-slate-600': index + 1 === (current.dayjs.value.$M === 0 ? 12 : current.dayjs.value.$M) }">
-
-                    <div @click="set('month', index + 1)"
-                        class="p-1 cursor-pointer font-mono">{{
+                        <div @click="set('month', index)" class="p-1 cursor-pointer font-mono">{{
                             readableMonths(month) }}
+                        </div>
+
+                    </div>
+                </div>
+                <div class="grow"></div>
+
+
+                <div class="flex items-center">
+                    <div @click.prevent="set('year', 'decrement')" class="text-2xl text-black cursor-pointer">
+                        <svg fill="#2ec27e" height="15px" width="15px" version="1.1" id="Layer_1"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            viewBox="0 0 512 512" xml:space="preserve">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <g>
+                                    <g>
+                                        <path
+                                            d="M256,0C114.837,0,0,114.837,0,256s114.837,256,256,256s256-114.837,256-256S397.163,0,256,0z M313.749,347.584 c8.341,8.341,8.341,21.824,0,30.165c-4.16,4.16-9.621,6.251-15.083,6.251c-5.461,0-10.923-2.091-15.083-6.251L176.917,271.083 c-8.341-8.341-8.341-21.824,0-30.165l106.667-106.667c8.341-8.341,21.824-8.341,30.165,0s8.341,21.824,0,30.165L222.165,256 L313.749,347.584z">
+                                        </path>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="text-gray-500 font-semibold px-2">{{ current.dayjs.value.$y }}</div>
+
+                    <div @click.prevent="set('year', 'add')" class="text-2xl text-black cursor-pointer">
+                        <svg fill="#2ec27e" height="15px" width="15px" version="1.1" id="Layer_1"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            viewBox="0 0 512 512" xml:space="preserve">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <g>
+                                    <g>
+                                        <path
+                                            d="M256,0C114.615,0,0,114.615,0,256s114.615,256,256,256s256-114.616,256-256S397.385,0,256,0z M346.899,280.959 l-85.594,85.594c-13.783,13.784-36.132,13.784-49.917,0c-13.784-13.784-13.784-36.133,0-49.917L272.023,256l-60.635-60.635 c-13.784-13.784-13.784-36.133,0-49.917s36.134-13.784,49.917,0l85.594,85.594C360.683,244.825,360.683,267.175,346.899,280.959z">
+                                        </path>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
                     </div>
 
+
                 </div>
+
+
             </div>
+
+
 
             <div class="grid grid-cols-7 mt-1 gap-0 w-full font-bold text-black">
                 <div v-for="day in weeks" :key="day">
@@ -161,4 +170,11 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.gradient-bg {
+  background: linear-gradient(to left, transparent, rgb(31, 182, 86));
+}
+
+
+
+</style>
