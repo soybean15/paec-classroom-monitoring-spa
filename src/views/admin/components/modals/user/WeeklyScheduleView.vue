@@ -1,8 +1,8 @@
 <template>
-    <div class="w-full h-full overflow-auto p-3">
-        <div class="w-full justify-between flex ">
+    <div class="w-full h-full overflow-auto  p-3">
+        <div class="grid grid-flow-col justify-stretch ">
             <div class="" v-for="day in weekdays" :key="day">
-                <DayComponent :hasTime="day === 'Time'">{{ day }}</DayComponent>
+                <DayComponent :schedules="day.schedules" :hasTime="day.day === 'Time'">{{ day.day }}</DayComponent>
 
             </div>
         </div>
@@ -28,15 +28,17 @@ function extractSchedules(subjects) {
 
 
     subjects.forEach(subject => {
-     
-       let item = JSON.parse(JSON.stringify(subject.schedules))
-      
-      item.forEach(schedule => {
+
+        let item = JSON.parse(JSON.stringify(subject.schedules))
+
+
+        item.forEach(schedule => {
+            schedule.subject = subject
             schedules[schedule.day].push(schedule)
             console.log(schedule.day)
         })
 
-  
+
 
     });
 
@@ -55,18 +57,20 @@ export default {
         scheduleStore.getSchedules()
         console.log(scheduleStore.subjects)
 
-        console.log(extractSchedules(scheduleStore.subjects))
+        const schedules = extractSchedules(scheduleStore.subjects)
 
         const weekdays = [
-            'Time',
-            'Sunday',
-            'Monday',
-            'Tuesday',
-            'Wednesday',
-            'Thursday',
-            'Friday',
-            'Saturday'
-        ]
+            { day: 'Time', schedules: null },
+            { day: 'Sun', schedules: schedules['Sunday'] },
+            { day: 'Mon', schedules: schedules['Monday'] },
+            { day: 'Tue', schedules: schedules['Tuesday'] },
+            { day: 'Wed', schedules: schedules['Wednesday'] },
+            { day: 'Thu', schedules: schedules['Thursday'] },
+            { day: 'Fri', schedules: schedules['Friday'] },
+            { day: 'Sat', schedules: schedules['Saturday'] }
+        ];
+
+        console.log(weekdays);
 
 
 
