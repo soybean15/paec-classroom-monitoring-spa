@@ -15,7 +15,8 @@ export const useUserStore = defineStore('users',{
         },
         stateRole:2,
         stateOnPendingModal:false,
-        stateTeacherSubjects:null
+        stateTeacherSubjects:null,
+        stateClasses:null
         
     }),
     getters:{
@@ -24,7 +25,8 @@ export const useUserStore = defineStore('users',{
         roleButtonState:(state)=>state.stateButton,
         onPendingModal:(state)=>state.stateOnPendingModal,
         selectedUser:(state)=>state.stateSelectedUser,
-        teacherSubjects:(state)=>state.stateTeacherSubjects
+        teacherSubjects:(state)=>state.stateTeacherSubjects,
+        classes:(state)=>state.stateClasses
        
     },
     
@@ -99,6 +101,7 @@ export const useUserStore = defineStore('users',{
                 user_id: this.stateSelectedUser.id,
             })
                 
+            this.stateClasses = response.data.schedules
             
 
         },
