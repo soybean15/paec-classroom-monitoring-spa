@@ -172,9 +172,6 @@ export default {
 
 <style>
 .gradient-bg {
-  background: linear-gradient(to left, transparent, rgb(31, 182, 86));
+    background: linear-gradient(to left, transparent, rgb(31, 182, 86));
 }
-
-
-
 </style>

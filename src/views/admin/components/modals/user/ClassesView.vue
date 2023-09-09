@@ -26,7 +26,19 @@
 </template>
 
 <script>
+import {useUserStore} from '@/store/users'
+import { onMounted } from 'vue'
 export default {
+    setup(){
+        const userStore = useUserStore()
+
+        onMounted(()=>{
+            userStore.getTeacherClasses()
+        })
+
+        return { userStore }
+    }
+    
 
 }
 </script>

@@ -15,7 +15,6 @@ import { useScheduleStore } from '@/store/schedule'
 
 function extractSchedules(subjects) {
     let schedules = {
-        Sunday: [],
         Monday: [],
         Tuesday: [],
         Wednesday: [],
